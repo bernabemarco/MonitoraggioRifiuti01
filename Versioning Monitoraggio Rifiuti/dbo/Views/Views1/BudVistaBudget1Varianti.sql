@@ -1,0 +1,9 @@
+﻿CREATE VIEW BudVistaBudget1Varianti AS 
+    SELECT T1.TIPOLOGIA AS TIP1, T1.VARIANTE AS VAR1
+    FROM TABVARIANTI T1
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[BudVistaBudget1Varianti] TO [Metodo98]
+    AS [dbo];
+

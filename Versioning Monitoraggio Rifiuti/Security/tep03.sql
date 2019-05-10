@@ -1,0 +1,3 @@
+﻿CREATE USER [tep03]
+    WITH DEFAULT_SCHEMA = [tep03];
+

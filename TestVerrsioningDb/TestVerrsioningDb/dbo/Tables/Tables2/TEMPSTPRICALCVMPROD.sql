@@ -1,0 +1,42 @@
+﻿CREATE TABLE [dbo].[TEMPSTPRICALCVMPROD] (
+    [IDSessione]     INT            NOT NULL,
+    [TipoRecord]     SMALLINT       NOT NULL,
+    [CodiceCdLRis]   VARCHAR (5)    NOT NULL,
+    [CodaMedia]      DECIMAL (8, 5) NULL,
+    [SQM]            DECIMAL (8, 5) NULL,
+    [EffMedia]       DECIMAL (8, 5) NULL,
+    [UTENTEMODIFICA] VARCHAR (25)   NOT NULL,
+    [DATAMODIFICA]   DATETIME       NOT NULL,
+    CONSTRAINT [PK_TEMPSTPRICALCVMPROD] PRIMARY KEY CLUSTERED ([IDSessione] ASC, [TipoRecord] ASC, [CodiceCdLRis] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPSTPRICALCVMPROD] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPSTPRICALCVMPROD] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPSTPRICALCVMPROD] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPSTPRICALCVMPROD] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPSTPRICALCVMPROD] TO [Metodo98]
+    AS [dbo];
+

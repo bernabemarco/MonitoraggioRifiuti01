@@ -1,0 +1,3 @@
+﻿CREATE USER [sec18]
+    WITH DEFAULT_SCHEMA = [sec18];
+

@@ -1,0 +1,29 @@
+﻿
+
+CREATE FUNCTION [dbo].[FUNDATARIFORD](@ProgressivoRP DECIMAL(10,0))
+RETURNS DATETIME
+AS
+BEGIN
+
+DECLARE @DATARIFORD DATETIME
+    
+    SET @DATARIFORD = ''
+    
+    SELECT 
+        @DATARIFORD = DATARIFDOC     
+    FROM 
+        TESTEDOCUMENTI T
+    WHERE
+        T.PROGRESSIVO = @ProgressivoRP
+        
+    RETURN(@DATARIFORD)
+END
+
+
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[FUNDATARIFORD] TO [Metodo98]
+    AS [dbo];
+

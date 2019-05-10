@@ -1,0 +1,45 @@
+﻿CREATE TABLE [dbo].[TP_ABBINAMENTO_SPED_TESTE] (
+    [IDAbbinamento]  NUMERIC (10) IDENTITY (1, 1) NOT NULL,
+    [Cod_Sped_Cons]  NUMERIC (5)  NOT NULL,
+    [Cod_Sped_Part]  NUMERIC (5)  NOT NULL,
+    [Cons_Sabato]    SMALLINT     NULL,
+    [UtenteModifica] VARCHAR (25) NOT NULL,
+    [DataModifica]   DATETIME     NOT NULL,
+    CONSTRAINT [PK__TP_ABBINAMENTO_SPED_TESTE] PRIMARY KEY CLUSTERED ([IDAbbinamento] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [Cons_part]
+    ON [dbo].[TP_ABBINAMENTO_SPED_TESTE]([Cod_Sped_Cons] ASC, [Cod_Sped_Part] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_ABBINAMENTO_SPED_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_ABBINAMENTO_SPED_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_ABBINAMENTO_SPED_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_ABBINAMENTO_SPED_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_ABBINAMENTO_SPED_TESTE] TO [Metodo98]
+    AS [dbo];
+

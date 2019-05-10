@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [mas02]
+    AUTHORIZATION [mas02];
+

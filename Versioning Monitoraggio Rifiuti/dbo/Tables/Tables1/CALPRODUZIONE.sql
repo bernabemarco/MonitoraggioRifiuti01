@@ -1,0 +1,56 @@
+﻿CREATE TABLE [dbo].[CALPRODUZIONE] (
+    [ANNOCAL]        NUMERIC (4)    NOT NULL,
+    [MESECAL]        NUMERIC (2)    NOT NULL,
+    [GIORNOCAL]      NUMERIC (2)    NOT NULL,
+    [CODDITTA]       VARCHAR (25)   NULL,
+    [DATACAL]        DATETIME       NULL,
+    [FESTIVO]        SMALLINT       DEFAULT (0) NULL,
+    [ORELAV]         NUMERIC (6, 4) NULL,
+    [DAORA1T]        DATETIME       NULL,
+    [AORA1T]         DATETIME       NULL,
+    [SOSTA1T]        DATETIME       NULL,
+    [DAORA2T]        DATETIME       NULL,
+    [AORA2T]         DATETIME       NULL,
+    [SOSTA2T]        DATETIME       NULL,
+    [DAORA3T]        DATETIME       NULL,
+    [AORA3T]         DATETIME       NULL,
+    [SOSTA3T]        DATETIME       NULL,
+    [DAORA4T]        DATETIME       NULL,
+    [AORA4T]         DATETIME       NULL,
+    [SOSTA4T]        DATETIME       NULL,
+    [UTENTEMODIFICA] VARCHAR (25)   NOT NULL,
+    [DATAMODIFICA]   DATETIME       NOT NULL,
+    CONSTRAINT [PK_CALPRODUZIONE] PRIMARY KEY CLUSTERED ([ANNOCAL] ASC, [MESECAL] ASC, [GIORNOCAL] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [CKC_FESTIVO_CALPRODU] CHECK ([FESTIVO] = 0 or [FESTIVO] = 1)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CALPRODUZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CALPRODUZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CALPRODUZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CALPRODUZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CALPRODUZIONE] TO [Metodo98]
+    AS [dbo];
+

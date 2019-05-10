@@ -1,0 +1,54 @@
+﻿CREATE TABLE [dbo].[TMP_IDOK_ORDARTICOLI] (
+    [FLGIMPORTA]     SMALLINT        NULL,
+    [RIFORD]         VARCHAR (50)    NULL,
+    [CODARTIMP]      VARCHAR (50)    NULL,
+    [CODART]         VARCHAR (50)    NULL,
+    [DESCRIZIONE]    VARCHAR (80)    NULL,
+    [QTA]            DECIMAL (16, 6) NULL,
+    [UM]             VARCHAR (3)     NULL,
+    [FLGQTAVAL]      SMALLINT        NULL,
+    [DATACONSEGNA]   DATETIME        NULL,
+    [DATACONSRICH]   DATETIME        NULL,
+    [PREZZOUNI]      DECIMAL (19, 6) NULL,
+    [SCONTO]         DECIMAL (8, 5)  NULL,
+    [ID]             INT             NOT NULL,
+    [UTENTEMODIFICA] VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]   DATETIME        NOT NULL,
+    [CODIVA]         DECIMAL (5)     DEFAULT ((0)) NULL,
+    [GENCONTROP]     VARCHAR (7)     DEFAULT ('') NULL,
+    [ALIQUOTAIVAIMP] DECIMAL (5)     DEFAULT ((0)) NULL,
+    [TIPORIGA]       VARCHAR (1)     DEFAULT ('') NULL,
+    [SCONTIESTESI]   VARCHAR (100)   DEFAULT ('') NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TMP_IDOK_ORDARTICOLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TMP_IDOK_ORDARTICOLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TMP_IDOK_ORDARTICOLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TMP_IDOK_ORDARTICOLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TMP_IDOK_ORDARTICOLI] TO [Metodo98]
+    AS [dbo];
+

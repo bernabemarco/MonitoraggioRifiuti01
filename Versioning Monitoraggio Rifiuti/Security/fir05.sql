@@ -1,0 +1,3 @@
+﻿CREATE USER [fir05]
+    WITH DEFAULT_SCHEMA = [fir05];
+

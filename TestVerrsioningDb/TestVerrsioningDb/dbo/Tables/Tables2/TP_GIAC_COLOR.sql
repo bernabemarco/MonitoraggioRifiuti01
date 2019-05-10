@@ -1,0 +1,35 @@
+﻿CREATE TABLE [dbo].[TP_GIAC_COLOR] (
+    [PROGRESSIVO]    DECIMAL (19)    NOT NULL,
+    [CODART]         VARCHAR (50)    NOT NULL,
+    [UM]             VARCHAR (3)     NOT NULL,
+    [GIAC]           DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [COLOR]          VARCHAR (10)    DEFAULT ('') NULL,
+    [UTENTEMODIFICA] VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]   DATETIME        NOT NULL,
+    PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_GIAC_COLOR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_GIAC_COLOR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_GIAC_COLOR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_GIAC_COLOR] TO [Metodo98]
+    AS [dbo];
+

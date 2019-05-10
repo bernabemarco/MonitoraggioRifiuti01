@@ -1,0 +1,42 @@
+﻿
+CREATE VIEW TP_VISTASITUAZIONECASSE_DETT
+AS
+SELECT     Data, DscCassa, Cassa, Turno, Divisa, DscPagamento,  IdTesta,  
+                  (SELECT CODCLIENTE  FROM TESTEVBANCO  WHERE  PROGRESSIVO=IDTESTA) AS CODCLIENTE,
+                  (SELECT DSCCONTO1   FROM ANAGRAFICACF  WHERE CODCONTO=(SELECT CODCLIENTE FROM TESTEVBANCO WHERE PROGRESSIVO=IDTESTA) ) AS DESCCLIENTE,  
+                  SUM(VenditeValuta) AS VenditeValuta, 
+                   SUM(VenditeEuro) AS VenditeEuro
+FROM        TP_VISTASITUAZIONECASSE
+WHERE     (IdTesta <> 0)
+GROUP BY Data,Divisa, DscPagamento, Turno, Cassa, DscCassa,IdTesta
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_VISTASITUAZIONECASSE_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_VISTASITUAZIONECASSE_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_VISTASITUAZIONECASSE_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_VISTASITUAZIONECASSE_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_VISTASITUAZIONECASSE_DETT] TO [Metodo98]
+    AS [dbo];
+

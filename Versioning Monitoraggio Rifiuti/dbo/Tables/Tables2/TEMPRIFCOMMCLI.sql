@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[TEMPRIFCOMMCLI] (
+    [RIFCOMMCLI] VARCHAR (30) NOT NULL,
+    [IDCOMMCLI]  INT          NULL,
+    [IDSESSIONE] INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([RIFCOMMCLI] ASC, [IDSESSIONE] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPRIFCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPRIFCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPRIFCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPRIFCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPRIFCOMMCLI] TO [Metodo98]
+    AS [dbo];
+

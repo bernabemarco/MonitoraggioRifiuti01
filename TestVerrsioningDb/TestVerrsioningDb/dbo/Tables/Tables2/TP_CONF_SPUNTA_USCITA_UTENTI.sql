@@ -1,0 +1,36 @@
+﻿CREATE TABLE [dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] (
+    [CodiceTesta]   INT          NOT NULL,
+    [CodiceSettore] INT          NOT NULL,
+    [Utente]        VARCHAR (25) NOT NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_CONF_SPUNTA_USCITA_UTENTI] TO [Metodo98]
+    AS [dbo];
+

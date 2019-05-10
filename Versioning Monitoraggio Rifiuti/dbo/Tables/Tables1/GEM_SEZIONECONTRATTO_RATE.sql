@@ -1,0 +1,49 @@
+﻿CREATE TABLE [dbo].[GEM_SEZIONECONTRATTO_RATE] (
+    [IDCONTRATTO]      VARCHAR (13)    NOT NULL,
+    [NUMERORATA]       NUMERIC (18)    NOT NULL,
+    [DATA_PREV]        DATETIME        NOT NULL,
+    [DATA_EFF]         DATETIME        NULL,
+    [DATA_FATT]        DATETIME        NULL,
+    [STATO]            CHAR (1)        NULL,
+    [DA_FATT]          CHAR (1)        NULL,
+    [IMPRATASFS]       NUMERIC (10, 2) NULL,
+    [SCONTO]           NUMERIC (10, 2) DEFAULT ((0)) NULL,
+    [PROVVIGIONE1]     NUMERIC (18, 2) DEFAULT ((0)) NULL,
+    [PROVVIGIONE2]     NUMERIC (18, 2) DEFAULT ((0)) NULL,
+    [PROVVIGIONE3]     NUMERIC (18, 2) DEFAULT ((0)) NULL,
+    [DescrizioneRata]  VARCHAR (80)    NULL,
+    [Note]             VARCHAR (900)   NULL,
+    [ELIMINATO]        CHAR (1)        DEFAULT ('0') NULL,
+    [NUMERO_RFW]       NUMERIC (18)    DEFAULT ((0)) NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]     DATETIME        NOT NULL,
+    [CodIva]           DECIMAL (5)     NULL,
+    [DataInizCompRata] DATETIME        NULL,
+    [DataFineCompRata] DATETIME        NULL,
+    CONSTRAINT [GEM_SEZIONECONTRATTO_RATE_PK] PRIMARY KEY CLUSTERED ([IDCONTRATTO] ASC, [NUMERORATA] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[GEM_SEZIONECONTRATTO_RATE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[GEM_SEZIONECONTRATTO_RATE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GEM_SEZIONECONTRATTO_RATE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[GEM_SEZIONECONTRATTO_RATE] TO [Metodo98]
+    AS [dbo];
+

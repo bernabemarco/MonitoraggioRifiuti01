@@ -1,0 +1,42 @@
+﻿CREATE TABLE [dbo].[TABRESPONSABILI] (
+    [CODICE]         SMALLINT      NOT NULL,
+    [DESCRIZIONE]    VARCHAR (50)  NULL,
+    [UTENTEMODIFICA] VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]   DATETIME      NOT NULL,
+    [emailResp]      VARCHAR (200) NULL,
+    [TipolResp]      VARCHAR (2)   NULL,
+    [Dismesso]       INT           NULL,
+    [IdRespCid]      VARCHAR (8)   NULL,
+    CONSTRAINT [PK__TABRESPONSABILI__33366271] PRIMARY KEY CLUSTERED ([CODICE] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABRESPONSABILI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABRESPONSABILI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABRESPONSABILI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABRESPONSABILI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABRESPONSABILI] TO [Metodo98]
+    AS [dbo];
+

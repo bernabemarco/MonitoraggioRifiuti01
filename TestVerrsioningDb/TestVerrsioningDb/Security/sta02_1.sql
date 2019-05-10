@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [sta02]
+    AUTHORIZATION [sta02];
+

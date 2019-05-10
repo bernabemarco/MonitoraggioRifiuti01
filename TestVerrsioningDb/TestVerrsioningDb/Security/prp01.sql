@@ -1,0 +1,3 @@
+﻿CREATE USER [prp01]
+    WITH DEFAULT_SCHEMA = [prp01];
+

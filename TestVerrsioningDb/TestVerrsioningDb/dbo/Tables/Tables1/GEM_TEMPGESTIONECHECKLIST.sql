@@ -1,0 +1,43 @@
+﻿CREATE TABLE [dbo].[GEM_TEMPGESTIONECHECKLIST] (
+    [IDSESSIONE]       DECIMAL (10)  NOT NULL,
+    [CodiceMezzo]      VARCHAR (50)  NOT NULL,
+    [IdRiga]           DECIMAL (5)   NOT NULL,
+    [Descrizione]      VARCHAR (200) NULL,
+    [Campo]            VARCHAR (2)   NULL,
+    [Ordine]           INT           NULL,
+    [Valore_0_NC]      SMALLINT      DEFAULT ((0)) NULL,
+    [Valore_1_C]       SMALLINT      DEFAULT ((0)) NULL,
+    [Valore_2_NE]      SMALLINT      DEFAULT ((0)) NULL,
+    [IDCONTRATTO]      VARCHAR (13)  NOT NULL,
+    [SEZIONECONTRATTO] DECIMAL (5)   NOT NULL,
+    [IDRAPPORTO]       VARCHAR (14)  NOT NULL,
+    [IdRigaMezzo]      DECIMAL (5)   NOT NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]     DATETIME      NOT NULL,
+    CONSTRAINT [PK_GEM_TEMPGESTIONECHECKLIST] PRIMARY KEY CLUSTERED ([IDSESSIONE] ASC, [CodiceMezzo] ASC, [IdRiga] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[GEM_TEMPGESTIONECHECKLIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[GEM_TEMPGESTIONECHECKLIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GEM_TEMPGESTIONECHECKLIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[GEM_TEMPGESTIONECHECKLIST] TO [Metodo98]
+    AS [dbo];
+

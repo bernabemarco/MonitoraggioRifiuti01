@@ -1,0 +1,3 @@
+﻿CREATE USER [mas02]
+    WITH DEFAULT_SCHEMA = [mas02];
+

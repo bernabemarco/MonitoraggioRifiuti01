@@ -1,0 +1,2 @@
+﻿CREATE USER [SICURA\XEN_Metodo] FOR LOGIN [SICURA\XEN_Metodo];
+

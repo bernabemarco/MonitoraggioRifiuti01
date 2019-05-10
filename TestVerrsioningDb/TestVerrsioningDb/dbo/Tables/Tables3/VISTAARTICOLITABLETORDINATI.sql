@@ -1,0 +1,77 @@
+﻿CREATE TABLE [dbo].[VISTAARTICOLITABLETORDINATI] (
+    [ID_Num]           INT             NOT NULL,
+    [sStatistica]      INT             NULL,
+    [CODCONTO]         VARCHAR (7)     NULL,
+    [CODARTICOLO]      VARCHAR (50)    NULL,
+    [DESCRIZIONE]      VARCHAR (80)    NULL,
+    [Listino]          DECIMAL (5)     NULL,
+    [DATADOC]          DATETIME        NULL,
+    [UMGEST]           VARCHAR (3)     NULL,
+    [PREZZO]           DECIMAL (19, 6) CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_PREZZO] DEFAULT (0) NULL,
+    [QTA]              DECIMAL (19, 6) CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_QTA] DEFAULT (0) NULL,
+    [QTAOMA]           DECIMAL (19, 6) CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_QTAOMA] DEFAULT (0) NULL,
+    [TipoOma]          INT             CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_TipoOma] DEFAULT (0) NULL,
+    [QTAN]             DECIMAL (19, 6) CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_QTAN] DEFAULT (0) NULL,
+    [QTANO]            DECIMAL (19, 6) CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_QTANO] DEFAULT (0) NULL,
+    [TipoOmaN]         INT             CONSTRAINT [DF_VISTAARTICOLITABLETORDINATI_TipoOmaN] DEFAULT (0) NULL,
+    [SCONTOBASE]       VARCHAR (50)    NULL,
+    [SCONTOAGGIUNTIVO] VARCHAR (50)    NULL,
+    [SCONTOCONTRATTO]  VARCHAR (50)    NULL,
+    [cCalc1]           VARCHAR (1)     NULL,
+    [cCalc2]           VARBINARY (1)   NULL,
+    [cCalc3]           VARCHAR (1)     NULL,
+    [cCalc4]           VARCHAR (1)     NULL,
+    [cCalc5]           VARCHAR (1)     NULL,
+    [cCalc6]           VARCHAR (1)     NULL,
+    [cCalc7]           VARCHAR (1)     NULL,
+    [cCalc8]           VARCHAR (1)     NULL,
+    [cCalc9]           VARCHAR (1)     NULL,
+    [cDATACons]        DATETIME        NULL,
+    [GRUPPO]           DECIMAL (5)     NULL,
+    [CATEGORIA]        DECIMAL (5)     NULL,
+    [CODCATEGORIASTAT] DECIMAL (5)     NULL,
+    [CodFamigliaPOS]   DECIMAL (5)     NULL,
+    [CodRepartoPOS]    DECIMAL (5)     NULL,
+    [DataFineSegn]     DATETIME        NULL,
+    [UtenteModifica]   VARCHAR (20)    NOT NULL,
+    [DataModifica]     DATETIME        NOT NULL,
+    [NrRigaOrd]        INT             NULL,
+    [NOTE]             VARCHAR (100)   NULL,
+    [NOTEALT]          VARCHAR (100)   NULL
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_VISTAARTICOLITABLETORDINATI]
+    ON [dbo].[VISTAARTICOLITABLETORDINATI]([ID_Num] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[VISTAARTICOLITABLETORDINATI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[VISTAARTICOLITABLETORDINATI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[VISTAARTICOLITABLETORDINATI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTAARTICOLITABLETORDINATI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[VISTAARTICOLITABLETORDINATI] TO [Metodo98]
+    AS [dbo];
+

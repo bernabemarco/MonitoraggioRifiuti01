@@ -1,0 +1,26 @@
+﻿
+CREATE VIEW TP_VISTALOTTIMISSIONATI
+AS
+
+SELECT TabRigheDocumentiMiss.CODART,
+       TabRigheDocumentiMiss.NRRIFPARTITA,
+       TabTesteMissioni.CODDEPOSITO,
+       SUM(ROUND(ISNULL((TabRigheDocumentiMiss.QTACONSEG*ISNULL(FC.FATTORE,1)),0),ISNULL(TabVincoliGic.NDECIMALIQUANTITA,0)))AS QTACONSEG  
+FROM TabRigheDocumentiMiss Inner Join TabTesteDocumentiMiss ON
+     TabRigheDocumentiMiss.IDTESTA=TabTesteDocumentiMiss.PROGRESSIVO 
+     Inner Join TabTesteMissioni ON TabTesteDocumentiMiss.RIFPROGRTESTAMISS=TabTesteMissioni.PROGRESSIVO
+     Left Join ARTICOLIUMPREFERITE ON TabRigheDocumentiMiss.CODART=ARTICOLIUMPREFERITE.CODART AND ARTICOLIUMPREFERITE.TIPOUM=1
+     Left Join ARTICOLIFATTORICONVERSIONE FC ON FC.CODART=TabRigheDocumentiMiss.CODART AND FC.UM1=TabRigheDocumentiMiss.Um AND FC.UM2=ARTICOLIUMPREFERITE.UM 
+     Left Join TabVincoliGic ON TabVincoliGic.ESERCIZIO=(SELECT USERS.ESERCIZIOATTIVO FROM TABUTENTI AS USERS WHERE USERS.USERDB=USER_NAME())
+WHERE TabTesteMissioni.STATO = 0 AND TabTesteDocumentiMiss.STATODOC <> 1 
+GROUP BY TabRigheDocumentiMiss.CODART,
+         TabRigheDocumentiMiss.NRRIFPARTITA,
+         TabTesteMissioni.CODDEPOSITO
+
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_VISTALOTTIMISSIONATI] TO [Metodo98]
+    AS [dbo];
+

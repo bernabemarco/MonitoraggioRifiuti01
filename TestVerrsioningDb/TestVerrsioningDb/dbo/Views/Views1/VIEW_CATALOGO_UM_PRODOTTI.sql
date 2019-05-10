@@ -1,0 +1,12 @@
+﻿
+ CREATE VIEW [dbo].[VIEW_CATALOGO_UM_PRODOTTI]
+ AS
+ Select
+ 0 ID ,
+ '' COD
+ 
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VIEW_CATALOGO_UM_PRODOTTI] TO [Metodo98]
+    AS [dbo];
+

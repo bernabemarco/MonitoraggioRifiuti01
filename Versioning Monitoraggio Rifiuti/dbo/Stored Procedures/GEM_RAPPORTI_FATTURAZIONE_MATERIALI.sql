@@ -1,0 +1,162 @@
+﻿CREATE PROCEDURE [dbo].[GEM_RAPPORTI_FATTURAZIONE_MATERIALI] (@IDRAPPORTO AS VARCHAR(30), @IDSESSIONE AS INT) AS
+	/* TEST
+	DECLARE @IDRAPPORTO			AS VARCHAR(30)
+	DECLARE @IDSESSIONE			AS INT
+	SET @IDRAPPORTO			= '2010OR000480SI'
+	SET @IDSESSIONE			= 3131
+	*/
+
+	-- VARIABILI DELLA STORED
+	DECLARE @IDCONTRATTO				AS VARCHAR(13)
+	DECLARE @SEZIONECONTRATTO		AS DECIMAL (5,0)
+	DECLARE @MESSAGGIOERRORE		AS VARCHAR(255)
+	DECLARE @RADICEMESS					AS VARCHAR(255)
+	DECLARE @IDMODFATT					AS DECIMAL (5,0)
+	DECLARE @IDTIPOFATT					AS DECIMAL (5,0)
+	DECLARE @IDTIPOLOGMEZZO				AS DECIMAL (5,0)
+	DECLARE @IDRIGAMEZZO				AS DECIMAL (5,0)
+	DECLARE @IDATTIVITA					AS DECIMAL (5,0)
+	DECLARE @IDRIGA						AS DECIMAL (5,0)
+	DECLARE @IDMATERIALE				AS VARCHAR(50)
+	DECLARE @PREZZO						AS DECIMAL(12,4)
+	DECLARE @SCONTO						AS DECIMAL(10,2)
+	DECLARE @QTA						AS DECIMAL(10,2)
+	DECLARE @PROVVIGIONE1				AS DECIMAL(10,2)
+	DECLARE @PROVVIGIONE2				AS DECIMAL(10,2)
+	DECLARE @TIPOFATTURAZIONE			AS VARCHAR(20)
+	DECLARE @VALIDITA					AS VARCHAR(20)
+	DECLARE @ELEMENTI_INSERITI			AS INT
+	DECLARE @DESCINSERITA				AS INT
+	-- Moreno Feletto - 05.03.2018 - Modifica descrizione righe rapporti (TV1800027)
+	DECLARE @ProvvExtraContr			AS CHAR(1)
+	DECLARE @Provv1Materiali			AS NUMERIC(10,2)
+	
+	SET @ELEMENTI_INSERITI = 0
+
+	--RECUPERO IDCONTRATT, SEZIONECONTRATTO E FLAG_FATT SUL RAPPORTO
+	SELECT @IDCONTRATTO=IDCONTRATTO, @SEZIONECONTRATTO=SEZIONECONTRATTO
+	FROM dbo.GEM_SEZIONECONTRATTORAPPORTI
+	WHERE IDRAPPORTO = @IDRAPPORTO
+
+	-- Moreno Feletto - 05.03.2018 - Modifica descrizione righe rapporti (TV1800027)
+	-- RECUPERO FLG_ProvvExtraContratto Dalla Sezione Contratto
+	SELECT 	@ProvvExtraContr = UPPER(ISNULL(FLG_ProvvExtraContratto,''))
+			,@Provv1Materiali = ISNULL(Provv1Materiali,0)
+	FROM dbo.GEM_SEZIONICONTRATTO
+	WHERE IDContratto = @IDCONTRATTO
+		AND SezioneContratto = @SEZIONECONTRATTO
+	
+	
+	--IMPOSTAZIONE MESSAGGIO DI ERRORE
+	SET @RADICEMESS = 'ELAB RAPPORTO: [' +  @IDRAPPORTO + '] - MATERIALI '
+	SET @ELEMENTI_INSERITI = 0
+	SET @DESCINSERITA = 0
+
+	
+	DECLARE CURR_RIGHE CURSOR  LOCAL  FAST_FORWARD FOR
+	SELECT [IDRIGA]
+      ,[IDMATERIALE]
+      ,ISNULL([PREZZO],0)
+      ,ISNULL([SCONTO],0)
+      ,ISNULL([QTA],0)
+      ,ISNULL([PROVVIGIONE1],0)
+      ,ISNULL([PROVVIGIONE2],0)
+	FROM [GEM_SEZIONECONTRATTORAPPORTI_Materiali]
+	WHERE IDRAPPORTO = @IDRAPPORTO
+	AND ISNULL([flg_mat_dafatt],'S') = 'S'
+	
+	OPEN CURR_RIGHE
+		FETCH NEXT FROM CURR_RIGHE INTO @IDRIGA, @IDMATERIALE, @PREZZO, @SCONTO, @QTA, @PROVVIGIONE1, @PROVVIGIONE2
+
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+
+				--inserimento riga che descrive il prossimo elenco
+				IF @DESCINSERITA = 0 BEGIN
+
+					EXEC GEM_PC_INS_ELEMENTIFATT @IDCONTRATTO 
+							,@SEZIONECONTRATTO 
+							,@IDRAPPORTO 
+							,@IDRAPPORTO
+							,'D' 
+							,0
+							,0						--@idRigaMateriali
+							,0						--@idRigaOreLav 
+							,0						--@idRigaRata
+							,''						--CODART
+							,'Riepilogo Materiali accessori al Vs. Contratto di Manutenzione'	-- DSCART		Rif vista GEM_VISTA_ELEMENTI_FATT			Moreno Feletto - 05.03.2018 - Modifica descrizione righe rapporti (TV1800022) - (pre -> ,'Riepilogo Materiali')
+							,0						--@QTA 
+							,0						--@PREZZO 
+							,0						--@SCONTO 
+							,0						--@PROVVIGIONE1 
+							,0						--@PROVVIGIONE2 
+							,0						--@PROVVIGIONE3 
+							,''						--@TipoFatturazione 
+							,''						--@Validita 
+							,1000					--@Posizione
+							,@IDSESSIONE			-- per i LOG
+
+
+					SET @DESCINSERITA = 1
+
+				END 
+				
+				
+				-- Moreno Feletto - 05.03.2018 - Modifica descrizione righe rapporti (TV1800027)
+				IF (@ProvvExtraContr='S')
+					SET @PROVVIGIONE1 = @Provv1Materiali
+				
+				EXEC GEM_PC_INS_ELEMENTIFATT @IDCONTRATTO 
+						,@SEZIONECONTRATTO 
+						,@IDRAPPORTO 
+						,@IDRAPPORTO
+						,'M' 
+						,0							--@idRigaAttivita		
+						,@IDRIGA				--@idRigaMateriali
+						,0							--@idRigaOreLav 
+						,0							--@idRigaRata
+						,@IDMATERIALE		--CODART
+						,@IDMATERIALE		--DSCART
+						,@QTA						--@QTA 
+						,@PREZZO				--@PREZZO 
+						,@SCONTO 				--@SCONTO 
+						,@PROVVIGIONE1	--@PROVVIGIONE1
+						,@PROVVIGIONE2	--@PROVVIGIONE2 
+						,0							--@PROVVIGIONE3 
+						,'Visita'				--@TipoFatturazione 
+						,'A Consumo'		--@Validita 
+						,1000						--@Posizione
+						,@IDSESSIONE			-- per i LOG
+
+					IF @@ERROR = 0 BEGIN
+						SET @ELEMENTI_INSERITI = @ELEMENTI_INSERITI  + 1
+					END 					
+
+			FETCH NEXT FROM CURR_RIGHE INTO @IDRIGA, @IDMATERIALE, @PREZZO, @SCONTO, @QTA, @PROVVIGIONE1, @PROVVIGIONE2
+		END
+
+	CLOSE CURR_RIGHE
+	DEALLOCATE CURR_RIGHE
+
+
+	-----------------------------------------------------------------------------
+	--MESSAGGIO FINALE 
+	--MESSAGGIO FINALE TUTTO OK
+	-----------------------------------------------------------------------------
+	/*
+	IF @ELEMENTI_INSERITI = 0 BEGIN
+		SET @MESSAGGIOERRORE = @RADICEMESS + ' NESSUN ELEMENTO INSERITO PER LA FATTURAZIONE '
+	END
+	ELSE BEGIN
+		SET @MESSAGGIOERRORE = @RADICEMESS + ' ELABORAZIONE OK - INSERITI [' + LTRIM(STR(@ELEMENTI_INSERITI)) +'] RECORD PER LA FATTURAZIONE '
+	END
+	EXEC GEM_REG_ERRORLOG @IDSESSIONE, @MESSAGGIOERRORE 
+	*/
+
+	RETURN @ELEMENTI_INSERITI
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[GEM_RAPPORTI_FATTURAZIONE_MATERIALI] TO [Metodo98]
+    AS [dbo];
+

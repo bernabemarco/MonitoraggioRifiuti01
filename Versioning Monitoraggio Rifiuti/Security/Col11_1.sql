@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Col11]
+    AUTHORIZATION [Col11];
+

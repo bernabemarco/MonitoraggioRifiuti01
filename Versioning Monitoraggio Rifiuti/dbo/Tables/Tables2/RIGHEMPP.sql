@@ -1,0 +1,54 @@
+﻿CREATE TABLE [dbo].[RIGHEMPP] (
+    [RIFPROGRESSIVO]     DECIMAL (10)    NOT NULL,
+    [RIFRIGAFORECAST]    INT             NOT NULL,
+    [NUMERORIGA]         INT             NOT NULL,
+    [ARTICOLOMPS]        VARCHAR (50)    NOT NULL,
+    [ARTICOLO]           VARCHAR (50)    NOT NULL,
+    [VERSIONEDBA]        VARCHAR (10)    NULL,
+    [LIVELLO]            SMALLINT        NULL,
+    [NOMEPERIODOPADRE]   VARCHAR (10)    NULL,
+    [NOMEPERIODO]        VARCHAR (10)    NULL,
+    [DESCRIZIONEPERIODO] VARCHAR (50)    NULL,
+    [DATAINIZIO]         DATETIME        NULL,
+    [DATAFINE]           DATETIME        NULL,
+    [UM]                 VARCHAR (3)     NOT NULL,
+    [QTAPREVISTA]        DECIMAL (16, 6) NULL,
+    [QTAIMPEGNATA]       DECIMAL (16, 6) NULL,
+    [QTARILASCIATA]      DECIMAL (16, 6) NULL,
+    [CHIUSO]             SMALLINT        NULL,
+    [ATTIVO]             SMALLINT        NULL,
+    [UTENTEMODIFICA]     VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]       DATETIME        NOT NULL,
+    CONSTRAINT [PK_RIGHEMPP] PRIMARY KEY CLUSTERED ([RIFPROGRESSIVO] ASC, [RIFRIGAFORECAST] ASC, [NUMERORIGA] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[RIGHEMPP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[RIGHEMPP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[RIGHEMPP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[RIGHEMPP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[RIGHEMPP] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,66 @@
+﻿CREATE TABLE [dbo].[PARAMETRIFIDO] (
+    [ESERCIZIO]      DECIMAL (5)    NOT NULL,
+    [ESITO0]         CHAR (1)       DEFAULT ('') NULL,
+    [ESITO1]         CHAR (1)       DEFAULT ('') NULL,
+    [ESITO2]         CHAR (1)       DEFAULT ('') NULL,
+    [ESITO3]         CHAR (1)       DEFAULT ('') NULL,
+    [ESITO4]         CHAR (1)       DEFAULT ('') NULL,
+    [BOLLE]          CHAR (1)       DEFAULT ('') NULL,
+    [FATTURE]        CHAR (1)       DEFAULT ('') NULL,
+    [ORDINI]         CHAR (1)       DEFAULT ('') NULL,
+    [NOTEACCR]       CHAR (1)       DEFAULT ('') NULL,
+    [ALTRO]          CHAR (1)       DEFAULT ('') NULL,
+    [USACLIFATT]     SMALLINT       DEFAULT (0) NULL,
+    [UTENTEMODIFICA] VARCHAR (25)   NOT NULL,
+    [DATAMODIFICA]   DATETIME       NOT NULL,
+    [DATAINIZCALC]   DATETIME       NULL,
+    [PercEsito0]     DECIMAL (8, 5) CONSTRAINT [DF_ParametriFido_PercEsito0] DEFAULT (0) NULL,
+    [PercEsito1]     DECIMAL (8, 5) CONSTRAINT [DF_ParametriFido_PercEsito1] DEFAULT (0) NULL,
+    [PercEsito2]     DECIMAL (8, 5) CONSTRAINT [DF_ParametriFido_PercEsito2] DEFAULT (0) NULL,
+    [PercEsito3]     DECIMAL (8, 5) CONSTRAINT [DF_ParametriFido_PercEsito3] DEFAULT (0) NULL,
+    [PercEsito4]     DECIMAL (8, 5) CONSTRAINT [DF_ParametriFido_PercEsito4] DEFAULT (0) NULL,
+    [ESCLUDIOMAGGI]  SMALLINT       NULL,
+    CONSTRAINT [PK_PARAMETRIFIDO] PRIMARY KEY CLUSTERED ([ESERCIZIO] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [CKC_ALTRO_PARAMETR] CHECK ([ALTRO] = 'V' or [ALTRO] = '' or [ALTRO] = 'S'),
+    CONSTRAINT [CKC_BOLLE_PARAMETR] CHECK ([BOLLE] = 'V' or [BOLLE] = '' or [BOLLE] = 'S'),
+    CONSTRAINT [CKC_ESITO0_PARAMETR] CHECK ([ESITO0] = 'V' or [ESITO0] = '' or [ESITO0] = 'S'),
+    CONSTRAINT [CKC_ESITO1_PARAMETR] CHECK ([ESITO1] = 'V' or [ESITO1] = '' or [ESITO1] = 'S'),
+    CONSTRAINT [CKC_ESITO2_PARAMETR] CHECK ([ESITO2] = 'V' or [ESITO2] = '' or [ESITO2] = 'S'),
+    CONSTRAINT [CKC_ESITO3_PARAMETR] CHECK ([ESITO3] = 'V' or [ESITO3] = '' or [ESITO3] = 'S'),
+    CONSTRAINT [CKC_ESITO4_PARAMETR] CHECK ([ESITO4] = 'V' or [ESITO4] = '' or [ESITO4] = 'S'),
+    CONSTRAINT [CKC_FATTURE_PARAMETR] CHECK ([FATTURE] = 'V' or [FATTURE] = '' or [FATTURE] = 'S'),
+    CONSTRAINT [CKC_NOTAACCR_PARAMETR] CHECK ([NOTEACCR] = 'V' or [NOTEACCR] = '' or [NOTEACCR] = 'S'),
+    CONSTRAINT [CKC_ORDINI_PARAMETR] CHECK ([ORDINI] = 'V' or [ORDINI] = '' or [ORDINI] = 'S'),
+    CONSTRAINT [CKC_USACLIFATT_PARAMETR] CHECK ([USACLIFATT] = 0 or [USACLIFATT] = 1)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[PARAMETRIFIDO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[PARAMETRIFIDO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[PARAMETRIFIDO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[PARAMETRIFIDO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[PARAMETRIFIDO] TO [Metodo98]
+    AS [dbo];
+

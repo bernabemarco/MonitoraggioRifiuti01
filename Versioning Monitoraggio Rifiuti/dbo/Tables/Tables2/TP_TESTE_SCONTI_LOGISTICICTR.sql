@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[TP_TESTE_SCONTI_LOGISTICICTR] (
+    [PROGRESSIVO]        DECIMAL (18)    NOT NULL,
+    [UTENTEMODIFICA]     VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]       DATETIME        NOT NULL,
+    [DADATA]             DATETIME        NOT NULL,
+    [ADATA]              DATETIME        NOT NULL,
+    [CODCLIFOR]          VARCHAR (7)     NOT NULL,
+    [TIPOLOGIADETTAGLIO] INT             NOT NULL,
+    [UM]                 VARCHAR (3)     NULL,
+    [QTAMIN]             DECIMAL (19, 6) NULL,
+    [SCONTO]             VARCHAR (50)    NULL,
+    [TIPOLOGIASCONTO]    SMALLINT        NULL,
+    [TIPO_TOTALE]        SMALLINT        NULL,
+    [RifContratto]       DECIMAL (10)    DEFAULT (0) NULL,
+    [Valore]             DECIMAL (19, 6) DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_TESTE_SCONTI_LOGISTICICTR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_TESTE_SCONTI_LOGISTICICTR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_TESTE_SCONTI_LOGISTICICTR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_TESTE_SCONTI_LOGISTICICTR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_TESTE_SCONTI_LOGISTICICTR] TO [Metodo98]
+    AS [dbo];
+

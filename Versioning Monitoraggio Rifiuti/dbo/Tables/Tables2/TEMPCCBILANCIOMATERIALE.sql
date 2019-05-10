@@ -1,0 +1,106 @@
+﻿CREATE TABLE [dbo].[TEMPCCBILANCIOMATERIALE] (
+    [IDSESSIONE]         INT             NOT NULL,
+    [IDCOMMCLI]          DECIMAL (10)    NOT NULL,
+    [NRRIGA]             INT             NOT NULL,
+    [TIPOINSERIMENTO]    SMALLINT        NULL,
+    [DATAELAB_CONS]      DATETIME        NULL,
+    [DATAELAB_VAL]       DATETIME        NULL,
+    [DATAMOVIMENTO]      DATETIME        NULL,
+    [DATADISPONIBILITA]  DATETIME        NULL,
+    [DATACOMPETENZA]     DATETIME        NULL,
+    [DATARIFVALORIZ]     DATETIME        NULL,
+    [NATURARILEVAZIONE]  SMALLINT        NULL,
+    [QV_CONSUMATA]       DECIMAL (16, 6) NULL,
+    [QV_RISERVATA]       DECIMAL (16, 6) NULL,
+    [QV_ORDINATA]        DECIMAL (16, 6) NULL,
+    [QV_PREVISTA]        DECIMAL (16, 6) NULL,
+    [VALOREUNITARIOEURO] DECIMAL (19, 4) NULL,
+    [CONTOCDC]           VARCHAR (10)    NULL,
+    [CODART]             VARCHAR (50)    NULL,
+    [IDTESTADOC]         DECIMAL (10)    NULL,
+    [IDRIGADOC]          INT             NULL,
+    [IDTESTAFATT]        DECIMAL (10)    NULL,
+    [IDRIGAFATT]         INT             NULL,
+    [IDIMPEGNO]          INT             CONSTRAINT [DF_TEMPCCBILANCIOMATERIALE_IDIMPEGNO] DEFAULT (0) NULL,
+    [ORIGINEEVENTO]      SMALLINT        NULL,
+    [TIPODOC]            VARCHAR (3)     NULL,
+    [NUMERODOC]          DECIMAL (10)    NULL,
+    [BIS]                CHAR (1)        NULL,
+    [ESERCIZIO]          DECIMAL (5)     NULL,
+    [TIPODOCFATT]        VARCHAR (3)     NULL,
+    [NUMERODOCFATT]      DECIMAL (10)    NULL,
+    [BISFATT]            CHAR (1)        NULL,
+    [ESERCIZIOFATT]      DECIMAL (5)     NULL,
+    [IDTESTA_DEST]       DECIMAL (10)    NULL,
+    [IDRIGA_DEST]        INT             NULL,
+    [IDTESTAFATT_DEST]   DECIMAL (10)    NULL,
+    [IDRIGAFATT_DEST]    INT             NULL,
+    [IDIMPEGNO_DEST]     INT             CONSTRAINT [DF_TEMPCCBILANCIOMATERIALE_IDIMPEGNO_DEST] DEFAULT (0) NULL,
+    [ORIGINEEVENTO_DEST] SMALLINT        NULL,
+    [TIPODOC_DEST]       VARCHAR (3)     NULL,
+    [NUMERODOC_DEST]     DECIMAL (10)    NULL,
+    [BIS_DEST]           CHAR (1)        NULL,
+    [ESERCIZIO_DEST]     DECIMAL (5)     NULL,
+    [TIPODOCFATT_DEST]   VARCHAR (3)     NULL,
+    [NUMERODOCFATT_DEST] DECIMAL (10)    NULL,
+    [BISFATT_DEST]       CHAR (1)        NULL,
+    [ESERCIZIOFATT_DEST] DECIMAL (5)     NULL,
+    [UMBASE]             VARCHAR (3)     NULL,
+    [QTABASE]            DECIMAL (16, 6) NULL,
+    [UMVAL]              VARCHAR (3)     NULL,
+    [QTAVAL]             DECIMAL (16, 6) NULL,
+    [TIPOREC]            VARCHAR (2)     NULL,
+    [TIPORECDETT]        VARCHAR (2)     NULL,
+    [TIPORECVAL]         VARCHAR (2)     NULL,
+    [TIPORECVAL_DEST]    VARCHAR (2)     NULL,
+    [VOCEBASE]           VARCHAR (3)     NULL,
+    [IDVOCE]             VARCHAR (3)     NULL,
+    [TIPOCOSTO]          VARCHAR (4)     NULL,
+    [CODCAUSALE]         DECIMAL (5)     NULL,
+    [CODDEPOSITO]        VARCHAR (10)    NULL,
+    [IDTABELLA]          VARCHAR (10)    NULL,
+    [IDSTORICOMAG]       DECIMAL (10)    NULL,
+    [QTABUDGET]          DECIMAL (16, 6) NULL,
+    [PESO]               DECIMAL (8, 5)  NULL,
+    [ORDINE_ELAB]        SMALLINT        NULL,
+    [FLGEMETTIRECORD]    SMALLINT        NULL,
+    [FLGMODTIPOREC]      SMALLINT        NULL,
+    [CODCLIFOR]          VARCHAR (7)     NULL,
+    [CODCLIFORFATT]      VARCHAR (7)     NULL,
+    [CODCLIFOR_DEST]     VARCHAR (7)     NULL,
+    [CODCLIFORFATT_DEST] VARCHAR (7)     NULL,
+    [UTENTEMODIFICA]     VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]       DATETIME        NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDSESSIONE] ASC, [IDCOMMCLI] ASC, [NRRIGA] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPCCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPCCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPCCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPCCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPCCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+

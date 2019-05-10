@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tes48]
+    AUTHORIZATION [tes48];
+

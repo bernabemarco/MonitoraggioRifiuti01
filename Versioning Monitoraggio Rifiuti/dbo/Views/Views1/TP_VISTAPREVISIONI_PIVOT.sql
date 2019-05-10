@@ -1,0 +1,54 @@
+﻿
+Create view [dbo].[TP_VISTAPREVISIONI_PIVOT] 
+as
+
+SELECT
+	CODARTICOLO,
+	CODDEPOSITO,
+	'Previsioni' As TIPO,
+	[1],
+	[2],
+	[3],
+	[4],
+	[5],
+	[6],
+	[7],
+	[8],
+	[9],
+	[10],
+	[11],
+	[12]
+FROM
+	TP_STAGIONALE_PREVISIONI
+
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_VISTAPREVISIONI_PIVOT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_VISTAPREVISIONI_PIVOT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_VISTAPREVISIONI_PIVOT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_VISTAPREVISIONI_PIVOT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_VISTAPREVISIONI_PIVOT] TO [Metodo98]
+    AS [dbo];
+

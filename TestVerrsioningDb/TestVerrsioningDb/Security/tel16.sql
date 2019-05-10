@@ -1,0 +1,3 @@
+﻿CREATE USER [tel16]
+    WITH DEFAULT_SCHEMA = [tel16];
+

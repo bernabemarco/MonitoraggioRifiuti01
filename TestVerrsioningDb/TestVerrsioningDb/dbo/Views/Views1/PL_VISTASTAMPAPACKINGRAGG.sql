@@ -1,0 +1,20 @@
+﻿
+
+CREATE VIEW PL_VISTASTAMPAPACKINGRAGG
+AS 
+
+    SELECT *,
+           CAST(REPLACE(RAGG,'Ragg','') AS DECIMAL(18,0)) AS CODRAGGRUPPAMENTO,
+           (CASE WHEN TIPO=0 Then
+              (SELECT DESCRIZIONE FROM TABIMBALLI TI WHERE TI.CODICE=PL_PackingRagg.Imballo) 
+            ELSE
+              (SELECT DESCRIZIONE FROM PL_Contenitori TC WHERE TC.CODICE=PL_PackingRagg.Imballo)   
+            END) AS DSCIMBALLO 
+    FROM PL_PackingRagg  
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[PL_VISTASTAMPAPACKINGRAGG] TO [Metodo98]
+    AS [dbo];
+

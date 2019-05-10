@@ -1,0 +1,363 @@
+﻿CREATE TABLE [dbo].[DESTINAZIONIDIVERSE] (
+    [CODCONTO]             VARCHAR (7)   NOT NULL,
+    [CODICE]               DECIMAL (5)   NOT NULL,
+    [RAGIONESOCIALE]       VARCHAR (80)  NULL,
+    [INDIRIZZO]            VARCHAR (80)  NULL,
+    [CAP]                  VARCHAR (8)   NULL,
+    [LOCALITA]             VARCHAR (80)  NULL,
+    [PROVINCIA]            VARCHAR (4)   NULL,
+    [TELEFONO]             VARCHAR (25)  NULL,
+    [FAX]                  VARCHAR (25)  NULL,
+    [CODDEPOSITO]          VARCHAR (10)  NULL,
+    [CODDEPOSITOCOLL]      VARCHAR (10)  NULL,
+    [CODDEPCOMP]           VARCHAR (10)  NULL,
+    [CODDEPCOMPCOLL]       VARCHAR (10)  NULL,
+    [INOLTROTRASP]         SMALLINT      DEFAULT (0) NULL,
+    [UTENTEMODIFICA]       VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]         DATETIME      NOT NULL,
+    [ZonaSped]             VARCHAR (10)  NULL,
+    [CodSettoreGiriVisite] VARCHAR (7)   NULL,
+    [email]                VARCHAR (50)  NULL,
+    [IdAmmnistratore]      SMALLINT      DEFAULT ((0)) NULL,
+    [codRelazione]         VARCHAR (11)  NULL,
+    [CentroCompentenza]    VARCHAR (10)  NULL,
+    [codIstatComune]       VARCHAR (6)   NULL,
+    [CODNAZIONE]           DECIMAL (5)   NULL,
+    [CODDEST_EDI]          VARCHAR (10)  CONSTRAINT [DF_DESTINAZIONIDIVERSE_CODDEST_EDI] DEFAULT ('') NOT NULL,
+    [codiceSapDest]        VARCHAR (10)  DEFAULT ('') NULL,
+    [StatoExportDDVSap]    SMALLINT      DEFAULT ((0)) NULL,
+    [Dismesso]             SMALLINT      DEFAULT ((0)) NULL,
+    [NoExport]             SMALLINT      DEFAULT ((0)) NULL,
+    [CodiceComplesso]      VARCHAR (30)  NULL,
+    [RSPPdiRif_D]          SMALLINT      DEFAULT ((0)) NULL,
+    [MedicodiRif_D]        SMALLINT      DEFAULT ((0)) NULL,
+    [ALD_DD_SDI]           VARCHAR (7)   DEFAULT ('') NULL,
+    [ALD_DD_PEC]           VARCHAR (100) DEFAULT ('') NULL,
+    [CONSENSO]             VARCHAR (1)   DEFAULT ('N') NOT NULL,
+    [DATACONS]             DATETIME      NULL,
+    [ATTESTCONS]           VARCHAR (300) NULL,
+    CONSTRAINT [PK_DESTINAZIONIDIVERSE] PRIMARY KEY CLUSTERED ([CODCONTO] ASC, [CODICE] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [CKC_INOLTROTRASP_DESTINAZ] CHECK ([INOLTROTRASP] = 0 or [INOLTROTRASP] = 1),
+    CONSTRAINT [FK_DESTINAZIONIDIVERSE_CODCONTO] FOREIGN KEY ([CODCONTO]) REFERENCES [dbo].[ANAGRAFICACF] ([CODCONTO]) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [CODICEDD]
+    ON [dbo].[DESTINAZIONIDIVERSE]([CODICE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+CREATE NONCLUSTERED INDEX [DSCDD]
+    ON [dbo].[DESTINAZIONIDIVERSE]([RAGIONESOCIALE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+CREATE NONCLUSTERED INDEX [CODDEPOSITODD]
+    ON [dbo].[DESTINAZIONIDIVERSE]([CODDEPOSITO] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+CREATE NONCLUSTERED INDEX [PROVINCIADD]
+    ON [dbo].[DESTINAZIONIDIVERSE]([PROVINCIA] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+
+CREATE TRIGGER [dbo].[ALD_TIU_DESTINAZIONIDIVERSE_B2B] ON [dbo].[DESTINAZIONIDIVERSE] FOR INSERT,	UPDATE AS
+
+/******************************
+Autore: Sara
+Data: 13-2-2019
+Usato da: 
+Commessa: 
+Descrizione: inserisce SDI o PEC riferita ad una destinazione diversa nella tabella ALD_B2B_CLIENTI
+
+Parametri: 
+Modifiche (chi, quando, cosa):
+*******************************/
+BEGIN
+   DECLARE
+      @MAXCARD  INT,
+      @NUMROWS  INT,
+      @NUMNULL  INT,
+      @ERRNO    INT,
+      @ERRMSG   VARCHAR(255)
+
+      SELECT  @NUMROWS = @@ROWCOUNT
+      IF @NUMROWS = 0
+         RETURN
+  
+	IF EXISTS ( SELECT 1 FROM INSERTED WHERE isnull(ALD_DD_SDI,'')<>'' OR isnull(ALD_DD_PEC,'')<>'')
+    BEGIN
+
+	DELETE FROM  [dbo].[ALD_B2B_CLIENTI]  FROM [dbo].[ALD_B2B_CLIENTI] inner join INSERTED on ALD_B2B_CLIENTI.CODCONTO = INSERTED.CODCONTO and ALD_B2B_CLIENTI.[DESTINAZIONEDIVERSA]=INSERTED.[CODICE]
+
+      INSERT INTO [dbo].[ALD_B2B_CLIENTI]
+           ([CODCONTO]
+           ,[DESTINAZIONEDIVERSA]
+           ,[TipoInstradamento]
+           ,[PROGRESSIVOUFFICIO]
+           ,[MAIL]
+           ,[Utentemodifica]
+           ,[Datamodifica], 
+		   ID)
+		   SELECT  INSERTED.CODCONTO, INSERTED.CODICE, 3, 
+		   (CASE WHEN isnull(ALD_DD_SDI,'0000000') ='' THEN '0000000' ELSE ALD_DD_SDI END)
+		   ,Isnull(INSERTED.ALD_DD_PEC,'') as Mail, INSERTED.UTENTEMODIFICA, INSERTED.DATAMODIFICA,
+		   (select max(id) +1 from ALD_B2B_CLIENTI) as ID
+		   FROM INSERTED 
+		   INNER join ANAGRAFICACF CC on INSERTED.CODCONTO = CC.CODCONTO
+		     WHERE TIPOCONTO ='c'
+    END
+
+      RETURN
+
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+
+GO
+/*  DELETE TRIGGER "ALD_TD_DESTINAZIONIDIVERSE" FOR TABLE "DESTINAZIONIDIVERSE"  */
+create TRIGGER [dbo].[ALD_TD_DESTINAZIONIDIVERSE] ON [dbo].[DESTINAZIONIDIVERSE] FOR DELETE AS
+BEGIN
+    DECLARE
+       @NUMROWS  INT,
+       @ERRNO    INT,
+       @ERRMSG   VARCHAR(255)
+
+    SELECT  @NUMROWS = @@ROWCOUNT
+    IF @NUMROWS = 0
+       RETURN
+
+        
+    /* Controllo della destinazione merci inserita che esiste nei Contratti Gemma */
+    IF EXISTS (SELECT 1
+               FROM   ALD_VISTA_GEM_TESTESEZIONICONT T2, DELETED T1
+               WHERE  T2.CODCLIENTE = T1.CODCONTO AND T2.CODDEST= T1.CODICE)
+       BEGIN
+          SELECT @ERRNO  = 30006,
+                 @ERRMSG = '** OPERAZIONE ANNULLATA. I CAMPI SONO PRESENTI NELLA TABELLA [GEM_SEZIONICONTRATTO].**'
+          GOTO ERROR
+       END
+
+    RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR(@ERRMSG,1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+
+GO
+CREATE TRIGGER ALD_TU_DESTINAZIONIDIVERSE ON DESTINAZIONIDIVERSE FOR UPDATE AS
+BEGIN
+   DECLARE
+      @MAXCARD  INT,
+      @NUMROWS  INT,
+      @NUMNULL  INT,
+      @ERRNO    INT,
+      @ERRMSG   VARCHAR(255)
+
+      SELECT  @NUMROWS = @@ROWCOUNT
+      IF @NUMROWS = 0
+         RETURN
+
+      
+      IF UPDATE(CODICE)
+      BEGIN
+         IF EXISTS (SELECT 1
+                    FROM   TESTEDOCUMENTI T2, INSERTED I1, DELETED D1
+                    WHERE  T2.CODCLIFOR = D1.CODCONTO 
+                    AND T2.NUMDESTDIVERSACORR= D1.CODICE
+                    AND (I1.CODCONTO != D1.CODCONTO
+                     OR  I1.CODICE != D1.CODICE)) 
+            BEGIN
+               SELECT @ERRNO  = 30005,
+                      @ERRMSG = '** OPERAZIONE ANNULLATA, VALORI NON MODIFICABILI. I CAMPI SONO PRESENTI NELLA TABELLA [TESTEDOCUMENTI].**'
+               GOTO ERROR
+            END
+      END
+      IF UPDATE(CODICE)
+      BEGIN
+         IF EXISTS (SELECT 1
+                    FROM   TESTEDOCUMENTI T2, INSERTED I1, DELETED D1
+                    WHERE  T2.CODCLIFOR = D1.CODCONTO 
+                    AND T2.NUMDESTDIVERSAMERCI= D1.CODICE
+                    AND (I1.CODCONTO != D1.CODCONTO
+                     OR  I1.CODICE != D1.CODICE)) 
+            BEGIN
+               SELECT @ERRNO  = 30005,
+                      @ERRMSG = '** OPERAZIONE ANNULLATA, VALORI NON MODIFICABILI. I CAMPI SONO PRESENTI NELLA TABELLA [TESTEDOCUMENTI].**'
+               GOTO ERROR
+            END
+      END
+      
+      IF UPDATE(CODICE)
+      BEGIN
+         IF EXISTS (SELECT 1
+                    FROM   ALD_VISTA_GEM_TESTESEZIONICONT T2, INSERTED I1, DELETED D1
+                    WHERE  T2.CODCLIENTE = D1.CODCONTO 
+                    AND T2.CODDEST= D1.CODICE
+                    AND (I1.CODCONTO != D1.CODCONTO
+                     OR  I1.CODICE != D1.CODICE)) 
+         
+            BEGIN
+               SELECT @ERRNO  = 30005,
+                      @ERRMSG = '** OPERAZIONE ANNULLATA, VALORI NON MODIFICABILI. I CAMPI SONO PRESENTI NELLA TABELLA [GEM_SEZIONICONTRATTO].**'
+               GOTO ERROR
+            END
+      END
+      RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+
+
+GO
+
+
+CREATE TRIGGER [dbo].[BIRI_TU_DESTINAZIONIDIVERSE] ON [dbo].[DESTINAZIONIDIVERSE] FOR UPDATE AS
+BEGIN
+    DECLARE
+       @NUMROWS  INT,
+       @ERRNO    INT,
+       @ERRMSG   VARCHAR(255),
+	   @CONN VARCHAR(255)
+--	   @ProcName VARCHAR(255)
+
+    SELECT  @NUMROWS = @@ROWCOUNT
+    
+
+    IF @NUMROWS = 0
+       RETURN
+    SELECT @CONN =  CONCAT(APP_NAME(), ' -- ', SESSION_USER,  ' -- ',system_USER, ' -- ', CONVERT(VARCHAR(255),CONNECTIONPROPERTY ('client_net_address')))
+	--client_net_address
+--	SET @ProcName = OBJECT_NAME(@@PROCID) + @CONN;
+    
+
+
+
+   insert into [BIRI_DESTINAZIONIDIVERSE_UPDATE] (CurrentUser, CODCONTO, CODICE, RAGIONESOCIALE, INDIRIZZO, CAP, LOCALITA, PROVINCIA, TELEFONO, FAX, CODDEPOSITO, CODDEPOSITOCOLL, CODDEPCOMP, CODDEPCOMPCOLL, INOLTROTRASP, UTENTEMODIFICA,
+                         DATAMODIFICA, ZonaSped, CodSettoreGiriVisite, email, IdAmmnistratore, codRelazione, CentroCompentenza, codIstatComune, CODNAZIONE, CODDEST_EDI, codiceSapDest, StatoExportDDVSap, Dismesso, NoExport,
+                         CodiceComplesso, RSPPdiRif_D, MedicodiRif_D)
+   select  @CONN, t1.CODCONTO, T1.CODICE, T1.RAGIONESOCIALE, T1.INDIRIZZO, T1.CAP, T1.LOCALITA, T1.PROVINCIA, T1.TELEFONO, T1.FAX, T1.CODDEPOSITO, T1.CODDEPOSITOCOLL, T1.CODDEPCOMP, T1.CODDEPCOMPCOLL, T1.INOLTROTRASP, T1.UTENTEMODIFICA,
+                         T1.DATAMODIFICA, T1.ZonaSped, T1.CodSettoreGiriVisite, T1.email, T1.IdAmmnistratore, T1.codRelazione, T1.CentroCompentenza, T1.codIstatComune, T1.CODNAZIONE, T1.CODDEST_EDI, T1.codiceSapDest, T1.StatoExportDDVSap, T1.Dismesso, T1.NoExport,
+                         T1.CodiceComplesso, T1.RSPPdiRif_D, T1.MedicodiRif_D
+
+--    FROM   inserted T1
+ 
+  FROM INSERTED T1 INNER JOIN DELETED D1 ON T1.CODCONTO = D1.CODCONTO AND T1.CODICE = D1.CODICE
+  WHERE  (T1.CODCONTO = D1.CODCONTO AND T1.CODICE = D1.CODICE)
+
+ 
+ --   FROM   INSERTED T1, DELETED D1 
+ 
+ --WHERE  (T1.CODCONTO = D1.CODCONTO AND T1.CODICE = D1.CODICE)
+
+
+
+	insert into [BIRI_DESTINAZIONIDIVERSE_UPDATE] (CurrentUser, CODCONTO, CODICE, RAGIONESOCIALE, INDIRIZZO, CAP, LOCALITA, PROVINCIA, TELEFONO, FAX, CODDEPOSITO, CODDEPOSITOCOLL, CODDEPCOMP, CODDEPCOMPCOLL, INOLTROTRASP, UTENTEMODIFICA,
+                         DATAMODIFICA, ZonaSped, CodSettoreGiriVisite, email, IdAmmnistratore, codRelazione, CentroCompentenza, codIstatComune, CODNAZIONE, CODDEST_EDI, codiceSapDest, StatoExportDDVSap, Dismesso, NoExport,
+                         CodiceComplesso, RSPPdiRif_D, MedicodiRif_D)
+   select  @CONN, D1.CODCONTO, D1.CODICE, D1.RAGIONESOCIALE, D1.INDIRIZZO, D1.CAP, D1.LOCALITA, D1.PROVINCIA, D1.TELEFONO, D1.FAX, D1.CODDEPOSITO, D1.CODDEPOSITOCOLL, D1.CODDEPCOMP, D1.CODDEPCOMPCOLL, D1.INOLTROTRASP, D1.UTENTEMODIFICA,
+                         D1.DATAMODIFICA, D1.ZonaSped, D1.CodSettoreGiriVisite, D1.email, D1.IdAmmnistratore, D1.codRelazione, D1.CentroCompentenza, D1.codIstatComune, D1.CODNAZIONE, D1.CODDEST_EDI, D1.codiceSapDest, D1.StatoExportDDVSap, D1.Dismesso, D1.NoExport,
+                         D1.CodiceComplesso, D1.RSPPdiRif_D, D1.MedicodiRif_D
+
+--    FROM   deleted D1
+ 
+  FROM DELETED D1 INNER JOIN INSERTED T1 ON D1.CODCONTO = T1.CODCONTO AND D1.CODICE = T1.CODICE
+    WHERE  (T1.CODCONTO = D1.CODCONTO AND T1.CODICE = D1.CODICE)
+    RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+
+
+
+
+GO
+
+
+CREATE TRIGGER [dbo].[ALD_TD_DESTINAZIONIDIVERSE_B2B] ON [dbo].[DESTINAZIONIDIVERSE] FOR DELETE AS
+
+/******************************
+Autore: Sara
+Data: 13-2-2019
+Usato da: 
+Commessa: 
+Descrizione: cancella la il riferimento della destinazione diversa dalla tabella ALD_B2B_CLIENTI
+
+Parametri: 
+Modifiche (chi, quando, cosa):
+*******************************/
+
+
+
+BEGIN
+   DECLARE
+      @MAXCARD  INT,
+      @NUMROWS  INT,
+      @NUMNULL  INT,
+      @ERRNO    INT,
+      @ERRMSG   VARCHAR(255)
+
+      SELECT  @NUMROWS = @@ROWCOUNT
+      IF @NUMROWS = 0
+         RETURN
+      
+  
+	DELETE FROM  [dbo].[ALD_B2B_CLIENTI]  FROM [dbo].[ALD_B2B_CLIENTI] 
+	inner join DELETED on ALD_B2B_CLIENTI.CODCONTO = DELETED.CODCONTO 
+	and ALD_B2B_CLIENTI.[DESTINAZIONEDIVERSA]=DELETED.[CODICE]
+
+
+      RETURN
+
+
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[DESTINAZIONIDIVERSE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[DESTINAZIONIDIVERSE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[DESTINAZIONIDIVERSE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[DESTINAZIONIDIVERSE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[DESTINAZIONIDIVERSE] TO [Metodo98]
+    AS [dbo];
+

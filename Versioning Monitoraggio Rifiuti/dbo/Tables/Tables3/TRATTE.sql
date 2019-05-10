@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[TRATTE] (
+    [PROGRESSIVO]    DECIMAL (10)  NOT NULL,
+    [DESCRIZIONE]    VARCHAR (100) NULL,
+    [UTENTEMODIFICA] VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]   DATETIME      NOT NULL,
+    CONSTRAINT [PK_TRATTE] PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TRATTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TRATTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TRATTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TRATTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TRATTE] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [tesik01]
+    WITH DEFAULT_SCHEMA = [tesik01];
+

@@ -1,0 +1,41 @@
+﻿CREATE TABLE [dbo].[QLK_MENUFILTRI] (
+    [IDMENU]           INT           NOT NULL,
+    [DESCRIZIONE]      VARCHAR (200) NULL,
+    [NOMEFILTRO]       VARCHAR (100) NULL,
+    [MODELLOCOLLEGATO] VARCHAR (50)  NULL,
+    [NOMEFILE]         VARCHAR (200) NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]     DATETIME      NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDMENU] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[QLK_MENUFILTRI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[QLK_MENUFILTRI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[QLK_MENUFILTRI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[QLK_MENUFILTRI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[QLK_MENUFILTRI] TO [Metodo98]
+    AS [dbo];
+

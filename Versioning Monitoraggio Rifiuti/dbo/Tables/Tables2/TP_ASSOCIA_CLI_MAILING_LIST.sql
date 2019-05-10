@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[TP_ASSOCIA_CLI_MAILING_LIST] (
+    [CodConto]       VARCHAR (7)  NULL,
+    [CodMailing]     NUMERIC (4)  NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_ASSOCIA_CLI_MAILING_LIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_ASSOCIA_CLI_MAILING_LIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_ASSOCIA_CLI_MAILING_LIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_ASSOCIA_CLI_MAILING_LIST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_ASSOCIA_CLI_MAILING_LIST] TO [Metodo98]
+    AS [dbo];
+

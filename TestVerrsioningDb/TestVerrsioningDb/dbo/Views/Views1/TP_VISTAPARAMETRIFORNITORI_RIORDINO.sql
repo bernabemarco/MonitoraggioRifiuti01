@@ -1,0 +1,102 @@
+﻿
+
+CREATE VIEW dbo.TP_VISTAPARAMETRIFORNITORI_RIORDINO AS
+SELECT
+    FP.ISPREFERENZIALE,
+    TLR.CODART AS CODARTICOLO,
+    TLR.CODFOR AS CODFORNITORE,
+    TLR.TP_CODDEP AS CODDEPOSITO,
+    FP.MODALITACALCOLO,
+    (TLR.GGAPPROVV + TLR.GGAPPRONT + FP.TP_TREV) AS LEADTIME,
+    SQRT(TLR.GGAPPROVV + TLR.GGAPPRONT + FP.TP_TREV) AS RLEADTIME,
+    ISNULL(FP.PREZZOEURO,0) AS PREZZOEURO
+FROM
+    TABLOTTIRIORDINO TLR
+INNER JOIN
+(
+    SELECT DISTINCT
+        TLR.CODART,
+        TLR.TP_CODDEP,
+        TLR.CODFOR,
+        TEM.MODALITACALCOLO,
+        (CASE WHEN TLR.CODFOR = (
+                            CASE TEM.MODALITACALCOLO
+                                WHEN 0 THEN EOQ.CODFORNPREF
+                                WHEN 1 THEN PFR.CODFORNPREF
+                                WHEN 2 THEN SCRT.CODFORNPREF
+                                WHEN 3 THEN PERS.CODFORNPREF
+                            END
+                         ) THEN 1 ELSE 0 END) AS ISPREFERENZIALE,
+        ISNULL((SELECT TP_TRev FROM TP_EXTRAFORNITORI WHERE CODCONTO = TLR.CODFOR),0) AS TP_TRev,
+        ISNULL((SELECT TOP 1 PREZZOEURO 
+                FROM VISTASTORICOPREZZIUM 
+                WHERE VISTASTORICOPREZZIUM.CODARTICOLO = TLR.CODART AND 
+                      VISTASTORICOPREZZIUM.CODCLIFOR = TLR.CODFOR AND 
+                      VISTASTORICOPREZZIUM.UM = TLR.UM AND 
+                      VISTASTORICOPREZZIUM.ULTIMO = 1),0) AS PREZZOEURO
+    FROM
+        TABLOTTIRIORDINO TLR
+    INNER JOIN
+        TP_EXTRAMAG TEM
+    ON
+        TEM.CODART = TLR.CODART
+    LEFT JOIN
+        (
+        SELECT
+            CodArticolo,
+            CodDeposito,
+            CodFornPref
+        FROM TP_APPROVV_DEPOSITI
+        ) EOQ
+    ON
+        EOQ.CODARTICOLO = TLR.CODART AND
+        EOQ.CODDEPOSITO = TLR.TP_CODDEP AND
+        EOQ.CodFornPref = TLR.CODFOR
+    LEFT JOIN
+        (
+        SELECT 
+            CodArticolo,
+            CodDeposito,
+            CodFornPref
+        FROM TP_PUNTOFISSORIORDINO
+        ) PFR
+    ON
+        PFR.CODARTICOLO = TLR.CODART AND
+        PFR.CODDEPOSITO = TLR.TP_CODDEP AND
+        PFR.CodFornPref = TLR.CODFOR
+    LEFT JOIN
+        (
+        SELECT
+            CodArticolo,
+            CodDeposito,
+            CodFornPref
+        FROM TP_SCORTA
+        ) SCRT
+    ON
+        SCRT.CODARTICOLO = TLR.CODART AND
+        SCRT.CODDEPOSITO = TLR.TP_CODDEP AND
+        SCRT.CodFornPref = TLR.CODFOR
+    LEFT JOIN
+        (
+        SELECT 
+            CodArticolo,
+            CodDeposito,
+            CodFornPref
+        FROM TP_PERSONALIZZATOLIBERO
+        ) PERS
+    ON
+        PERS.CODARTICOLO = TLR.CODART AND
+        PERS.CODDEPOSITO = TLR.TP_CODDEP AND
+        PERS.CodFornPref = TLR.CODFOR
+) FP
+ON
+    FP.CODART = TLR.CODART AND
+    FP.TP_CODDEP = TLR.TP_CODDEP AND
+    FP.CODFOR = TLR.CODFOR
+    
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_VISTAPARAMETRIFORNITORI_RIORDINO] TO [Metodo98]
+    AS [dbo];
+

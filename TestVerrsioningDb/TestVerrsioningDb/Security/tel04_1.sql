@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tel04]
+    AUTHORIZATION [tel04];
+

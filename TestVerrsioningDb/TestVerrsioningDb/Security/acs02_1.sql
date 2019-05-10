@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [acs02]
+    AUTHORIZATION [acs02];
+

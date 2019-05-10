@@ -1,0 +1,49 @@
+﻿
+CREATE FUNCTION FunIVA(@Esercizio Int, @CliFor VarChar(7),@Articolo VarChar(50))
+RETURNS int
+AS
+
+BEGIN
+
+DECLARE @IVACLI integer
+DECLARE @IVAART integer
+DECLARE @IVARES integer
+	
+	SELECT @IVAART=CodIva FROM ANAGRAFICAARTICOLICOMM WHERE CODICEART=@Articolo AND ESERCIZIO = @Esercizio
+	SELECT @IVACLI=CodIva FROM ANAGRAFICARISERVATICF WHERE CODCONTO = @CliFor AND ESERCIZIO = @Esercizio
+
+	SET @IVARES = @IVAART
+	
+	IF @IVACLI <> 0
+		BEGIN
+			IF (@IVACLI % 100) = 0
+				BEGIN
+					IF @IVAART > 0 AND @IVAART < 100
+						BEGIN
+							SET @IVARES = @IVAART + @IVACLI
+						END
+				END
+			ELSE
+				BEGIN
+					IF @IVACLI > 0
+						BEGIN
+							SET @IVARES = @IVACLI
+						END
+				END
+		END
+
+	RETURN(@IVARES)
+END
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[FunIVA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[FunIVA] TO [Metodo98]
+    AS [dbo];
+

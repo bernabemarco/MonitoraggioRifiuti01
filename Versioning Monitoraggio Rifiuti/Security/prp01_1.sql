@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [prp01]
+    AUTHORIZATION [prp01];
+

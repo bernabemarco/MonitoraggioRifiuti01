@@ -1,0 +1,51 @@
+﻿CREATE TABLE [dbo].[TP_ExpFFido] (
+    [CLIENTE]              VARCHAR (7)     NOT NULL,
+    [ESERCIZIO]            DECIMAL (5)     NOT NULL,
+    [FIDO_DATACALC]        DATETIME        NULL,
+    [FIDO_CLIENTE]         DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_DISPONIBILE]     DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_SCAD_NONEMESSO]  DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_SCAD_EMESSO]     DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_SCAD_PAGATO]     DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_SCAD_INSOLUTO]   DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_SCAD_INS_PAGATO] DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_BOLLE]           DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_FATTURE]         DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_ORDINI]          DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_NOTAACCR]        DECIMAL (19, 6) DEFAULT (0) NULL,
+    [FIDO_ALTRO]           DECIMAL (19, 6) DEFAULT (0) NULL,
+    [UTENTEMODIFICA]       VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]         DATETIME        NOT NULL,
+    CONSTRAINT [PK_TP_ExpFFido] PRIMARY KEY CLUSTERED ([CLIENTE] ASC, [ESERCIZIO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_ExpFFido] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_ExpFFido] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_ExpFFido] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_ExpFFido] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_ExpFFido] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [sta02]
+    WITH DEFAULT_SCHEMA = [sta02];
+

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a4be6cd9-bee1-44a9-be4a-40d666f53cf1" ChangeDateTime="05/09/2019 12:15:33">
+    <Property Name="ElementName" Value="[dbo].[FK_EXTRATESTERIFIUTI_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[EXTRATESTERIFIUTI]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_EXTRATESTERIFIUTI_Codici_CER]" />
+  </Operation>
+</Operations>

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tez29]
+    AUTHORIZATION [tez29];
+

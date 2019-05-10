@@ -1,0 +1,73 @@
+﻿CREATE TABLE [dbo].[TP_TABMagazzini] (
+    [Progressivo]    SMALLINT     NOT NULL,
+    [CodDeposito]    VARCHAR (10) NULL,
+    [CodDepAss1]     VARCHAR (10) NULL,
+    [CodDepAss2]     VARCHAR (10) NULL,
+    [CodDepAss3]     VARCHAR (10) NULL,
+    [UtenteModifica] VARCHAR (25) NULL,
+    [DataModifica]   DATETIME     NULL,
+    [USAPERORDINE]   SMALLINT     DEFAULT ((0)) NULL,
+    [RAGGRUPPAMENTO] VARCHAR (80) NULL,
+    [TIPODOC]        VARCHAR (7)  NULL,
+    [VISMAGSTAT]     SMALLINT     DEFAULT ((1)) NOT NULL,
+    CONSTRAINT [PK_TP_TABMagazzini] PRIMARY KEY CLUSTERED ([Progressivo] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+
+
+/*  DELETE TRIGGER "TD_TP_TABMAGAZZINI" FOR TABLE "TP_TABMAGAZZINI"  */
+CREATE TRIGGER [dbo].[TD_TP_TABMAGAZZINI] ON [dbo].[TP_TABMagazzini] FOR DELETE AS
+BEGIN
+    DECLARE
+       @NUMROWS  INT,
+       @ERRNO    INT,
+       @ERRMSG   VARCHAR(255)
+    SELECT  @NUMROWS = @@ROWCOUNT
+    IF @NUMROWS = 0
+       RETURN
+    
+    /*  DELETE ALL CHILDREN IN "TP_CONFIGURAZIONIBUYER"  */
+    DELETE TP_CONFIGURAZIONIBUYER
+    FROM   TP_CONFIGURAZIONIBUYER T2, DELETED T1
+    WHERE  T2.CODDEPOSITO = T1.CODDEPOSITO
+    
+    RETURN
+/*  ERRORS HANDLING  */
+ERROR:
+    --RAISERROR @ERRNO @ERRMSG
+    ROLLBACK  TRANSACTION
+END
+
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_TABMagazzini] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_TABMagazzini] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_TABMagazzini] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_TABMagazzini] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_TABMagazzini] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [amm05]
+    WITH DEFAULT_SCHEMA = [amm05];
+

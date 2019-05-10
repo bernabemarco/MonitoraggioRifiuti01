@@ -1,0 +1,36 @@
+﻿CREATE TABLE [dbo].[SST_IMG_TABTIPIEFFETTI] (
+    [TipoEffetto]      DECIMAL (5) NOT NULL,
+    [GOLD_MORE_M0OGCD] VARCHAR (2) DEFAULT ('') NOT NULL,
+    PRIMARY KEY CLUSTERED ([TipoEffetto] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[SST_IMG_TABTIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[SST_IMG_TABTIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[SST_IMG_TABTIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SST_IMG_TABTIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[SST_IMG_TABTIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+

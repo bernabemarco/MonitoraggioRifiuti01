@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [pia02]
+    AUTHORIZATION [pia02];
+

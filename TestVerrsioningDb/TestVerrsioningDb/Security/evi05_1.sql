@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [evi05]
+    AUTHORIZATION [evi05];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [evi05]
+    WITH DEFAULT_SCHEMA = [evi05];
+

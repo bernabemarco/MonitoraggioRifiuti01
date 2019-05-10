@@ -1,0 +1,35 @@
+﻿CREATE TABLE [dbo].[TEMPARTCONSEGNE] (
+    [NRTERMINALE] SMALLINT     NOT NULL,
+    [CODART]      VARCHAR (50) NOT NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPARTCONSEGNE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPARTCONSEGNE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPARTCONSEGNE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPARTCONSEGNE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPARTCONSEGNE] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,61 @@
+﻿CREATE TABLE [dbo].[TEMPCONFRONTADBA] (
+    [PROGRESSIVO]    DECIMAL (5)     NOT NULL,
+    [NRTERMINALE]    SMALLINT        NOT NULL,
+    [CODICE]         VARCHAR (50)    NOT NULL,
+    [DESCRIZIONE]    VARCHAR (80)    NULL,
+    [GHOST]          SMALLINT        NULL,
+    [CODICE1]        VARCHAR (50)    NULL,
+    [DESCRIZIONE1]   VARCHAR (80)    NULL,
+    [VERSIONE1]      VARCHAR (10)    NULL,
+    [QUANTITA1]      DECIMAL (16, 6) NULL,
+    [UM1]            VARCHAR (3)     NULL,
+    [GESTIONE1]      VARCHAR (30)    NULL,
+    [TIPONODO1]      VARCHAR (30)    NULL,
+    [COSTO1]         DECIMAL (16, 6) NULL,
+    [GHOST1]         SMALLINT        NULL,
+    [CODICE2]        VARCHAR (50)    NULL,
+    [DESCRIZIONE2]   VARCHAR (80)    NULL,
+    [VERSIONE2]      VARCHAR (10)    NULL,
+    [QUANTITA2]      DECIMAL (16, 6) NULL,
+    [UM2]            VARCHAR (3)     NULL,
+    [GESTIONE2]      VARCHAR (30)    NULL,
+    [TIPONODO2]      VARCHAR (30)    NULL,
+    [COSTO2]         DECIMAL (16, 6) NULL,
+    [GHOST2]         SMALLINT        NULL,
+    [LIVELLO]        SMALLINT        NULL,
+    [OPERATORE]      SMALLINT        NULL,
+    [UTENTEMODIFICA] VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]   DATETIME        NOT NULL,
+    CONSTRAINT [PK_TEMPCONFRONTADBA] PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPCONFRONTADBA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPCONFRONTADBA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPCONFRONTADBA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPCONFRONTADBA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPCONFRONTADBA] TO [Metodo98]
+    AS [dbo];
+

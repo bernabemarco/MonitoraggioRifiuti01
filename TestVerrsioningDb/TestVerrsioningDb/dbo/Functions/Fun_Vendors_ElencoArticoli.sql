@@ -1,0 +1,34 @@
+﻿
+
+CREATE FUNCTION [dbo].[Fun_Vendors_ElencoArticoli](@CodAgente varchar(7) = '')
+RETURNS TABLE AS RETURN
+(
+    SELECT DISTINCT
+        AA.CODICE
+    FROM
+        ANAGRAFICAARTICOLI AA
+    INNER JOIN
+        TP_ExtraMag TEM
+    ON
+        TEM.CodArt = AA.CODICE
+    LEFT OUTER JOIN
+        TP_CONFIGESPORTAZ TCE
+    ON
+            (
+                TCE.GRUPPO = AA.GRUPPO
+            OR  TCE.CATEGORIA = AA.CATEGORIA
+            OR  TCE.CATEGORIASTATISTICA = AA.CODCATEGORIASTAT
+            OR  TCE.ARTICOLICONTIPOLOGIA = AA.CODICE
+            OR  (TCE.FAMIGLIAPOS = TEM.CodFamigliaPOS AND TCE.REPARTOPOS = TEM.CodRepartoPOS)
+        )   AND TCE.CODICE = @CodAgente AND TCE.TIPO = 'A' AND TCE.TIPORIGA = 'C' 
+    WHERE 
+        ISNULL(TCE.TIPORIGA,'') = (CASE WHEN EXISTS(SELECT CODICE FROM TP_CONFIGESPORTAZ WHERE CODICE = @CodAgente AND TIPORIGA = 'C') THEN 'C' ELSE '' END)
+    
+)
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[Fun_Vendors_ElencoArticoli] TO [Metodo98]
+    AS [dbo];
+

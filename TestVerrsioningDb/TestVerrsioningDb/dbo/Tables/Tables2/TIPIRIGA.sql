@@ -1,0 +1,36 @@
+﻿CREATE TABLE [dbo].[TIPIRIGA] (
+    [TIPORIGA]    VARCHAR (1)  NOT NULL,
+    [DESCRIZIONE] VARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_TIPIRIGA] PRIMARY KEY CLUSTERED ([TIPORIGA] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TIPIRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TIPIRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TIPIRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TIPIRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TIPIRIGA] TO [Metodo98]
+    AS [dbo];
+

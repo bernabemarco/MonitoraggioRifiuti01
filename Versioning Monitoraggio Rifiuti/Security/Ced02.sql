@@ -1,0 +1,3 @@
+﻿CREATE USER [Ced02]
+    WITH DEFAULT_SCHEMA = [Ced02];
+

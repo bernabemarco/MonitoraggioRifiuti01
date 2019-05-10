@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Cosik09]
+    AUTHORIZATION [Cosik09];
+

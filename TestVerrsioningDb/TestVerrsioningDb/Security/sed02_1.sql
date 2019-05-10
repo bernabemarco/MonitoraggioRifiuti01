@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [sed02]
+    AUTHORIZATION [sed02];
+

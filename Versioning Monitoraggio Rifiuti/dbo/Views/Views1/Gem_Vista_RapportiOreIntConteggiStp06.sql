@@ -1,0 +1,12 @@
+﻿
+CREATE VIEW [dbo].[Gem_Vista_RapportiOreIntConteggiStp06]
+AS
+SELECT     IDRAPPORTO, COUNT(DISTINCT DATA) AS nrGG, COUNT(DISTINCT TECNICO) AS nrTecnici
+FROM         GEM_SEZIONECONTRATTORAPPORTI_OreLavoroINTERNE AS gOreInt
+GROUP BY IDRAPPORTO
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[Gem_Vista_RapportiOreIntConteggiStp06] TO [Metodo98]
+    AS [dbo];
+

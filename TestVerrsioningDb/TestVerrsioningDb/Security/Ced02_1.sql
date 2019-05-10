@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Ced02]
+    AUTHORIZATION [Ced02];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Metodo98]
+    AUTHORIZATION [Metodo98];
+

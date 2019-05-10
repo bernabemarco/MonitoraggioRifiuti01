@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[EXTRATESTERIFIUTI] (
+    [IDTESTA]         DECIMAL (10)  NOT NULL,
+    [UTENTEMODIFICA]  VARCHAR (25)  NULL,
+    [DATAMODIFICA]    DATETIME      NULL,
+    [NOTERIFIUTI]     VARCHAR (500) NULL,
+    [CommessaService] VARCHAR (50)  NULL,
+    [RefRespCommessa] SMALLINT      NULL,
+    [DataCreazione]   DATETIME      DEFAULT (getdate()) NULL,
+    [TIPORIFIUTO]     INT NULL,
+    [UTENTECREAZIONE] VARCHAR (25)  NULL, 
+    CONSTRAINT [FK_EXTRATESTERIFIUTI_Codici_CER] FOREIGN KEY ([Column]) REFERENCES [ToTable]([ToTableColumn])
+);
+

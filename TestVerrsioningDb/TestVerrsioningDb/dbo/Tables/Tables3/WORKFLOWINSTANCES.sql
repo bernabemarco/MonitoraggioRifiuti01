@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[WORKFLOWINSTANCES] (
+    [EntityStateID]   INT            NOT NULL,
+    [MxEntityID]      NVARCHAR (100) NOT NULL,
+    [MxAnagrafica]    NVARCHAR (50)  NOT NULL,
+    [CacheAttributes] NVARCHAR (256) NOT NULL,
+    CONSTRAINT [PK_WORKFLOWINSTANCES_1] PRIMARY KEY CLUSTERED ([EntityStateID] ASC, [MxEntityID] ASC, [MxAnagrafica] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[WORKFLOWINSTANCES] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[WORKFLOWINSTANCES] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[WORKFLOWINSTANCES] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[WORKFLOWINSTANCES] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[WORKFLOWINSTANCES] TO [Metodo98]
+    AS [dbo];
+

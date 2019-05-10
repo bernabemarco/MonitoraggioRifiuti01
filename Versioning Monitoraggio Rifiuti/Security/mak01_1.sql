@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [mak01]
+    AUTHORIZATION [mak01];
+

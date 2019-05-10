@@ -1,0 +1,166 @@
+﻿CREATE TABLE [dbo].[TABVARIANTI] (
+    [TIPOLOGIA]      VARCHAR (3)  NOT NULL,
+    [VARIANTE]       VARCHAR (8)  NOT NULL,
+    [POSIZIONE]      SMALLINT     NULL,
+    [DESCRIZIONE]    VARCHAR (80) NULL,
+    [A]              VARCHAR (30) NULL,
+    [B]              VARCHAR (30) NULL,
+    [C]              VARCHAR (30) NULL,
+    [D]              VARCHAR (30) NULL,
+    [E]              VARCHAR (30) NULL,
+    [F]              VARCHAR (30) NULL,
+    [G]              VARCHAR (30) NULL,
+    [H]              VARCHAR (30) NULL,
+    [I]              VARCHAR (30) NULL,
+    [J]              VARCHAR (30) NULL,
+    [K]              VARCHAR (30) NULL,
+    [L]              VARCHAR (30) NULL,
+    [M]              VARCHAR (30) NULL,
+    [N]              VARCHAR (30) NULL,
+    [O]              VARCHAR (30) NULL,
+    [P]              VARCHAR (30) NULL,
+    [Q]              VARCHAR (30) NULL,
+    [R]              VARCHAR (30) NULL,
+    [S]              VARCHAR (30) NULL,
+    [T]              VARCHAR (30) NULL,
+    [U]              VARCHAR (30) NULL,
+    [V]              VARCHAR (30) NULL,
+    [W]              VARCHAR (30) NULL,
+    [X]              VARCHAR (30) NULL,
+    [Y]              VARCHAR (30) NULL,
+    [Z]              VARCHAR (30) NULL,
+    [DESCRIZIONE1]   VARCHAR (80) NULL,
+    [DESCRIZIONE2]   VARCHAR (80) NULL,
+    [DESCRIZIONE3]   VARCHAR (80) NULL,
+    [DESCRIZIONE4]   VARCHAR (80) NULL,
+    [DESCRIZIONE5]   VARCHAR (80) NULL,
+    [DESCRIZIONE6]   VARCHAR (80) NULL,
+    [DESCRIZIONE7]   VARCHAR (80) NULL,
+    [DESCRIZIONE8]   VARCHAR (80) NULL,
+    [DESCRIZIONE9]   VARCHAR (80) NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    CONSTRAINT [PK_TABVARIANTI] PRIMARY KEY CLUSTERED ([TIPOLOGIA] ASC, [VARIANTE] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [VAR_1]
+    ON [dbo].[TABVARIANTI]([TIPOLOGIA] ASC, [POSIZIONE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+CREATE NONCLUSTERED INDEX [VAR_VARIANTE]
+    ON [dbo].[TABVARIANTI]([VARIANTE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+CREATE NONCLUSTERED INDEX [VAR_DSC]
+    ON [dbo].[TABVARIANTI]([DESCRIZIONE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+
+/*  INSERT TRIGGER "TI_TABVARIANTI" FOR TABLE "TABVARIANTI"  */
+CREATE TRIGGER TI_TABVARIANTI ON TABVARIANTI FOR INSERT AS
+BEGIN
+    DECLARE
+       @MAXCARD  INT,
+       @NUMROWS  INT,
+       @NUMNULL  INT,
+       @ERRNO    INT,
+       @ERRMSG   VARCHAR(255)
+
+    SELECT  @NUMROWS = @@ROWCOUNT
+    IF @NUMROWS = 0
+       RETURN
+
+    
+    /*  PARENT "TABTIPOLOGIE" MUST EXIST WHEN INSERTING A CHILD IN "TABVARIANTI"  */
+    IF UPDATE(TIPOLOGIA)
+    BEGIN
+       IF (SELECT COUNT(*)
+           FROM   TABTIPOLOGIE T1, INSERTED T2
+           WHERE  T1.TIPOLOGIA = T2.TIPOLOGIA) != @NUMROWS
+          BEGIN
+             SELECT @ERRNO  = 30002,
+                    @ERRMSG = 'Parent does not exist in "TABTIPOLOGIE". Cannot create child in "TABVARIANTI".'
+             GOTO ERROR
+          END
+    END
+
+    RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+GO
+
+/*  UPDATE TRIGGER "TU_TABVARIANTI" FOR TABLE "TABVARIANTI"  */
+CREATE TRIGGER TU_TABVARIANTI ON TABVARIANTI FOR UPDATE AS
+BEGIN
+   DECLARE
+      @MAXCARD  INT,
+      @NUMROWS  INT,
+      @NUMNULL  INT,
+      @ERRNO    INT,
+      @ERRMSG   VARCHAR(255)
+
+      SELECT  @NUMROWS = @@ROWCOUNT
+      IF @NUMROWS = 0
+         RETURN
+
+      
+      /*  PARENT "TABTIPOLOGIE" MUST EXIST WHEN UPDATING A CHILD IN "TABVARIANTI"  */
+      IF UPDATE(TIPOLOGIA)
+      BEGIN
+         IF (SELECT COUNT(*)
+             FROM   TABTIPOLOGIE T1, INSERTED T2
+             WHERE  T1.TIPOLOGIA = T2.TIPOLOGIA) != @NUMROWS
+            BEGIN
+               SELECT @ERRNO  = 30003,
+                      @ERRMSG = '"TABTIPOLOGIE" does not exist. Cannot modify child in "TABVARIANTI".'
+               GOTO ERROR
+            END
+      END
+
+      RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABVARIANTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABVARIANTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABVARIANTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABVARIANTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABVARIANTI] TO [Metodo98]
+    AS [dbo];
+

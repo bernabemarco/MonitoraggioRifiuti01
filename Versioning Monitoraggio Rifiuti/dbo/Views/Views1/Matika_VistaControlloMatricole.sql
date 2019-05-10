@@ -1,0 +1,31 @@
+﻿create view Matika_VistaControlloMatricole as
+SELECT STORICOMAGMATRICOLE.CODMATRICOLA, 
+Sum(CASE WHEN TABCAUSALIMAG.Giacenza=1 THEN 1 ELSE (CASE WHEN TABCAUSALIMAG.Giacenza=-1 THEN -1 ELSE 0 END) END) AS QtàMatricola,
+(case when Sum((CASE WHEN TABCAUSALIMAG.Giacenza=1 THEN 1 ELSE (CASE WHEN TABCAUSALIMAG.Giacenza=-1 THEN -1 ELSE 0 END) END)) >=0 then 'Ok' else 'Errore scarico Matricole' end) AS SITUAZIONE
+FROM (STORICOMAGMATRICOLE INNER JOIN STORICOMAG ON STORICOMAGMATRICOLE.PROGRESSIVO = STORICOMAG.PROGRESSIVO) INNER JOIN TABCAUSALIMAG ON STORICOMAG.CODCAUSALE = TABCAUSALIMAG.CODICE
+group BY STORICOMAGMATRICOLE.CODMATRICOLA
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[Matika_VistaControlloMatricole] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[Matika_VistaControlloMatricole] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[Matika_VistaControlloMatricole] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[Matika_VistaControlloMatricole] TO [Metodo98]
+    AS [dbo];
+

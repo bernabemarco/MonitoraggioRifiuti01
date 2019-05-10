@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [dir01]
+    AUTHORIZATION [dir01];
+

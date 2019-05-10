@@ -1,0 +1,3 @@
+﻿CREATE USER [amsik02]
+    WITH DEFAULT_SCHEMA = [amsik02];
+

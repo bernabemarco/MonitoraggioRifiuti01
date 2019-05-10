@@ -1,0 +1,33 @@
+﻿
+
+ CREATE VIEW [dbo].[VIEW_CATALOGO_ACCESSI_UTENTE]
+ AS
+ SELECT
+ UT.CodTipo,
+ UT.UserID,
+ C.Id,
+ C.FlagAbilita
+ FROM
+ (
+ SELECT
+ T.Codice As CodTipo,
+ U.UserID
+ FROM
+ TABUTENTI U,
+ CATALOGO_TIPI_ENTITA T
+ WHERE
+ U.Supervisor=0
+ ) UT
+ LEFT OUTER JOIN
+ CATALOGO_ACCESSI_UTENTE C
+ ON
+ C.Id = UT.UserId AND
+ C.CodTipo = UT.CodTipo
+
+
+ 
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VIEW_CATALOGO_ACCESSI_UTENTE] TO [Metodo98]
+    AS [dbo];
+

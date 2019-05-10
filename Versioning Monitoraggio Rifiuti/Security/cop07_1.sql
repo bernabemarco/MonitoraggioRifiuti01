@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [cop07]
+    AUTHORIZATION [cop07];
+

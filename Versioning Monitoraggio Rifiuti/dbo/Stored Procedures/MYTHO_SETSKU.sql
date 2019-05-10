@@ -1,0 +1,24 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[MYTHO_SETSKU] 
+   
+AS
+
+BEGIN
+    INSERT INTO [dbo].[MYTHO_Codici_Articoli]
+               ([CODICEMETODO]        
+             )
+    SELECT CODICE FROM ANAGRAFICAARTICOLI ART
+    Left Outer Join MYTHO_Codici_Articoli COD
+    ON COD.CODICEMETODO = ART.CODICE
+    WHERE COD.CODICEMETODO IS NULL
+
+END
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[MYTHO_SETSKU] TO [Metodo98]
+    AS [dbo];
+

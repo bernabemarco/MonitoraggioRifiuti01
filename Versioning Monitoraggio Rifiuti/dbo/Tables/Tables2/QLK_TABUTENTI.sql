@@ -1,0 +1,41 @@
+﻿CREATE TABLE [dbo].[QLK_TABUTENTI] (
+    [USERID]         VARCHAR (25) NOT NULL,
+    [DESCRIZIONE]    VARCHAR (80) NULL,
+    [PERSONALE]      SMALLINT     NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    [PWD]            VARCHAR (50) NULL,
+    [ACCESS]         SMALLINT     NULL,
+    PRIMARY KEY CLUSTERED ([USERID] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[QLK_TABUTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[QLK_TABUTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[QLK_TABUTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[QLK_TABUTENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[QLK_TABUTENTI] TO [Metodo98]
+    AS [dbo];
+

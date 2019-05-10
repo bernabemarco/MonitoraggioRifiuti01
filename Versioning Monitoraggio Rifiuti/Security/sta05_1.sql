@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [sta05]
+    AUTHORIZATION [sta05];
+

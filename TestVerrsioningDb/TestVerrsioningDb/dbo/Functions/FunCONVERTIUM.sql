@@ -1,0 +1,32 @@
+﻿
+
+CREATE FUNCTION dbo.FunCONVERTIUM(@ARTICOLO nVARCHAR(50),
+                                       @QUANTITA DECIMAL(16,6),
+                                        @UMSOURCE nVARCHAR(3),
+                                         @UMDEST nVARCHAR(3))
+RETURNS DECIMAL(16,6)
+AS
+BEGIN   
+DECLARE @dRESULT    DECIMAL(16,6)
+DECLARE @dFATTORE   DECIMAL(20,10)
+    
+    SET @dRESULT = 0
+    SET @dFATTORE = 1
+    SELECT @dFATTORE = FATTORE FROM ARTICOLIFATTORICONVERSIONE WHERE CODART=@ARTICOLO AND UM1=@UMSOURCE AND UM2=@UMDEST
+    
+    SET @dRESULT = @dFATTORE * @QUANTITA
+    
+RETURN(@dRESULT)
+END
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[FunCONVERTIUM] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[FunCONVERTIUM] TO [Metodo98]
+    AS [dbo];
+

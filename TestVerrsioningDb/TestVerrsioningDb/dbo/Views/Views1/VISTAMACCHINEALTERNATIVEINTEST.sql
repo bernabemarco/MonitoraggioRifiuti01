@@ -1,0 +1,31 @@
+﻿
+/*
+    rif.05/02/2016 - creata
+*/
+CREATE VIEW [VISTAMACCHINEALTERNATIVEINTEST] AS
+
+    select 
+        CODICE as CODOPERAZIONE
+        ,MACCHINAPREF as CODMACCHINA
+    from TABELLAOPERAZIONI
+
+    union all
+
+    select 
+        CODOPERAZIONE
+        ,CODMACCHINA
+    from MACCHINEALTERNATIVE
+
+    union all
+
+    select 
+        CODOPERAZIONE
+        ,CODMACCHINA
+    from MACCHINEALTERNATIVEFASEEST
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTAMACCHINEALTERNATIVEINTEST] TO [Metodo98]
+    AS [dbo];
+

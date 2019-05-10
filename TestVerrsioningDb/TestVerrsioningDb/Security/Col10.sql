@@ -1,0 +1,3 @@
+﻿CREATE USER [Col10]
+    WITH DEFAULT_SCHEMA = [Col10];
+

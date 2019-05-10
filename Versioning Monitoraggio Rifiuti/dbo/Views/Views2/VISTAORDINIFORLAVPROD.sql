@@ -1,0 +1,28 @@
+﻿create view VISTAORDINIFORLAVPROD as
+	select CODICE,DESCRIZIONE,-1 as TIPOORD
+		from PARAMETRIDOC
+	where TIPO='O' and CLIFOR='C'
+
+	union all
+	
+	select CODICE,DESCRIZIONE,0 as TIPOORD
+	from PARAMETRIDOC
+	where TIPO='O' and CLIFOR='F'
+
+	union all
+		
+	select CODICE,DESCRIZIONE,1 as TIPOORD
+	from PARAMETRIORDPROD
+
+	union all
+		
+	select CODICE,DESCRIZIONE,2 as TIPOORD
+	from PARAMETRIDOC
+	where TIPO='O' and CLIFOR='F'
+	
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTAORDINIFORLAVPROD] TO [Metodo98]
+    AS [dbo];
+

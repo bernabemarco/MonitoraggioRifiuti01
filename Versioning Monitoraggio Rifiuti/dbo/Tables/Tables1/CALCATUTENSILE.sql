@@ -1,0 +1,55 @@
+﻿CREATE TABLE [dbo].[CALCATUTENSILE] (
+    [CODCAT]         DECIMAL (5)    NOT NULL,
+    [ANNOCAL]        DECIMAL (4)    NOT NULL,
+    [MESECAL]        DECIMAL (2)    NOT NULL,
+    [GIORNOCAL]      DECIMAL (2)    NOT NULL,
+    [DATACAL]        DATETIME       NULL,
+    [FESTIVO]        SMALLINT       NULL,
+    [ORELAV]         DECIMAL (6, 4) NULL,
+    [DAORA1T]        DATETIME       NULL,
+    [AORA1T]         DATETIME       NULL,
+    [SOSTA1T]        DATETIME       NULL,
+    [DAORA2T]        DATETIME       NULL,
+    [AORA2T]         DATETIME       NULL,
+    [SOSTA2T]        DATETIME       NULL,
+    [DAORA3T]        DATETIME       NULL,
+    [AORA3T]         DATETIME       NULL,
+    [SOSTA3T]        DATETIME       NULL,
+    [DAORA4T]        DATETIME       NULL,
+    [AORA4T]         DATETIME       NULL,
+    [SOSTA4T]        DATETIME       NULL,
+    [UTENTEMODIFICA] VARCHAR (25)   NOT NULL,
+    [DATAMODIFICA]   DATETIME       NOT NULL,
+    CONSTRAINT [PK_CALCATUTENSILE] PRIMARY KEY CLUSTERED ([CODCAT] ASC, [ANNOCAL] ASC, [MESECAL] ASC, [GIORNOCAL] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CALCATUTENSILE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CALCATUTENSILE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CALCATUTENSILE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CALCATUTENSILE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CALCATUTENSILE] TO [Metodo98]
+    AS [dbo];
+

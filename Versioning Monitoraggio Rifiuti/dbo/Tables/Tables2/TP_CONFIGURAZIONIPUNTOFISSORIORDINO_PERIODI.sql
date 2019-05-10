@@ -1,0 +1,61 @@
+﻿CREATE TABLE [dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] (
+    [CODDEPOSITO]    VARCHAR (10) NOT NULL,
+    [CODFORNITORE]   VARCHAR (7)  NOT NULL,
+    [DATAINIZIO]     DATETIME     NULL,
+    [DATAFINE]       DATETIME     NULL,
+    [TIPO]           SMALLINT     DEFAULT ((0)) NULL,
+    [D1]             SMALLINT     DEFAULT ((0)) NULL,
+    [D2]             SMALLINT     DEFAULT ((0)) NULL,
+    [D3]             SMALLINT     DEFAULT ((0)) NULL,
+    [D4]             SMALLINT     DEFAULT ((0)) NULL,
+    [D5]             SMALLINT     DEFAULT ((0)) NULL,
+    [D6]             SMALLINT     DEFAULT ((0)) NULL,
+    [D7]             SMALLINT     DEFAULT ((0)) NULL,
+    [S]              SMALLINT     DEFAULT ((0)) NULL,
+    [M1]             SMALLINT     DEFAULT ((0)) NULL,
+    [M2]             SMALLINT     DEFAULT ((0)) NULL,
+    [M3]             SMALLINT     DEFAULT ((0)) NULL,
+    [M4]             SMALLINT     DEFAULT ((0)) NULL,
+    [M5]             SMALLINT     DEFAULT ((0)) NULL,
+    [M6]             SMALLINT     DEFAULT ((0)) NULL,
+    [M7]             SMALLINT     DEFAULT ((0)) NULL,
+    [M8]             SMALLINT     DEFAULT ((0)) NULL,
+    [M9]             SMALLINT     DEFAULT ((0)) NULL,
+    [M10]            SMALLINT     DEFAULT ((0)) NULL,
+    [M11]            SMALLINT     DEFAULT ((0)) NULL,
+    [M12]            SMALLINT     DEFAULT ((0)) NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    PRIMARY KEY CLUSTERED ([CODDEPOSITO] ASC, [CODFORNITORE] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_CONFIGURAZIONIPUNTOFISSORIORDINO_PERIODI] TO [Metodo98]
+    AS [dbo];
+

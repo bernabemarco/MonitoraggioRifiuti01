@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tep02]
+    AUTHORIZATION [tep02];
+

@@ -1,0 +1,22 @@
+﻿
+
+CREATE VIEW [dbo].[CONTRATTILIQUIDAZIONE_UNIONEINCONDIZIONATICONDATA]
+AS
+SELECT     *
+FROM         dbo.CONTRATTILIQUIDAZIONE_CLVALORECONDATA
+UNION
+SELECT     *
+FROM         contrattiliquidazione_clmercevaloreCONDATA
+UNION
+SELECT     *
+FROM         contrattiliquidazione_clmerceqtaCONDATA
+UNION
+SELECT     *
+FROM         contrattiliquidazione_clpercCONDATA
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CONTRATTILIQUIDAZIONE_UNIONEINCONDIZIONATICONDATA] TO [Metodo98]
+    AS [dbo];
+

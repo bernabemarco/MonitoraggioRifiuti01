@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tesik03]
+    AUTHORIZATION [tesik03];
+

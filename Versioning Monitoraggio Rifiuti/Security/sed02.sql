@@ -1,0 +1,3 @@
+﻿CREATE USER [sed02]
+    WITH DEFAULT_SCHEMA = [sed02];
+

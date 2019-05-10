@@ -1,0 +1,55 @@
+﻿CREATE TABLE [dbo].[TEMPALLEST] (
+    [IDSESSIONE]     INT             NOT NULL,
+    [IDTESTA]        DECIMAL (10)    NOT NULL,
+    [IDRIGA]         INT             NOT NULL,
+    [ROWVALID]       INT             NOT NULL,
+    [CHK]            SMALLINT        DEFAULT (0) NULL,
+    [ESERCIZIO]      DECIMAL (5)     NOT NULL,
+    [TIPODOC]        VARCHAR (3)     NULL,
+    [NUMERODOC]      INT             NOT NULL,
+    [BIS]            CHAR (1)        NULL,
+    [CODCLIFOR]      VARCHAR (7)     NULL,
+    [CODART]         VARCHAR (50)    NULL,
+    [CODPARTITA]     VARCHAR (15)    NULL,
+    [UBICAZIONE]     VARCHAR (10)    NULL,
+    [UM]             VARCHAR (3)     NOT NULL,
+    [QTA1RESIDUA]    DECIMAL (16, 6) DEFAULT (0) NOT NULL,
+    [QTAALLEST]      DECIMAL (16, 6) DEFAULT (0) NOT NULL,
+    [QTADAALLEST]    DECIMAL (16, 6) DEFAULT (0) NOT NULL,
+    [DATACONS]       DATETIME        NULL,
+    [UTENTEMODIFICA] VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]   DATETIME        NOT NULL,
+    CONSTRAINT [PK_TEMPALLEST] PRIMARY KEY CLUSTERED ([IDSESSIONE] ASC, [IDTESTA] ASC, [IDRIGA] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [CKC_CHK_TEMPALLE] CHECK ([CHK] = 1 or [CHK] = 0 or [CHK] = (-1))
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TEMPALLEST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TEMPALLEST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TEMPALLEST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TEMPALLEST] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TEMPALLEST] TO [Metodo98]
+    AS [dbo];
+

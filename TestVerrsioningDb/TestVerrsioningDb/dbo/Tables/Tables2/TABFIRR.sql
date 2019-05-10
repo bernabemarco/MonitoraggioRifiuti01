@@ -1,0 +1,42 @@
+﻿CREATE TABLE [dbo].[TABFIRR] (
+    [PROGRESSIVO]    DECIMAL (10)    NOT NULL,
+    [TIPOMAND]       SMALLINT        DEFAULT (0) NULL,
+    [IMPORTODA]      DECIMAL (19, 4) DEFAULT (0) NULL,
+    [IMPORTOA]       DECIMAL (19, 4) DEFAULT (0) NULL,
+    [PERCFIRR]       DECIMAL (8, 5)  DEFAULT (0) NULL,
+    [UTENTEMODIFICA] VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]   DATETIME        NOT NULL,
+    CONSTRAINT [PK_TABFIRR] PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC) WITH (FILLFACTOR = 90),
+    CHECK ([TIPOMAND] is null or [TIPOMAND] = 1 or [TIPOMAND] = 0)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABFIRR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABFIRR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABFIRR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABFIRR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABFIRR] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [maf01]
+    AUTHORIZATION [maf01];
+

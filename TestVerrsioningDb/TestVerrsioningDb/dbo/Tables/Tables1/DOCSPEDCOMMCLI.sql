@@ -1,0 +1,41 @@
+﻿CREATE TABLE [dbo].[DOCSPEDCOMMCLI] (
+    [RifProgressivo] DECIMAL (10) NOT NULL,
+    [NumRiga]        SMALLINT     NOT NULL,
+    [IdTestaDocSped] NUMERIC (10) NULL,
+    [NrPackList]     SMALLINT     DEFAULT (0) NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    CONSTRAINT [DOCSPEDCOMMCLI_PK] PRIMARY KEY CLUSTERED ([RifProgressivo] ASC, [NumRiga] ASC),
+    CONSTRAINT [FK_DOCSPEDCOMMCLI_RIFPROGRESSIVO] FOREIGN KEY ([RifProgressivo]) REFERENCES [dbo].[AnagraficaCommesse] ([Progressivo]) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[DOCSPEDCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[DOCSPEDCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[DOCSPEDCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[DOCSPEDCOMMCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[DOCSPEDCOMMCLI] TO [Metodo98]
+    AS [dbo];
+

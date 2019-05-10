@@ -1,0 +1,3 @@
+﻿CREATE USER [Cos01]
+    WITH DEFAULT_SCHEMA = [Cos01];
+

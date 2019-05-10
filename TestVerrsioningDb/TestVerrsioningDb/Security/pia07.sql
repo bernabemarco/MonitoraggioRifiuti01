@@ -1,0 +1,3 @@
+﻿CREATE USER [pia07]
+    WITH DEFAULT_SCHEMA = [pia07];
+

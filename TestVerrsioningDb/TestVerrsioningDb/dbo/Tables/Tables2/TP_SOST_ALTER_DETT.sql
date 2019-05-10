@@ -1,0 +1,43 @@
+﻿CREATE TABLE [dbo].[TP_SOST_ALTER_DETT] (
+    [IDDettSostAlter]   NUMERIC (10) IDENTITY (1, 1) NOT NULL,
+    [Codice_Sost_Alter] VARCHAR (50) NOT NULL,
+    [Codice]            VARCHAR (50) NOT NULL,
+    CONSTRAINT [PK__TP_SOST_ALTER_DETT] PRIMARY KEY CLUSTERED ([IDDettSostAlter] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [FK_Codice_Articolo_dett] FOREIGN KEY ([Codice]) REFERENCES [dbo].[ANAGRAFICAARTICOLI] ([CODICE])
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [SostAlterUnivoco]
+    ON [dbo].[TP_SOST_ALTER_DETT]([Codice] ASC, [Codice_Sost_Alter] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_SOST_ALTER_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_SOST_ALTER_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_SOST_ALTER_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_SOST_ALTER_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_SOST_ALTER_DETT] TO [Metodo98]
+    AS [dbo];
+

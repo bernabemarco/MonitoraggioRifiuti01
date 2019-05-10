@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [amm09]
+    AUTHORIZATION [amm09];
+

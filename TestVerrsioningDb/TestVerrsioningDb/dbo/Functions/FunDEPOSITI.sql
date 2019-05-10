@@ -1,0 +1,168 @@
+﻿
+create FUNCTION FunDEPOSITI (@ARTICOLO nVARCHAR(50),
+							  @ESERCIZIO INT,
+			                   @FORNITORE nVARCHAR(7))
+
+RETURNS @Results TABLE (Progressivo Decimal(5,0),
+			DEPOSITO nVARCHAR(10) ,
+			DESCRIZIONE nVARCHAR(50) ,
+			DEPASS1 nVARCHAR(10) ,
+ 	  		DSCASS1 nVARCHAR(50) ,
+			DEPASS2 nVARCHAR(10) ,
+ 	  		DSCASS2 nVARCHAR(50) ,
+			DEPASS3 nVARCHAR(10) ,
+ 	  		DSCASS3 nVARCHAR(50) ,
+			TIPOCONF nCHAR(2) )
+AS
+
+
+BEGIN   
+
+--Var X Funzione
+DECLARE @PROGRESSIVO DECIMAL(5,0)
+DECLARE @DEPOSITO nVARCHAR(10)
+DECLARE @DESCRIZIONE nVARCHAR(50)
+DECLARE @DEPASS1 nVARCHAR(10)
+DECLARE @DSCASS1 nVARCHAR(50)
+DECLARE @DEPASS2 nVARCHAR(10)
+DECLARE @DSCASS2 nVARCHAR(50)
+DECLARE @DEPASS3 nVARCHAR(10)
+DECLARE @DSCASS3 nVARCHAR(50)
+
+DECLARE @COUNT INT
+DECLARE @TIPORIGA nCHAR(2)
+
+DECLARE ConfigMultiDep_Cursor CURSOR FOR
+	SELECT 	TP_TABMAGAZZINI.PROGRESSIVO,
+		TP_TABMAGAZZINI.CODDEPOSITO,
+		(SELECT DESCRIZIONE FROM ANAGRAFICADEPOSITI WHERE CODICE=TP_TABMAGAZZINI.CODDEPOSITO) AS DESCRIZIONE,
+		TP_TABMAGAZZINI.CODDEPASS1,
+		(SELECT DESCRIZIONE FROM ANAGRAFICADEPOSITI WHERE CODICE=TP_TABMAGAZZINI.CODDEPASS1) AS DSCASS1,
+		TP_TABMAGAZZINI.CODDEPASS2,
+		(SELECT DESCRIZIONE FROM ANAGRAFICADEPOSITI WHERE CODICE=TP_TABMAGAZZINI.CODDEPASS2) AS DSCASS2,
+		TP_TABMAGAZZINI.CODDEPASS3,
+		(SELECT DESCRIZIONE FROM ANAGRAFICADEPOSITI WHERE CODICE=TP_TABMAGAZZINI.CODDEPASS3) AS DSCASS3
+	FROM 	TP_TABMAGAZZINI
+	ORDER BY TP_TABMAGAZZINI.PROGRESSIVO
+OPEN ConfigMultiDep_Cursor
+
+FETCH NEXT FROM ConfigMultiDep_Cursor
+	INTO @PROGRESSIVO,@DEPOSITO,@DESCRIZIONE,
+	     @DEPASS1,@DSCASS1,@DEPASS2,
+             @DSCASS2,@DEPASS3,@DSCASS3
+
+WHILE @@FETCH_STATUS = 0
+	BEGIN
+
+--*****************************Cerco relative configurazioni sulle righe*************************************
+		SET @TIPORIGA = ''			
+
+		--Cerco Per Articolo
+		SELECT @COUNT=COUNT(*) 
+		FROM TP_CONFIGMULTIDEP_6ART	
+		WHERE IdTesta=@PROGRESSIVO AND 
+		      Codice IN(SELECT items FROM SplitARTICOLO(@ARTICOLO,'?'))
+		
+		IF (@COUNT=0 OR @COUNT IS NULL)
+			BEGIN
+				--Cerco Per Gruppo
+				SELECT @COUNT=COUNT(*) 
+					FROM TP_CONFIGMULTIDEP_1GRP 
+					WHERE IdTesta=@PROGRESSIVO
+
+				IF (@COUNT=0 OR @COUNT IS NULL)
+					BEGIN
+						--Cerco Per Categoria
+						SELECT @COUNT=COUNT(*)
+						FROM TP_CONFIGMULTIDEP_2CAT 
+						WHERE IdTesta=@PROGRESSIVO
+						
+						IF (@COUNT=0 OR @COUNT IS NULL)
+							BEGIN
+								--Cerco Per Categoria STATISTICA
+								SELECT @COUNT=COUNT(*)
+								FROM TP_CONFIGMULTIDEP_3CATST
+								WHERE IdTesta=@PROGRESSIVO
+								
+								IF (@COUNT=0 OR @COUNT IS NULL)
+									BEGIN
+										--Cerco Per Gruppo Prezzi
+										SELECT @COUNT=COUNT(*)
+										FROM TP_CONFIGMULTIDEP_4GRPPRZ 
+										WHERE IdTesta=@PROGRESSIVO
+										
+										IF (@COUNT=0 OR @COUNT IS NULL)
+											BEGIN
+												--Cerco Per Famiglia Reparto
+												SELECT @COUNT=COUNT(*)
+												FROM TP_CONFIGMULTIDEP_5FAMREP 
+												WHERE IdTesta=@PROGRESSIVO
+												
+												IF (@COUNT=0 OR @COUNT IS NULL)
+													BEGIN
+														SET @TIPORIGA=''
+													END
+												ELSE
+													BEGIN
+														SET @TIPORIGA='FR'
+													END
+											END
+										ELSE
+											BEGIN
+												SET @TIPORIGA='GP'
+											END
+									END
+								ELSE
+									BEGIN
+
+										SET @TIPORIGA='CS'
+
+									END
+
+							END
+						ELSE
+							BEGIN
+								SET @TIPORIGA='CT'
+							END
+					END
+				ELSE
+					BEGIN
+						SET @TIPORIGA='GR'
+					END
+
+			END
+		ELSE
+			BEGIN
+				SET @TIPORIGA='AR'
+
+			END			
+--*****************************FINE Cerco relative configurazioni sulle righe********************************			
+
+
+
+
+		INSERT INTO @Results VALUES(@PROGRESSIVO,@DEPOSITO,@DESCRIZIONE,
+						@DEPASS1,@DSCASS1,
+						@DEPASS2,@DSCASS2,
+						@DEPASS3,@DSCASS3,@TIPORIGA)
+
+--*************************FINE Verifico Giacenze e le Inserisco nella Tabella TMP**************************		
+
+		FETCH NEXT FROM ConfigMultiDep_Cursor
+
+			INTO @PROGRESSIVO,@DEPOSITO,@DESCRIZIONE,
+			     @DEPASS1,@DSCASS1,@DEPASS2,
+			     @DSCASS2,@DEPASS3,@DSCASS3
+	END
+
+CLOSE ConfigMultiDep_Cursor
+DEALLOCATE ConfigMultiDep_Cursor
+
+RETURN
+END
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[FunDEPOSITI] TO [Metodo98]
+    AS [dbo];
+

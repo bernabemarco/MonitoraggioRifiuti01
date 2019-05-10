@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Smerlo]
+    AUTHORIZATION [Smerlo];
+

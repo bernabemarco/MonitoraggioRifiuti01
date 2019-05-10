@@ -1,0 +1,57 @@
+﻿CREATE TABLE [dbo].[TP_TESTEVBANCO] (
+    [PROGRESSIVO]       DECIMAL (10)    IDENTITY (1, 1) NOT NULL,
+    [DATA]              DATETIME        NOT NULL,
+    [CODCLIENTE]        VARCHAR (7)     NOT NULL,
+    [LISTINO]           DECIMAL (5)     NULL,
+    [TOTIMPONIBILE]     DECIMAL (19, 4) NULL,
+    [TOTIMPOSTA]        DECIMAL (19, 4) NULL,
+    [TOTNETTO]          DECIMAL (19, 4) NULL,
+    [TOTIMPONIBILEEURO] DECIMAL (19, 4) NULL,
+    [TOTIMPOSTAEURO]    DECIMAL (19, 4) NULL,
+    [TOTNETTOEURO]      DECIMAL (19, 4) NULL,
+    [CONTABILIZZATO]    SMALLINT        NULL,
+    [TIPORIGACONT]      VARCHAR (3)     NULL,
+    [RIGACONTABILE]     VARCHAR (7)     NULL,
+    [ESERCIZIO]         DECIMAL (5)     NULL,
+    [VARPRSC]           CHAR (1)        NULL,
+    [TIPODOCUMENTO]     VARCHAR (3)     NULL,
+    [NUMERODOC]         DECIMAL (18)    NULL,
+    [DATADOC]           DATETIME        NULL,
+    [CAP]               VARCHAR (10)    NULL,
+    [CASSA]             DECIMAL (18)    NULL,
+    [TURNO]             DECIMAL (18)    NULL,
+    [UTENTEMODIFICA]    VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]      DATETIME        NOT NULL,
+    CONSTRAINT [PK_TP_TESTEVBANCO] PRIMARY KEY NONCLUSTERED ([PROGRESSIVO] ASC, [DATA] ASC, [CODCLIENTE] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_TESTEVBANCO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_TESTEVBANCO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_TESTEVBANCO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_TESTEVBANCO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_TESTEVBANCO] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [ves02]
+    AUTHORIZATION [ves02];
+

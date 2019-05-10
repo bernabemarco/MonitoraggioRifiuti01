@@ -1,0 +1,91 @@
+﻿CREATE TABLE [dbo].[CCBILANCIOMATERIALE] (
+    [IDCOMMCLI]          DECIMAL (10)    NOT NULL,
+    [NRRIGA]             INT             NOT NULL,
+    [TIPOINSERIMENTO]    SMALLINT        NULL,
+    [DATAELAB_CONS]      DATETIME        NULL,
+    [DATAELAB_VAL]       DATETIME        NULL,
+    [DATAMOVIMENTO]      DATETIME        NULL,
+    [DATADISPONIBILITA]  DATETIME        NULL,
+    [DATACOMPETENZA]     DATETIME        NULL,
+    [DATARIFVALORIZ]     DATETIME        NULL,
+    [NATURARILEVAZIONE]  SMALLINT        NULL,
+    [QV_CONSUMATA]       DECIMAL (16, 6) NULL,
+    [QV_RISERVATA]       DECIMAL (16, 6) NULL,
+    [QV_ORDINATA]        DECIMAL (16, 6) NULL,
+    [QV_PREVISTA]        DECIMAL (16, 6) NULL,
+    [VALOREUNITARIOEURO] DECIMAL (19, 4) NULL,
+    [CONTOCDC]           VARCHAR (10)    NULL,
+    [IDTESTADOC]         DECIMAL (10)    NULL,
+    [IDRIGADOC]          INT             NULL,
+    [IDTESTAFATT]        DECIMAL (10)    NULL,
+    [IDRIGAFATT]         INT             NULL,
+    [CODART]             VARCHAR (50)    NULL,
+    [TIPODOC]            VARCHAR (3)     NULL,
+    [NUMERODOC]          DECIMAL (10)    NULL,
+    [BIS]                CHAR (1)        NULL,
+    [ESERCIZIO]          DECIMAL (5)     NULL,
+    [UMBASE]             VARCHAR (3)     NULL,
+    [QTABASE]            DECIMAL (16, 6) NULL,
+    [UMVAL]              VARCHAR (3)     NULL,
+    [QTAVAL]             DECIMAL (16, 6) NULL,
+    [TIPOREC]            VARCHAR (2)     NULL,
+    [TIPORECDETT]        VARCHAR (2)     NULL,
+    [TIPORECVAL]         VARCHAR (2)     NULL,
+    [VOCEBASE]           VARCHAR (3)     NULL,
+    [IDVOCE]             VARCHAR (3)     NULL,
+    [TIPOCOSTO]          VARCHAR (4)     NULL,
+    [CODCAUSALE]         DECIMAL (5)     NULL,
+    [CODDEPOSITO]        VARCHAR (10)    NULL,
+    [IDTABELLA]          VARCHAR (10)    NULL,
+    [IDSTORICOMAG]       DECIMAL (10)    NULL,
+    [ORIGINEEVENTO]      SMALLINT        NULL,
+    [QTABUDGET]          DECIMAL (16, 6) NULL,
+    [PESO]               DECIMAL (8, 5)  NULL,
+    [ORDINE_ELAB]        SMALLINT        NULL,
+    [FLGEMETTIRECORD]    SMALLINT        NULL,
+    [FLGMODTIPOREC]      SMALLINT        NULL,
+    [UTENTEMODIFICA]     VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]       DATETIME        NOT NULL,
+    [IDIMPEGNO]          INT             CONSTRAINT [DF_CCBILANCIOMATERIALE_IDIMPEGNO] DEFAULT (0) NULL,
+    [CODCLIFOR]          VARCHAR (7)     NULL,
+    [TIPODOCFATT]        VARCHAR (3)     NULL,
+    [NUMERODOCFATT]      DECIMAL (10)    NULL,
+    [BISFATT]            CHAR (1)        NULL,
+    [ESERCIZIOFATT]      DECIMAL (5)     NULL,
+    [CODCLIFORFATT]      VARCHAR (7)     NULL,
+    [FLGELABORA]         SMALLINT        NULL,
+    PRIMARY KEY CLUSTERED ([IDCOMMCLI] ASC, [NRRIGA] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [FK_CCBILANCIOMATERIALE_IDCOMMCLI] FOREIGN KEY ([IDCOMMCLI]) REFERENCES [dbo].[AnagraficaCommesse] ([Progressivo]) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT [FK_CCBILANCIOMATERIALE_IDSTORICOMAG] FOREIGN KEY ([IDSTORICOMAG]) REFERENCES [dbo].[STORICOMAG] ([PROGRESSIVO]) ON DELETE CASCADE
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CCBILANCIOMATERIALE] TO [Metodo98]
+    AS [dbo];
+

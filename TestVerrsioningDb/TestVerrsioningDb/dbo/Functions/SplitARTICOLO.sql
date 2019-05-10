@@ -1,0 +1,134 @@
+﻿
+/****** Oggetto: funzione definita dall'utente dbo.SplitARTICOLO    Data dello script: 22/04/2005 10.39.49 ******/
+CREATE FUNCTION SplitARTICOLO(@Articolo nVarchar(50),@EmptyChar nChar(1))
+RETURNS @Results TABLE (Items nVarChar(50))
+AS
+
+
+BEGIN    
+	
+DECLARE @ARTPADRE nVarChar(50)
+DECLARE @ARTVARESPLICITE nVarChar(255)
+
+DECLARE @Delimiter nchar(1)
+DECLARE @INDEX INT
+DECLARE @SLICE nvarchar(500)
+DECLARE @String nvarchar(255)
+
+DECLARE @Delimiter1 nchar(1)
+DECLARE @INDEX1 INT
+DECLARE @SLICE1 nvarchar(500)
+DECLARE @String1 nvarchar(255)
+DECLARE @VARIANTI nVarChar(50)
+DECLARE @LENEMPTY nVarchar(50)
+
+	--Prelevo Articolo Padre
+	SELECT @ARTPADRE=CODICEPRIMARIO,@ARTVARESPLICITE=REPLACE(VARESPLICITE, ' ' , '') FROM ANAGRAFICAARTICOLI WHERE CODICE=@Articolo
+	
+	IF (@ARTPADRE != '') AND (NOT @ARTPADRE IS NULL)
+		BEGIN
+			-- HAVE TO SET TO 1 SO IT DOESNT EQUAL Z
+			--     ERO FIRST TIME IN LOOP
+			SELECT @INDEX = 1
+			SELECT @Delimiter=';'
+			SELECT @String=@ARTVARESPLICITE
+		
+			SELECT @VARIANTI= @ARTPADRE + '#'
+		
+			IF (LEN(@Articolo) - LEN(@VARIANTI) ) > 0
+				BEGIN
+					SELECT @LENEMPTY = SPACE(LEN(@Articolo) - LEN(@VARIANTI) )
+				END
+			ELSE
+				BEGIN
+					SET @LENEMPTY = ''
+				END
+		
+			SET @LENEMPTY = REPLACE(@LENEMPTY , ' ' , @EmptyChar)
+			INSERT INTO @Results(Items) VALUES(@VARIANTI + @LENEMPTY)
+		
+			WHILE @INDEX !=0
+			
+			
+			BEGIN
+				-- GET THE INDEX OF THE FIRST OCCURENCE OF THE SPLIT NCHARACTER
+				SELECT @INDEX = CHARINDEX(@Delimiter,@STRING)
+				
+				-- NOW PUSH EVERYTHING TO THE LEFT OF IT INTO THE SLICE VARIABLE
+				IF @INDEX !=0
+					BEGIN
+						SELECT @SLICE = LEFT(@STRING,@INDEX - 1)
+					END
+				ELSE
+					BEGIN	
+						SELECT @SLICE = @STRING
+					END
+		
+				SELECT @INDEX1 = 1
+				SELECT @Delimiter1='='
+				SELECT @String1=@SLICE
+				SELECT @LENEMPTY = ''
+		
+				WHILE @INDEX1 !=0
+					BEGIN
+						-- GET THE INDEX OF THE FIRST OCCURENCE OF THE SPLIT NCHARACTER
+						SELECT @INDEX1 = CHARINDEX(@Delimiter1,@String1)
+						
+						-- NOW PUSH EVERYTHING TO THE LEFT OF IT INTO THE SLICE VARIABLE
+						IF @INDEX1 != 0
+							BEGIN
+								SELECT @SLICE1 = RIGHT(@STRING1,LEN(@STRING1) - @INDEX1)
+							END
+						ELSE
+							BEGIN
+								SELECT @SLICE1 = @String1
+							END
+		
+						-- PUT THE ITEM INTO THE RESULTS SET
+						SET @VARIANTI= @VARIANTI + @SLICE1
+		
+						IF (LEN(@Articolo) - LEN(@VARIANTI) ) > 0
+							BEGIN
+								SELECT @LENEMPTY = SPACE(LEN(@Articolo) - LEN(@VARIANTI) )
+							END
+						ELSE
+							BEGIN
+								SET @LENEMPTY = ''
+							END
+		
+						SET @LENEMPTY = REPLACE(@LENEMPTY , ' ' , @EmptyChar)
+		
+						INSERT INTO @Results(Items) VALUES(@VARIANTI + @LENEMPTY)
+						
+						-- CHOP THE ITEM REMOVED OFF THE MAIN STRING
+						SELECT @STRING1 = ''
+		
+						-- BREAK OUT IF WE ARE DONE
+						IF LEN(@STRING1) = 0 BREAK
+					END
+					
+					-- CHOP THE ITEM REMOVED OFF THE MAIN STRING
+					SELECT @STRING = RIGHT(@STRING,LEN(@STRING) - @INDEX)
+					
+					-- BREAK OUT IF WE ARE DONE
+					IF LEN(@STRING) = 0 BREAK
+			END
+		END			
+	ELSE
+		BEGIN
+			INSERT INTO @Results(Items) VALUES(@Articolo)
+		END
+    RETURN
+END
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[SplitARTICOLO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SplitARTICOLO] TO [Metodo98]
+    AS [dbo];
+

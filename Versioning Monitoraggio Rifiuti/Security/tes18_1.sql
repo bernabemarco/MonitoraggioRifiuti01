@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tes18]
+    AUTHORIZATION [tes18];
+

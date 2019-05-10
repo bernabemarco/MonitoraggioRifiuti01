@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [map01]
+    AUTHORIZATION [map01];
+

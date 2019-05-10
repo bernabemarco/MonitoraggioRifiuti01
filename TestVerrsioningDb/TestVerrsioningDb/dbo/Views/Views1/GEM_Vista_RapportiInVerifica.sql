@@ -1,0 +1,14 @@
+﻿
+CREATE VIEW [dbo].[GEM_Vista_RapportiInVerifica]
+AS
+SELECT     SEZIONECONTRATTO, IDCONTRATTO, COUNT(IDRAPPORTO) AS CountRapporti
+FROM         GEM_SEZIONECONTRATTORAPPORTI
+WHERE     (STATO = 'D' OR
+                      STATO = 'E')
+GROUP BY SEZIONECONTRATTO, IDCONTRATTO
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GEM_Vista_RapportiInVerifica] TO [Metodo98]
+    AS [dbo];
+

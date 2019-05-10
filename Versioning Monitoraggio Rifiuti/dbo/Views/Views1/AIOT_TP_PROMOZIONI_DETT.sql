@@ -1,0 +1,45 @@
+﻿
+CREATE VIEW dbo.AIOT_TP_PROMOZIONI_DETT
+AS
+SELECT     dbo.TP_PROMOZIONI_DETT.RifProgressivo, dbo.TP_PROMOZIONI_DETT.Codice, dbo.ANAGRAFICAARTICOLI.DESCRIZIONE, 
+                      dbo.TP_PROMOZIONI_DETT.UM_M, dbo.TP_PROMOZIONI_DETT.Qta_Minima, dbo.TP_PROMOZIONI_DETT.UM_O, 
+                      dbo.TP_PROMOZIONI_DETT.Qta_Omaggio, dbo.TP_PROMOZIONI_DETT.Abbuono, dbo.TP_PROMOZIONI_DETT.Prezzo_Sost, 
+                      dbo.TP_PROMOZIONI_DETT.Prezzo_Sost_Euro, dbo.TP_PROMOZIONI_DETT.Prezzo_Valuta, dbo.TP_PROMOZIONI_DETT.Codice_Valuta, 
+                      dbo.TP_PROMOZIONI_DETT.Sconto_Sost_Esteso, dbo.TP_PROMOZIONI_DETT.Sconto_Sost, dbo.TP_PROMOZIONI_DETT.Sconto_Agg_Esteso, 
+                      dbo.TP_PROMOZIONI_DETT.Codice_Art_Oma, ANAGRAFICAARTICOLI_1.DESCRIZIONE AS Expr1, dbo.TP_PROMOZIONI_DETT.Qta_Art_Oma, 
+                      dbo.TP_PROMOZIONI_DETT.UM_A_O, dbo.TP_PROMOZIONI_DETT.Priorita_Trasm, dbo.TP_PROMOZIONI_DETT.Note
+FROM         dbo.TP_PROMOZIONI_DETT LEFT OUTER JOIN
+                      dbo.ANAGRAFICAARTICOLI ANAGRAFICAARTICOLI_1 ON 
+                      dbo.TP_PROMOZIONI_DETT.Codice_Art_Oma = ANAGRAFICAARTICOLI_1.CODICE LEFT OUTER JOIN
+                      dbo.ANAGRAFICAARTICOLI ON dbo.TP_PROMOZIONI_DETT.Codice = dbo.ANAGRAFICAARTICOLI.CODICE
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[AIOT_TP_PROMOZIONI_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[AIOT_TP_PROMOZIONI_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[AIOT_TP_PROMOZIONI_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[AIOT_TP_PROMOZIONI_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[AIOT_TP_PROMOZIONI_DETT] TO [Metodo98]
+    AS [dbo];
+

@@ -16337,6 +16337,7 @@
     <Build Include="Security\Metodo98_1.sql" />
     <Build Include="Security\AnaBilancio_1.sql" />
     <Build Include="Security\Permissions.sql" />
+    <Build Include="dbo\Tables\Table1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assemblies\ControlloLicenzeMetodo.dll" />

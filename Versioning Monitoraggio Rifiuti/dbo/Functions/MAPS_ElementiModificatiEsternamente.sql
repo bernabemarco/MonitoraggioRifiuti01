@@ -1,0 +1,85 @@
+﻿
+CREATE FUNCTION [dbo].[MAPS_ElementiModificatiEsternamente](
+    @NOMEPIANIF     varchar(30)
+)
+RETURNS @RESULTS TABLE (
+    PROG_ID     decimal(20,0)
+)
+AS
+BEGIN
+
+    DECLARE @ULTIMADATASALVATA DATETIME
+    DECLARE @ULTIMADATA DATETIME
+    
+    SELECT @ULTIMADATA=DBO.[MAPS_DataUltimoElementoModificato](@NOMEPIANIF)
+    IF (@ULTIMADATA IS NULL)
+        SET @ULTIMADATA = GETDATE()
+
+    SELECT @ULTIMADATASALVATA=[DATAULTIMOELEMENTOMODIFICATO]
+    FROM IMPOSTAZIONIPROGPROD
+    WHERE NOMEPIANIF = @NOMEPIANIF
+    IF (@ULTIMADATASALVATA IS NULL)
+        SET @ULTIMADATASALVATA = GETDATE()
+
+    IF (@ULTIMADATA>@ULTIMADATASALVATA)
+    BEGIN
+        INSERT INTO @RESULTS
+        select PP.PROG_ID
+        from PROGPRODUZIONE PP
+            inner join TESTEDOCUMENTI TD on TD.PROGRESSIVO = PP.IDTESTADOC
+            inner join RIGHEDOCUMENTI RD on RD.IDTESTA = PP.IDTESTADOC and RD.IDRIGA = PP.IDRIGADOC
+        where PP.NOMEPIANIF = @NOMEPIANIF
+            and PP.TIPO in (3,4,5,9)
+            and dbo.MAPS_MaxDate(TD.DATAMODIFICA,RD.DATAMODIFICA) > @ULTIMADATASALVATA
+
+        INSERT INTO @RESULTS
+        select PP.PROG_ID
+        from PROGPRODUZIONE PP
+            inner join TESTEORDINIPROD TP on TP.PROGRESSIVO = PP.IDTESTADOC
+            inner join RIGHEORDPROD RP on RP.IDTESTA = PP.IDTESTADOC and RP.IDRIGA = PP.IDRIGADOC
+        where PP.NOMEPIANIF = @NOMEPIANIF
+            and PP.TIPO in (6)
+            and dbo.MAPS_MaxDate(TP.DATAMODIFICA,RP.DATAMODIFICA) > @ULTIMADATASALVATA
+
+        INSERT INTO @RESULTS
+        select PP.PROG_ID
+        from PROGPRODUZIONE PP
+            inner join TESTEORDINIPROD TP on TP.PROGRESSIVO = PP.IDTESTADOC
+            inner join IMPEGNIORDPROD IP on IP.IDTESTA = PP.IDTESTADOC and IP.IDRIGA = PP.IDRIGADOC and IP.IDIMPEGNO = PP.IDIMPEGNO
+        where PP.NOMEPIANIF = @NOMEPIANIF
+            and PP.TIPO in (7) 
+            and dbo.MAPS_MaxDate(TP.DATAMODIFICA,IP.DATAMODIFICA) > @ULTIMADATASALVATA
+    END
+
+    RETURN  
+END
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[MAPS_ElementiModificatiEsternamente] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[MAPS_ElementiModificatiEsternamente] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[MAPS_ElementiModificatiEsternamente] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[MAPS_ElementiModificatiEsternamente] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[MAPS_ElementiModificatiEsternamente] TO [Metodo98]
+    AS [dbo];
+

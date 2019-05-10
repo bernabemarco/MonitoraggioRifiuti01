@@ -1,0 +1,10 @@
+﻿CREATE VIEW dbo.BRIOVISTATABZONE
+AS
+SELECT     *
+FROM         dbo.TABZONE
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[BRIOVISTATABZONE] TO [Metodo98]
+    AS [dbo];
+

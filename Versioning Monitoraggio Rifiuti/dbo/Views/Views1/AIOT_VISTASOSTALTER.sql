@@ -1,0 +1,40 @@
+﻿
+CREATE VIEW AIOT_VISTASOSTALTER
+AS
+SELECT DISTINCT 
+                      dbo.TP_SOST_ALTER_TESTE.Codice, dbo.TP_SOST_ALTER_TESTE.Sost_Alter, dbo.TP_SOST_ALTER_DETT.Codice_Sost_Alter, 
+                      dbo.ANAGRAFICAARTICOLI.DESCRIZIONE
+FROM         dbo.TP_SOST_ALTER_DETT INNER JOIN
+                      dbo.TP_SOST_ALTER_TESTE ON dbo.TP_SOST_ALTER_DETT.Codice = dbo.TP_SOST_ALTER_TESTE.Codice INNER JOIN
+                      dbo.ANAGRAFICAARTICOLI ON dbo.TP_SOST_ALTER_DETT.Codice_Sost_Alter = dbo.ANAGRAFICAARTICOLI.CODICE
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[AIOT_VISTASOSTALTER] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[AIOT_VISTASOSTALTER] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[AIOT_VISTASOSTALTER] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[AIOT_VISTASOSTALTER] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[AIOT_VISTASOSTALTER] TO [Metodo98]
+    AS [dbo];
+

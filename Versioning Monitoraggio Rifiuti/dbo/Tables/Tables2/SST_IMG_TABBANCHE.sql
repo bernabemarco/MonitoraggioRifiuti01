@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[SST_IMG_TABBANCHE] (
+    [Codice_BAIN_BIDPCD]      VARCHAR (5)  NOT NULL,
+    [Descrizione_BAIN_BIFMTX] VARCHAR (8)  DEFAULT ('') NOT NULL,
+    [UTENTEMODIFICA]          VARCHAR (25) DEFAULT ('') NOT NULL,
+    [DATAMODIFICA]            DATETIME     DEFAULT (getdate()) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Codice_BAIN_BIDPCD] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[SST_IMG_TABBANCHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[SST_IMG_TABBANCHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[SST_IMG_TABBANCHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SST_IMG_TABBANCHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[SST_IMG_TABBANCHE] TO [Metodo98]
+    AS [dbo];
+

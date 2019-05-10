@@ -1,0 +1,3 @@
+﻿CREATE USER [SICURA\parolinr] FOR LOGIN [SICURA\parolinr]
+    WITH DEFAULT_SCHEMA = [SICURA\parolinr];
+

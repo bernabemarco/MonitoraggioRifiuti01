@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[TP_TABPROGRNRRIGA] (
+    [NOMETABELLA] VARCHAR (80) NOT NULL,
+    [PROGR]       DECIMAL (10) NOT NULL,
+    [NRRIGA]      INT          DEFAULT ((0)) NULL,
+    PRIMARY KEY CLUSTERED ([NOMETABELLA] ASC, [PROGR] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_TABPROGRNRRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_TABPROGRNRRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_TABPROGRNRRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_TABPROGRNRRIGA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_TABPROGRNRRIGA] TO [Metodo98]
+    AS [dbo];
+

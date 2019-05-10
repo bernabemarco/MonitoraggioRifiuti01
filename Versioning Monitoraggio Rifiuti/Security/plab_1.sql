@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [plab]
+    AUTHORIZATION [plab];
+

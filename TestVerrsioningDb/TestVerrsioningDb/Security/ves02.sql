@@ -1,0 +1,3 @@
+﻿CREATE USER [ves02]
+    WITH DEFAULT_SCHEMA = [ves02];
+

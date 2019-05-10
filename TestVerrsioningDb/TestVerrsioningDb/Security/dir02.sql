@@ -1,0 +1,3 @@
+﻿CREATE USER [dir02]
+    WITH DEFAULT_SCHEMA = [dir02];
+

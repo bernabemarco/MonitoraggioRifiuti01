@@ -1,0 +1,3 @@
+﻿CREATE USER [map04]
+    WITH DEFAULT_SCHEMA = [map04];
+

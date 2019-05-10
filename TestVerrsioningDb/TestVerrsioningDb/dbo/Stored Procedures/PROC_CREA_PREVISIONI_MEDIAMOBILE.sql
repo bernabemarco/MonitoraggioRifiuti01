@@ -1,0 +1,166 @@
+﻿
+
+CREATE PROCEDURE [dbo].[PROC_CREA_PREVISIONI_MEDIAMOBILE]
+--ENCRY--
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+    /*SE NON ESISTE STORICO LO INSERISCO*/
+    INSERT INTO TP_STORICO_MEDIAMOBILE(CodArticolo,CodDeposito,Periodo,UtenteModifica,DataModifica)
+    SELECT
+        ARTICOLIMM.CodArticolo,
+        ARTICOLIMM.CodDeposito,
+        ARTICOLIMM.Periodo,
+        ARTICOLIMM.UTENTEMODIFICA,
+        ARTICOLIMM.DATAMODIFICA
+    FROM
+    (   
+        SELECT
+            TPV.CodArticolo,
+            TPV.CodDeposito,
+            PMM.Periodo,
+            USER_NAME() AS UTENTEMODIFICA,
+            GETDATE() AS DATAMODIFICA
+        FROM
+            TP_PERIODI_VENDUTO TPV,
+            (
+                SELECT 3 As Periodo
+                UNION
+                SELECT 6 As Periodo
+                UNION
+                SELECT 9 As Periodo
+                UNION
+                SELECT 12 As Periodo
+            ) PMM
+    ) AS ARTICOLIMM
+    LEFT JOIN
+        (SELECT DISTINCT CODARTICOLO,CODDEPOSITO,PERIODO FROM TP_STORICO_MEDIAMOBILE) TSMM
+    ON
+        TSMM.CodArticolo = ARTICOLIMM.CodArticolo AND
+        TSMM.CodDeposito = ARTICOLIMM.CodDeposito AND
+        TSMM.Periodo = ARTICOLIMM.Periodo
+    WHERE
+        TSMM.CodArticolo IS NULL
+    
+    /*ARTICOLI PER PREVISIONE MEDIAMOBILE*/
+    DELETE FROM TP_STAGIONALE_PREVISIONI WHERE TIPO = 'MM'
+    --DROP VIEW TP_VISTAMEDIAMOBILE_PREVISIONE
+    --DROP PROCEDURE PROC_CREA_PREVISIONI_FUTURE_MEDIAMOBILE_ARTICOLO
+    --DROP PROCEDURE PROC_AGGIORNA_PREVISIONEMIGLIORE_MEDIAMOBILE
+    
+    EXEC PROC_CREA_PREVISIONI_FUTURE_MEDIAMOBILE
+    
+    /*AGGIORNO TABELLA STORICO PER CALCOLARE IL MAD*/
+    UPDATE TP_STORICO_MEDIAMOBILE
+    SET TP_STORICO_MEDIAMOBILE.[1] = MM_TMP.[1]
+    FROM TP_STORICO_MEDIAMOBILE
+    INNER JOIN
+        (
+         SELECT CODARTICOLO,CODDEPOSITO,PERIODI,[1] FROM TP_MEDIAMOBILE_TMP
+        ) MM_TMP
+    ON
+        MM_TMP.CodArticolo = TP_STORICO_MEDIAMOBILE.CodArticolo AND
+        MM_TMP.CodDeposito = TP_STORICO_MEDIAMOBILE.CodDeposito AND
+        MM_TMP.Periodi = TP_STORICO_MEDIAMOBILE.Periodo
+    
+    /*CALCOLO IL MAD*/  /*IL VENDUTO NON E' CORRETTO*/
+    EXEC PROC_CALCOLA_MAD_MEDIAMOBILE
+    
+    /*INSERIMENTO PREVISIONI*/
+    INSERT INTO TP_STAGIONALE_PREVISIONI(CodArticolo,CodDeposito,Tipo,[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],UtenteModifica,DataModifica)
+    SELECT TMMT.[CodArticolo]
+          ,TMMT.[CodDeposito]
+          ,'MM' AS Tipo
+          ,TMMT.[1]
+          ,TMMT.[2]
+          ,TMMT.[3]
+          ,TMMT.[4]
+          ,TMMT.[5]
+          ,TMMT.[6]
+          ,TMMT.[7]
+          ,TMMT.[8]
+          ,TMMT.[9]
+          ,TMMT.[10]
+          ,TMMT.[11]
+          ,TMMT.[12]
+          ,USER_NAME()
+          ,GETDATE()
+    FROM [TP_MEDIAMOBILE_TMP] TMMT
+    INNER JOIN
+    (
+        SELECT
+            CODARTICOLO,
+            CODDEPOSITO,
+            (SELECT TOP 1 PERIODO FROM TP_STORICO_MEDIAMOBILE TPMM WHERE TPMM.CODARTICOLO = TP_STORICO_MEDIAMOBILE.CODARTICOLO AND TPMM.CODDEPOSITO = TP_STORICO_MEDIAMOBILE.CODDEPOSITO AND TPMM.MAD = MIN(TP_STORICO_MEDIAMOBILE.MAD)) AS PERIODO,
+            MIN(MAD) AS MAD
+        FROM
+            TP_STORICO_MEDIAMOBILE
+        WHERE
+            MAD <> 0
+        GROUP BY
+            CODARTICOLO,
+            CODDEPOSITO
+        UNION
+        SELECT
+            CODARTICOLO,
+            CODDEPOSITO,
+            (SELECT TOP 1 PERIODO FROM TP_STORICO_MEDIAMOBILE TPMM WHERE TPMM.CODARTICOLO = TP_STORICO_MEDIAMOBILE.CODARTICOLO AND TPMM.CODDEPOSITO = TP_STORICO_MEDIAMOBILE.CODDEPOSITO AND TPMM.MAD = MIN(TP_STORICO_MEDIAMOBILE.MAD)) AS PERIODO,
+            MIN(MAD) AS MAD
+        FROM
+            TP_STORICO_MEDIAMOBILE
+        WHERE
+            TP_STORICO_MEDIAMOBILE.MAD = 0   AND
+            NOT EXISTS(SELECT DISTINCT A.CODARTICOLO,A.CODDEPOSITO 
+                       FROM TP_STORICO_MEDIAMOBILE A 
+                       WHERE A.CODARTICOLO = TP_STORICO_MEDIAMOBILE.CODARTICOLO AND A.CODDEPOSITO = TP_STORICO_MEDIAMOBILE.CODDEPOSITO AND A.MAD <> 0)
+        GROUP BY
+            CODARTICOLO,
+            CODDEPOSITO
+    ) MAD
+    ON
+        MAD.CodArticolo = TMMT.CodArticolo AND
+        MAD.CodDeposito = TMMT.CodDeposito AND
+        MAD.PERIODO = TMMT.Periodi
+    
+    --Aggiorno il Periodo Usato su Tp_Extramag (Da quale magazzino prendo il periodo?)
+    UPDATE TP_ExtraMag
+    SET OFMEDIAMOBILEPERIODI = PREV.PERIODO
+    FROM TP_ExtraMag
+    INNER JOIN
+        (
+            SELECT
+                CODARTICOLO,
+                CODDEPOSITO,
+                (SELECT TOP 1 PERIODO FROM TP_STORICO_MEDIAMOBILE TPMM WHERE TPMM.CODARTICOLO = TP_STORICO_MEDIAMOBILE.CODARTICOLO AND TPMM.CODDEPOSITO = TP_STORICO_MEDIAMOBILE.CODDEPOSITO AND TPMM.MAD = MIN(TP_STORICO_MEDIAMOBILE.MAD)) AS PERIODO,
+                MIN(MAD) AS MAD
+            FROM
+                TP_STORICO_MEDIAMOBILE
+            WHERE
+                MAD <> 0
+            GROUP BY
+                CODARTICOLO,
+                CODDEPOSITO
+        ) PREV
+    ON
+        PREV.CodArticolo = TP_ExtraMag.CodArt
+    
+    If @@ERROR <> 0 GoTo ErrorHandler
+    Set NoCount OFF
+    Return(0)
+  
+ErrorHandler:
+    Return(@@ERROR)
+
+END
+
+
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[PROC_CREA_PREVISIONI_MEDIAMOBILE] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [tes24]
+    WITH DEFAULT_SCHEMA = [tes24];
+

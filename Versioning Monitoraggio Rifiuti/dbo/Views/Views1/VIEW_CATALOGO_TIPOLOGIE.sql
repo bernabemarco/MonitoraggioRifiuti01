@@ -1,0 +1,13 @@
+﻿
+ CREATE VIEW [dbo].[VIEW_CATALOGO_TIPOLOGIE]
+ AS
+ SELECT
+ 0 CODICE,
+ '' Tipologia
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VIEW_CATALOGO_TIPOLOGIE] TO [Metodo98]
+    AS [dbo];
+

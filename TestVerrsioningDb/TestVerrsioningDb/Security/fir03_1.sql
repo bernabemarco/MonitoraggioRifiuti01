@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [fir03]
+    AUTHORIZATION [fir03];
+

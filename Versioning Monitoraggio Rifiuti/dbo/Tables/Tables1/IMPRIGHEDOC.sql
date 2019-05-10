@@ -1,0 +1,39 @@
+﻿CREATE TABLE [dbo].[IMPRIGHEDOC] (
+    [NOMEUTENTE]       VARCHAR (25) NULL,
+    [NOMEIMPOSTAZIONE] VARCHAR (50) NULL,
+    [TIPORIGA]         SMALLINT     NULL,
+    [NRCOLHIDE]        SMALLINT     NULL,
+    [PREDEFINITA]      SMALLINT     NULL,
+    [CONV16]           SMALLINT     NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[IMPRIGHEDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[IMPRIGHEDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[IMPRIGHEDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[IMPRIGHEDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[IMPRIGHEDOC] TO [Metodo98]
+    AS [dbo];
+

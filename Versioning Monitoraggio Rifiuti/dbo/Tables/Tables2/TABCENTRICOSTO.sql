@@ -1,0 +1,136 @@
+﻿CREATE TABLE [dbo].[TABCENTRICOSTO] (
+    [CODICE]           VARCHAR (10)  NOT NULL,
+    [DESCRIZIONE]      VARCHAR (80)  NULL,
+    [NOTE]             VARCHAR (100) NULL,
+    [DATAINIVALIDITA]  DATETIME      NOT NULL,
+    [DATAFINEVALIDITA] DATETIME      NOT NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)  NOT NULL,
+    [DATAMODIFICA]     DATETIME      NOT NULL,
+    CONSTRAINT [PK_TABCENTRICOSTO] PRIMARY KEY CLUSTERED ([CODICE] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [DSCCCOSTO]
+    ON [dbo].[TABCENTRICOSTO]([DESCRIZIONE] ASC) WITH (FILLFACTOR = 90);
+
+
+GO
+
+/*  UPDATE TRIGGER "TU_TABCENTRICOSTO" FOR TABLE "TABCENTRICOSTO"  */
+CREATE TRIGGER TU_TABCENTRICOSTO ON TABCENTRICOSTO FOR UPDATE AS
+BEGIN
+   DECLARE
+      @MAXCARD  INT,
+      @NUMROWS  INT,
+      @NUMNULL  INT,
+      @ERRNO    INT,
+      @ERRMSG   VARCHAR(255)
+
+      SELECT  @NUMROWS = @@ROWCOUNT
+      IF @NUMROWS = 0
+         RETURN
+
+      
+      /*  CANNOT MODIFY PARENT CODE IN "TABCENTRICOSTO" IF CHILDREN STILL EXIST IN "GENCCOSTO"  */
+      IF UPDATE(CODICE)
+      BEGIN
+         IF EXISTS (SELECT 1
+                    FROM   GENCCOSTO T2, INSERTED I1, DELETED D1
+                    WHERE  T2.CODCCOSTO = D1.CODICE
+                     AND  (I1.CODICE != D1.CODICE))
+            BEGIN
+               SELECT @ERRNO  = 30005,
+                      @ERRMSG = 'Children still exist in "GENCCOSTO". Cannot modify parent code in "TABCENTRICOSTO".'
+               GOTO ERROR
+            END
+      END
+
+      RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+GO
+/*  DELETE TRIGGER "TD_TABCENTRICOSTO" FOR TABLE "TABCENTRICOSTO"  */
+CREATE TRIGGER TD_TABCENTRICOSTO ON TABCENTRICOSTO FOR DELETE AS
+BEGIN
+    DECLARE
+       @NUMROWS  INT,
+       @ERRNO    INT,
+       @ERRMSG   VARCHAR(255)
+
+    SELECT  @NUMROWS = @@ROWCOUNT
+    IF @NUMROWS = 0
+       RETURN
+    
+    /*  CANNOT DELETE PARENT "TABCENTRICOSTO" IF CHILDREN STILL EXIST IN "GENCCOSTO"  */
+    IF EXISTS (SELECT 1
+               FROM   GENCCOSTO T2, DELETED T1
+               WHERE  T2.CODCCOSTO = T1.CODICE)
+       BEGIN
+          SELECT @ERRNO  = 30006,
+                 @ERRMSG = 'Children still exist in "GENCCOSTO". Cannot delete parent "TABCENTRICOSTO".'
+          GOTO ERROR
+       END
+       
+    /*  CANNOT DELETE PARENT "TABCENTRICOSTO" IF CHILDREN STILL EXIST IN "TABCCCOSTIDIR"  */
+    IF EXISTS (SELECT 1
+               FROM   TABCCCOSTIDIR T2, DELETED T1
+               WHERE  T2.CODCDC = T1.CODICE)
+       BEGIN
+          SELECT @ERRNO  = 30006,
+                 @ERRMSG = 'Impossibile eliminare il centro di costo perchè presente nei vincoli di commessa cliente'
+          GOTO ERROR
+       END
+
+    /*  CANNOT DELETE PARENT "TABCENTRICOSTO" IF CHILDREN STILL EXIST IN "PARAMCLASSCOSTIDIR"  */
+    IF EXISTS (SELECT 1
+               FROM   PARAMCLASSCOSTIDIR T2, DELETED T1
+               WHERE  T2.CODCDC = T1.CODICE)
+       BEGIN
+          SELECT @ERRNO  = 30006,
+                 @ERRMSG = 'Impossibile eliminare il centro di costo perchè presente nei parametri di commessa cliente'
+          GOTO ERROR
+       END
+
+    RETURN
+
+/*  ERRORS HANDLING  */
+ERROR:
+    RAISERROR (@ERRMSG, 1, 1)
+    ROLLBACK  TRANSACTION
+END
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABCENTRICOSTO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABCENTRICOSTO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABCENTRICOSTO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABCENTRICOSTO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABCENTRICOSTO] TO [Metodo98]
+    AS [dbo];
+

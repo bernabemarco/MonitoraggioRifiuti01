@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[TDA_LOG_SYN] (
+    [IDLog]          DECIMAL (10)   IDENTITY (1, 1) NOT NULL,
+    [FEEDBACK]       DECIMAL (10)   NOT NULL,
+    [TIPO]           VARCHAR (20)   NOT NULL,
+    [MESSAGGIO]      VARCHAR (1000) NOT NULL,
+    [UTENTEMODIFICA] VARCHAR (25)   NOT NULL,
+    [DATAMODIFICA]   DATETIME       NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDLog] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TDA_LOG_SYN] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TDA_LOG_SYN] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TDA_LOG_SYN] TO [Metodo98]
+    AS [dbo];
+

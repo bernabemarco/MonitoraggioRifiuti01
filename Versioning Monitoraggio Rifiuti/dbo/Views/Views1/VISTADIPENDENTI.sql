@@ -1,0 +1,9 @@
+﻿create view VISTADIPENDENTI as 
+	select *,(NOME + ' ' + COGNOME) as NOMECOMPLETO
+	from TABELLADIPENDENTI
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTADIPENDENTI] TO [Metodo98]
+    AS [dbo];
+

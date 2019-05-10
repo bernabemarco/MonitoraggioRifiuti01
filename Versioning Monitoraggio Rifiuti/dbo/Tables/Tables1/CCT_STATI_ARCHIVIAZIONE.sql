@@ -1,0 +1,32 @@
+﻿CREATE TABLE [dbo].[CCT_STATI_ARCHIVIAZIONE] (
+    [Codice]         DECIMAL (5)   NOT NULL,
+    [Descrizione]    VARCHAR (500) NULL,
+    [Utentemodifica] VARCHAR (25)  NOT NULL,
+    [Datamodifica]   DATETIME      NOT NULL,
+    CONSTRAINT [PK_CCT_STATI_ARCHIVIAZIONE] PRIMARY KEY CLUSTERED ([Codice] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CCT_STATI_ARCHIVIAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CCT_STATI_ARCHIVIAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CCT_STATI_ARCHIVIAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CCT_STATI_ARCHIVIAZIONE] TO [Metodo98]
+    AS [dbo];
+

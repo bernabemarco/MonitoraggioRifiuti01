@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [amsik02]
+    AUTHORIZATION [amsik02];
+

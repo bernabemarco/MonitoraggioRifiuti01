@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[ALD_B2B_CLIENTI] (
+    [CODCONTO]            VARCHAR (7)   NOT NULL,
+    [DESTINAZIONEDIVERSA] DECIMAL (5)   CONSTRAINT [DF__ALD_B2B_C__DESTI__02902F84] DEFAULT ((0)) NOT NULL,
+    [TipoInstradamento]   SMALLINT      CONSTRAINT [DF__ALD_B2B_C__TipoI__038453BD] DEFAULT ((0)) NULL,
+    [PROGRESSIVOUFFICIO]  VARCHAR (50)  NULL,
+    [MAIL]                VARCHAR (100) CONSTRAINT [DF__ALD_B2B_CL__MAIL__047877F6] DEFAULT ('') NULL,
+    [Utentemodifica]      VARCHAR (25)  NOT NULL,
+    [Datamodifica]        DATETIME      NOT NULL,
+    [ID]                  INT           NOT NULL,
+    [IDSESSIONE]          DECIMAL (5)   NULL,
+    CONSTRAINT [PK_ALD_B2B_CLIENTI_1] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CodConto_DestDiv]
+    ON [dbo].[ALD_B2B_CLIENTI]([CODCONTO] ASC, [DESTINAZIONEDIVERSA] ASC);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[ALD_B2B_CLIENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[ALD_B2B_CLIENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[ALD_B2B_CLIENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[ALD_B2B_CLIENTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[ALD_B2B_CLIENTI] TO [Metodo98]
+    AS [dbo];
+

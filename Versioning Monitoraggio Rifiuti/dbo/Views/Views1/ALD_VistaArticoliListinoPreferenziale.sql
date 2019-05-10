@@ -1,0 +1,39 @@
+﻿CREATE VIEW dbo.ALD_VistaArticoliListinoPreferenziale
+AS
+SELECT     dbo.LISTINIARTICOLI.CODART, dbo.ANAGRAFICAARTICOLIPROD.ESERCIZIO, dbo.ANAGRAFICAARTICOLIPROD.FORNPREFACQ, 
+                      dbo.LISTINIARTICOLI.NRLISTINO, dbo.LISTINIARTICOLI.PREZZO, dbo.LISTINIARTICOLI.PREZZOEURO
+FROM         dbo.ANAGRAFICAARTICOLIPROD INNER JOIN
+                      dbo.ANAGRAFICARISERVATICF ON dbo.ANAGRAFICAARTICOLIPROD.ESERCIZIO = dbo.ANAGRAFICARISERVATICF.ESERCIZIO AND 
+                      dbo.ANAGRAFICAARTICOLIPROD.FORNPREFACQ = dbo.ANAGRAFICARISERVATICF.CODCONTO INNER JOIN
+                      dbo.LISTINIARTICOLI ON dbo.ANAGRAFICAARTICOLIPROD.CODICEART = dbo.LISTINIARTICOLI.CODART AND 
+                      dbo.ANAGRAFICARISERVATICF.LISTINO = dbo.LISTINIARTICOLI.NRLISTINO
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[ALD_VistaArticoliListinoPreferenziale] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[ALD_VistaArticoliListinoPreferenziale] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[ALD_VistaArticoliListinoPreferenziale] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[ALD_VistaArticoliListinoPreferenziale] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[ALD_VistaArticoliListinoPreferenziale] TO [Metodo98]
+    AS [dbo];
+

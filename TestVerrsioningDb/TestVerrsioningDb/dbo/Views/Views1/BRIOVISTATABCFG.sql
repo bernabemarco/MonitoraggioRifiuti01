@@ -1,0 +1,10 @@
+﻿CREATE VIEW dbo.BRIOVISTATABCFG
+AS
+SELECT     *
+FROM         dbo.TABCFG
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[BRIOVISTATABCFG] TO [Metodo98]
+    AS [dbo];
+

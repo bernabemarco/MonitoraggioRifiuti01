@@ -1,0 +1,42 @@
+﻿CREATE TABLE [dbo].[TIPIEFFETTI] (
+    [EFFETTO]             NUMERIC (5)  NOT NULL,
+    [TIPO]                VARCHAR (1)  NULL,
+    [DESCRIZIONE]         VARCHAR (25) NULL,
+    [UTENTEMODIFICA]      VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]        DATETIME     NOT NULL,
+    [MODPAGAMENTOPA]      VARCHAR (4)  NULL,
+    [TIPOPAGGETES]        VARCHAR (2)  NULL,
+    [ALD_CodPagamentoSDI] VARCHAR (10) DEFAULT ('') NULL,
+    CONSTRAINT [PK_TIPIEFFETTI] PRIMARY KEY CLUSTERED ([EFFETTO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TIPIEFFETTI] TO [Metodo98]
+    AS [dbo];
+

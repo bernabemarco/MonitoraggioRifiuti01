@@ -1,0 +1,13 @@
+﻿
+CREATE VIEW VISTAPROMOLASTSCAGLIONITOT
+AS
+SELECT     RifProgressivo, MAX(Riga) AS lastscaglione
+FROM         dbo.PROMOZIONI_TOTCOND
+GROUP BY RifProgressivo
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTAPROMOLASTSCAGLIONITOT] TO [Metodo98]
+    AS [dbo];
+

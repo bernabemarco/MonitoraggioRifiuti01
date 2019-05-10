@@ -1,0 +1,51 @@
+﻿CREATE TABLE [dbo].[TP_SOST_ALTER_TESTE] (
+    [Codice]         VARCHAR (50) NOT NULL,
+    [Sost_Alter]     VARCHAR (1)  NOT NULL,
+    [Giac]           VARCHAR (1)  NOT NULL,
+    [Data_ini]       DATETIME     NULL,
+    [UtenteModifica] VARCHAR (25) NOT NULL,
+    [DataModifica]   DATETIME     NOT NULL,
+    [Data_Fin]       DATETIME     NULL,
+    CONSTRAINT [PK__TP_SOST_ALTER_TESTE] PRIMARY KEY CLUSTERED ([Codice] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [FK_Codice_Articolo_teste] FOREIGN KEY ([Codice]) REFERENCES [dbo].[ANAGRAFICAARTICOLI] ([CODICE])
+);
+
+
+GO
+CREATE TRIGGER DELETE_TP_SOST_ALTER_DETT   ON TP_SOST_ALTER_TESTE 
+FOR DELETE 
+AS
+ DELETE TP_SOST_ALTER_DETT
+    FROM   TP_SOST_ALTER_DETT T2, DELETED T1
+    WHERE  T2.codice = T1.codice
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_SOST_ALTER_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_SOST_ALTER_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_SOST_ALTER_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_SOST_ALTER_TESTE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_SOST_ALTER_TESTE] TO [Metodo98]
+    AS [dbo];
+

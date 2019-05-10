@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[ALD_B2B_PARDOC] (
+    [TIPODOC]        VARCHAR (3)  NOT NULL,
+    [TipoDocB2B]     VARCHAR (10) NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    PRIMARY KEY CLUSTERED ([TIPODOC] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[ALD_B2B_PARDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[ALD_B2B_PARDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[ALD_B2B_PARDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[ALD_B2B_PARDOC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[ALD_B2B_PARDOC] TO [Metodo98]
+    AS [dbo];
+

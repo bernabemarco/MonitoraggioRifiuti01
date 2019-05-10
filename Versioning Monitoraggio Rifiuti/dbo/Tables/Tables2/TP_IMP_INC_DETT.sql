@@ -1,0 +1,46 @@
+﻿CREATE TABLE [dbo].[TP_IMP_INC_DETT] (
+    [IDSESSIONE]       DECIMAL (5)     NOT NULL,
+    [IDTESTA]          DECIMAL (10)    NOT NULL,
+    [NRRIGA]           INT             NOT NULL,
+    [DATAINCASSO]      DATETIME        NULL,
+    [TIPOINC]          SMALLINT        DEFAULT ((0)) NULL,
+    [QUANTITA]         DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [TIPOPEZZI]        SMALLINT        DEFAULT ((0)) NULL,
+    [IMPORTOINCASSATO] DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [VALUTAINC]        DECIMAL (5)     DEFAULT ((0)) NULL,
+    [DSCINCASSATO]     VARCHAR (255)   DEFAULT ('') NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]     DATETIME        NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDSESSIONE] ASC, [IDTESTA] ASC, [NRRIGA] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_IMP_INC_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_IMP_INC_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_IMP_INC_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_IMP_INC_DETT] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_IMP_INC_DETT] TO [Metodo98]
+    AS [dbo];
+

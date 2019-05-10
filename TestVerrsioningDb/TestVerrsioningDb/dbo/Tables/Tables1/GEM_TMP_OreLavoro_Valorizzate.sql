@@ -1,0 +1,63 @@
+﻿CREATE TABLE [dbo].[GEM_TMP_OreLavoro_Valorizzate] (
+    [idSessione]        INT             NOT NULL,
+    [IDRAPPORTO]        VARCHAR (14)    NOT NULL,
+    [idRiga]            DECIMAL (5)     NOT NULL,
+    [CODART_OREORD]     VARCHAR (50)    NULL,
+    [PREZZO_OREORD]     DECIMAL (10, 2) NULL,
+    [SCONTO_OREORD]     DECIMAL (10, 2) NULL,
+    [PROVV1_OREORD]     DECIMAL (10, 2) NULL,
+    [PROVV2_OREORD]     DECIMAL (10, 2) NULL,
+    [PROVV3_OREORD]     DECIMAL (10, 2) NULL,
+    [CODART_ORESTRA]    VARCHAR (50)    NULL,
+    [PREZZO_ORESTRA]    DECIMAL (10, 2) NULL,
+    [SCONTO_ORESTRA]    DECIMAL (10, 2) NULL,
+    [PROVV1_ORESTRA]    DECIMAL (10, 2) NULL,
+    [PROVV2_ORESTRA]    DECIMAL (10, 2) NULL,
+    [PROVV3_ORESTRA]    DECIMAL (10, 2) NULL,
+    [CODART_OREVIAGGIO] VARCHAR (50)    NULL,
+    [PREZZO_OREVIAGGIO] DECIMAL (10, 2) NULL,
+    [SCONTO_OREVIAGGIO] DECIMAL (10, 2) NULL,
+    [PROVV1_OREVIAGGIO] DECIMAL (10, 2) NULL,
+    [PROVV2_OREVIAGGIO] DECIMAL (10, 2) NULL,
+    [PROVV3_OREVIAGGIO] DECIMAL (10, 2) NULL,
+    [CODART_TRASFERTA]  VARCHAR (50)    NULL,
+    [PREZZO_TRASFERTA]  DECIMAL (10, 2) NULL,
+    [SCONTO_TRASFERTA]  DECIMAL (10, 2) NULL,
+    [PROVV1_TRASFERTA]  DECIMAL (10, 2) NULL,
+    [PROVV2_TRASFERTA]  DECIMAL (10, 2) NULL,
+    [PROVV3_TRASFERTA]  DECIMAL (10, 2) NULL,
+    [CODART_KM]         VARCHAR (50)    NULL,
+    [PREZZO_KM]         DECIMAL (10, 2) NULL,
+    [SCONTO_KM]         DECIMAL (10, 2) NULL,
+    [PROVV1_KM]         DECIMAL (10, 2) NULL,
+    [PROVV2_KM]         DECIMAL (10, 2) NULL,
+    [PROVV3_KM]         DECIMAL (10, 2) NULL,
+    [UTENTEMODIFICA]    VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]      DATETIME        NOT NULL,
+    CONSTRAINT [PK_GEM_TMP_OreLavoro_Valorizzate] PRIMARY KEY CLUSTERED ([idSessione] ASC, [IDRAPPORTO] ASC, [idRiga] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[GEM_TMP_OreLavoro_Valorizzate] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[GEM_TMP_OreLavoro_Valorizzate] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GEM_TMP_OreLavoro_Valorizzate] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[GEM_TMP_OreLavoro_Valorizzate] TO [Metodo98]
+    AS [dbo];
+

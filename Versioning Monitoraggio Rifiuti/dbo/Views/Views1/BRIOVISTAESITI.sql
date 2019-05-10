@@ -1,0 +1,10 @@
+﻿CREATE VIEW dbo.BRIOVISTAESITI
+AS
+SELECT     *
+FROM         dbo.ESITI
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[BRIOVISTAESITI] TO [Metodo98]
+    AS [dbo];
+

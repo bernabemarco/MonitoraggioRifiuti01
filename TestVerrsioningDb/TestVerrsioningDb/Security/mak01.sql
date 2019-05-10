@@ -1,0 +1,3 @@
+﻿CREATE USER [mak01]
+    WITH DEFAULT_SCHEMA = [mak01];
+

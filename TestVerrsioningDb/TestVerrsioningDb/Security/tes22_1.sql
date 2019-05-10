@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [tes22]
+    AUTHORIZATION [tes22];
+

@@ -1,0 +1,52 @@
+﻿CREATE TABLE [dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] (
+    [IDRAPPORTO]        VARCHAR (14)    NOT NULL,
+    [IdRiga]            DECIMAL (5)     NOT NULL,
+    [IDRAPPORTO_RIF]    VARCHAR (14)    NOT NULL,
+    [TipologiaElemento] VARCHAR (1)     NULL,
+    [idRigaMateriali]   DECIMAL (5)     DEFAULT ((0)) NOT NULL,
+    [idRigaServizi]     DECIMAL (5)     DEFAULT ((0)) NOT NULL,
+    [idRigaOreLav]      DECIMAL (5)     DEFAULT ((0)) NOT NULL,
+    [CodArticolo]       VARCHAR (50)    NULL,
+    [DscrizioneRiga]    VARCHAR (255)   NULL,
+    [QTA]               NUMERIC (10, 2) DEFAULT ((0)) NOT NULL,
+    [PREZZO]            NUMERIC (10, 2) DEFAULT ((0)) NULL,
+    [SCONTO]            NUMERIC (10, 5) NULL,
+    [PROVVIGIONE1]      NUMERIC (18, 2) NULL,
+    [PROVVIGIONE2]      NUMERIC (18, 2) NULL,
+    [PROVVIGIONE3]      NUMERIC (18, 2) NULL,
+    [UTENTEMODIFICA]    VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]      DATETIME        NOT NULL,
+    [Posizione]         INT             DEFAULT ((0)) NULL,
+    CONSTRAINT [PK_GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] PRIMARY KEY CLUSTERED ([IDRAPPORTO] ASC, [IdRiga] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[GRI_RAPPORTI_ELEMENTI_DA_FATTURARE] TO [Metodo98]
+    AS [dbo];
+

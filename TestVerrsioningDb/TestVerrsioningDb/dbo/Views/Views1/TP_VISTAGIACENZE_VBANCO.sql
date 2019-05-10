@@ -1,0 +1,25 @@
+﻿
+CREATE VIEW TP_VISTAGIACENZE_VBANCO AS 
+
+SELECT     CODART, CODDEPOSITO,  SUM(CARICO) AS Carichi, SUM(RESODASCARICO) AS ResiDaScarico, SUM(SCARICO) AS Scarichi, 
+            SUM(RESODACARICO) AS ResiDaCarico, SUM(ORDINATO) AS Ordinato, SUM(IMPEGNATO) AS Impegnato
+FROM         VISTAGIACENZE
+WHERE     (CODDEPOSITO IN
+           (SELECT     CODICE
+            FROM          ANAGRAFICADEPOSITI
+            WHERE      DISPONIBILE = 1)) 
+           AND 
+          (ESERCIZIO <=
+           (SELECT     ESERCIZIOATTIVO
+            FROM       TABUTENTI
+            WHERE      USERDB = USER_NAME()))
+
+GROUP BY CODART, CODDEPOSITO
+
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_VISTAGIACENZE_VBANCO] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[AIOT_ULTCARSCAR] (
+    [SESSIONE]           DECIMAL (5)     NOT NULL,
+    [TIPO]               INT             NOT NULL,
+    [CODART]             VARCHAR (50)    NOT NULL,
+    [CODDEPOSITO]        VARCHAR (10)    NOT NULL,
+    [CODCLIFOR]          VARCHAR (7)     NULL,
+    [DSCCONTO1]          VARCHAR (80)    NULL,
+    [DATAMOV]            DATETIME        NULL,
+    [TIPODOC]            VARCHAR (3)     NULL,
+    [CODCAUSALE]         DECIMAL (5)     NOT NULL,
+    [IMPORTOTOTLORDOVAL] DECIMAL (19, 4) NOT NULL,
+    [IMPORTOTOTNETTOVAL] DECIMAL (19, 4) NOT NULL,
+    [PREZZOUNITNETTO]    DECIMAL (19, 6) NOT NULL,
+    [PREZZOUNITLORDO]    DECIMAL (19, 6) NOT NULL,
+    [SCONTIESTESI]       VARCHAR (400)   NULL,
+    [QTA1UM]             DECIMAL (16, 6) NOT NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[AIOT_ULTCARSCAR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[AIOT_ULTCARSCAR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[AIOT_ULTCARSCAR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[AIOT_ULTCARSCAR] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[AIOT_ULTCARSCAR] TO [Metodo98]
+    AS [dbo];
+

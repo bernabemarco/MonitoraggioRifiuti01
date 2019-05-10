@@ -1,0 +1,47 @@
+﻿CREATE TABLE [dbo].[TP_CONFIG_LISTINI_VENDITA] (
+    [NOME]            VARCHAR (50)    NOT NULL,
+    [DATAEFFETTO]     DATETIME        NOT NULL,
+    [ATTIVA]          SMALLINT        NULL,
+    [TIPO]            CHAR (1)        NOT NULL,
+    [CODICE]          VARCHAR (50)    NOT NULL,
+    [CODLISTINO]      NUMERIC (5)     NOT NULL,
+    [CODLISTPADRE]    NUMERIC (5)     NOT NULL,
+    [SEGNO]           CHAR (1)        NOT NULL,
+    [SCMAGESTESO]     VARCHAR (15)    NOT NULL,
+    [SCMAG]           NUMERIC (19, 6) NOT NULL,
+    [IDSchedulazione] NUMERIC (10)    NULL,
+    [UTENTEMODIFICA]  VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]    DATETIME        NOT NULL,
+    [MODIFICATO]      SMALLINT        NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_CONFIG_LISTINI_VENDITA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_CONFIG_LISTINI_VENDITA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_CONFIG_LISTINI_VENDITA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_CONFIG_LISTINI_VENDITA] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_CONFIG_LISTINI_VENDITA] TO [Metodo98]
+    AS [dbo];
+

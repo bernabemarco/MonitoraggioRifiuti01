@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] (
+    [Codice]                        DECIMAL (5)    NOT NULL,
+    [QuerySelezione]                VARCHAR (MAX)  DEFAULT ('') NOT NULL,
+    [TabellaDestinazione]           VARCHAR (255)  DEFAULT ('') NOT NULL,
+    [Attiva]                        SMALLINT       DEFAULT ((1)) NOT NULL,
+    [UTENTEMODIFICA]                VARCHAR (25)   DEFAULT (user_name()) NOT NULL,
+    [DATAMODIFICA]                  DATETIME       DEFAULT (getdate()) NOT NULL,
+    [CHIAVIDESTINAZIONE]            VARCHAR (255)  CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_CHIAVIDESTINAZIONE] DEFAULT ('') NOT NULL,
+    [DESCRIZIONE]                   VARCHAR (80)   CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_DESCRIZIONE] DEFAULT ('') NOT NULL,
+    [ProcessoPreEsecuzione]         VARCHAR (1000) CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_ProcessoPreEsecuzione] DEFAULT ('') NOT NULL,
+    [SpPreEsecuzione]               VARCHAR (255)  CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_SpPreEsecuzione] DEFAULT ('') NOT NULL,
+    [SpPostEsecuzione]              VARCHAR (255)  CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_SpPostEsecuzione] DEFAULT ('') NOT NULL,
+    [OrdineEsecuzione]              INT            CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_OrdineEsecuzione] DEFAULT ((0)) NOT NULL,
+    [ColonneEscluseDaAggiornamento] VARCHAR (255)  CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_ColonneEscluseDaAggiornamento] DEFAULT ('') NOT NULL,
+    [ProcessoPostEsecuzione]        VARCHAR (1000) CONSTRAINT [DF_SST_IMG_TABCFGSINCRONIZZAZIONE_ProcessoPostEsecuzione] DEFAULT ('') NOT NULL,
+    PRIMARY KEY CLUSTERED ([Codice] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[SST_IMG_TABCFGSINCRONIZZAZIONE] TO [Metodo98]
+    AS [dbo];
+

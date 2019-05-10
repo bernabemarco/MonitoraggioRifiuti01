@@ -1,0 +1,26 @@
+﻿
+CREATE FUNCTION [dbo].[FunBarCode](@Esercizio Int, @Articolo NVARCHAR(50))
+RETURNS nVARCHAR(80)
+AS
+BEGIN
+
+DECLARE @BARCODE nVARCHAR(80)
+	
+	SET @BARCODE = ''
+
+	SELECT @BARCODE=BarCode FROM ANAGRAFICAARTICOLICOMM WHERE CODICEART=@Articolo AND ESERCIZIO = @Esercizio
+	
+	RETURN(@BARCODE)
+END
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[FunBarCode] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[FunBarCode] TO [Metodo98]
+    AS [dbo];
+

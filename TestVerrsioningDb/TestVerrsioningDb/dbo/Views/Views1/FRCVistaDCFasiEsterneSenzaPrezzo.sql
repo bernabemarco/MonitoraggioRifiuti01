@@ -1,0 +1,10 @@
+﻿
+CREATE VIEW FRCVistaDCFasiEsterneSenzaPrezzo AS 
+	SELECT * FROM FRCVistaArticoliVB
+	WHERE EXISTS (SELECT COMPOSTO FROM FRCDistinteCicliEsplose WHERE COMPOSTO = FRCVistaArticoliVB.CODART AND ANNO = FRCVistaArticoliVB.ANNODOC AND TIPOFASE = 1 AND ISNULL(COSTOESTERNOEURO, 0) = 0)
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[FRCVistaDCFasiEsterneSenzaPrezzo] TO [Metodo98]
+    AS [dbo];
+

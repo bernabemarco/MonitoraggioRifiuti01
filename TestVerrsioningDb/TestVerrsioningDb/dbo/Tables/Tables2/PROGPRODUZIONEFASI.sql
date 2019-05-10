@@ -1,0 +1,72 @@
+﻿CREATE TABLE [dbo].[PROGPRODUZIONEFASI] (
+    [NOMEPIANIF]         VARCHAR (30)    NOT NULL,
+    [PROG_ID]            DECIMAL (20)    NOT NULL,
+    [FASE_ID]            INT             NOT NULL,
+    [TIPO]               SMALLINT        NULL,
+    [TIPOFASE]           SMALLINT        NULL,
+    [OPERAZIONE]         VARCHAR (5)     NULL,
+    [CDLAVORO]           VARCHAR (5)     NULL,
+    [MACCHINA]           VARCHAR (5)     NULL,
+    [ORESETUP]           DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREMACCHINA]        DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREUOMO]            DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREDURATA]          DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREMOVIMENTAZIONE]  DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [ORECODA]            DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREATTRAVERSAMENTO] DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [FORNITOREASSEGNATO] VARCHAR (7)     NULL,
+    [QTAPREVISTA]        DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [UMGEST]             VARCHAR (3)     NULL,
+    [QTAFASE]            DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [UMFASE]             VARCHAR (3)     NULL,
+    [DATAINIZIO]         DATETIME        NULL,
+    [ORAINIZIO]          DATETIME        NULL,
+    [DATAFINE]           DATETIME        NULL,
+    [ORAFINE]            DATETIME        NULL,
+    [RIFPROGRESSIVO]     DECIMAL (10)    NOT NULL,
+    [RIFNUMEROFASE]      INT             NOT NULL,
+    [RIFNUMEROFASESUCC]  INT             DEFAULT ((-1)) NULL,
+    [NUMEROOPERAI]       DECIMAL (16, 6) NULL,
+    [UTENTEMODIFICA]     VARCHAR (25)    NULL,
+    [DATAMODIFICA]       DATETIME        NULL,
+    [DATAFABBISOGNO]     DATETIME        NULL,
+    [TIPOMODIFICA]       SMALLINT        DEFAULT ((0)) NULL,
+    [QTAVERSATA]         DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [OREDURATAVERSATA]   DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [DISPRISORSE]        SMALLINT        NULL,
+    [INDICECAPACITA]     SMALLINT        NULL,
+    [EMETTIORDINE]       SMALLINT        DEFAULT ((0)) NULL,
+    [IDSESSIONE]         INT             NULL,
+    [RIFSOVRAPP]         VARCHAR (9)     NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[PROGPRODUZIONEFASI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[PROGPRODUZIONEFASI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[PROGPRODUZIONEFASI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[PROGPRODUZIONEFASI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[PROGPRODUZIONEFASI] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,115 @@
+﻿CREATE TABLE [dbo].[CONTRATTI_CON] (
+    [PROGRESSIVO]                      DECIMAL (10)    NOT NULL,
+    [UTENTEMODIFICA]                   VARCHAR (50)    NOT NULL,
+    [DATAMODIFICA]                     DATETIME        NOT NULL,
+    [RIFCONTRATTO]                     DECIMAL (18)    NOT NULL,
+    [DADATA]                           DATETIME        NOT NULL,
+    [ADATA]                            DATETIME        NOT NULL,
+    [NOTE]                             VARCHAR (500)   NULL,
+    [SCONTOINCONDIZIONATO]             VARCHAR (100)   NULL,
+    [TIPOCALCOLOPREMIO]                SMALLINT        DEFAULT (0) NULL,
+    [EMESSO]                           SMALLINT        DEFAULT (0) NULL,
+    [TIPODOC]                          VARCHAR (3)     NULL,
+    [IVA]                              VARCHAR (3)     NULL,
+    [PAGAMENTO]                        VARCHAR (4)     NULL,
+    [SOTTOCONTOCONTABILE]              VARCHAR (7)     NULL,
+    [RIFPROGRESSIVODOC]                DECIMAL (10)    NULL,
+    [VALOREEFFETTIVO]                  DECIMAL (19, 6) NULL,
+    [DATAEFFETTIVA]                    DATETIME        NULL,
+    [BUDGET_QTA]                       DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [BUDGET_VALORE]                    DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [UM]                               VARCHAR (3)     NULL,
+    [CODSCONTO]                        VARCHAR (5)     DEFAULT ('') NULL,
+    [TIPORESO]                         SMALLINT        DEFAULT ((0)) NULL,
+    [TIPODOC_COST_MANCRES]             VARCHAR (3)     NULL,
+    [IVA_COST_MANCRES]                 VARCHAR (3)     NULL,
+    [PAGAMENTO_COST_MANCRES]           VARCHAR (4)     NULL,
+    [SOTTOCONTOCONTABILE_COST_MANCRES] VARCHAR (7)     NULL,
+    [RIFPROGRESSIVODOC_COST_MANCRES]   DECIMAL (10)    NULL,
+    [PRCAG1]                           SMALLINT        DEFAULT ((0)) NULL,
+    [PRCAG2]                           SMALLINT        DEFAULT ((0)) NULL,
+    [PRCAG3]                           SMALLINT        DEFAULT ((0)) NULL,
+    [ESCLUSOLOGICAMENTE]               SMALLINT        DEFAULT ((0)) NULL,
+    [LiqIntestaCFFatt]                 SMALLINT        DEFAULT ((0)) NULL,
+    [LiquidaPerArticolo]               SMALLINT        DEFAULT ((0)) NULL,
+    PRIMARY KEY CLUSTERED ([PROGRESSIVO] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+
+
+CREATE TRIGGER CANCELLACON ON CONTRATTI_CON
+FOR DELETE 
+AS
+
+    BEGIN   
+
+       DELETE CONTRATTIDOC_CON
+       FROM   CONTRATTIDOC_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTIGRP_CON
+       FROM   CONTRATTIGRP_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTICAT_CON
+       FROM   CONTRATTICAT_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTICATST_CON
+       FROM   CONTRATTICATST_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTIGRPPRZ_CON
+       FROM   CONTRATTIGRPPRZ_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTIFAMREP_CON
+       FROM   CONTRATTIFAMREP_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTIART_CON
+       FROM   CONTRATTIART_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+       DELETE CONTRATTICC_DATELIQ
+       FROM   CONTRATTICC_DATELIQ T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVOCC  = T1.PROGRESSIVO
+
+       DELETE CONTRATTIRANGE_CON
+       FROM   CONTRATTIRANGE_CON T2, DELETED T1
+       WHERE  T2.RIFPROGRESSIVO = T1.PROGRESSIVO
+
+    END
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CONTRATTI_CON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CONTRATTI_CON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CONTRATTI_CON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CONTRATTI_CON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CONTRATTI_CON] TO [Metodo98]
+    AS [dbo];
+

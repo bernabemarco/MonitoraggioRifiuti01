@@ -1,0 +1,50 @@
+﻿CREATE TABLE [dbo].[TP_RUBRICA_ORC] (
+    [IDRubrica]        NUMERIC (18) IDENTITY (1, 1) NOT NULL,
+    [CodConto]         CHAR (7)     NOT NULL,
+    [ModalitaChiamata] CHAR (1)     NOT NULL,
+    [ApertoSabato]     CHAR (1)     NOT NULL,
+    [Operatore]        VARCHAR (30) NOT NULL,
+    [UTENTEMODIFICA]   VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]     DATETIME     NOT NULL,
+    CONSTRAINT [PK_TP_RUBRICA_ORC] PRIMARY KEY NONCLUSTERED ([IDRubrica] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+CREATE TRIGGER DELETE_PIANIFICAZIONE_RUB_ORC ON TP_RUBRICA_ORC 
+FOR DELETE 
+AS
+ DELETE TP_PIANIFICAZIONE_RUB_ORC
+    FROM   TP_PIANIFICAZIONE_RUB_ORC T2, DELETED T1
+    WHERE  T2.idrubrica = T1.idrubrica
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_RUBRICA_ORC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_RUBRICA_ORC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_RUBRICA_ORC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_RUBRICA_ORC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_RUBRICA_ORC] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [masik06]
+    AUTHORIZATION [masik06];
+

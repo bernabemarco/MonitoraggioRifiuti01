@@ -1,0 +1,51 @@
+﻿CREATE TABLE [dbo].[TP_GIROVISITE_RIGHE] (
+    [RIFProgressivo] DECIMAL (18) NOT NULL,
+    [NRRiga]         INT          NOT NULL,
+    [FlagRiga]       SMALLINT     NULL,
+    [Posizione]      INT          NULL,
+    [CODCONTO]       VARCHAR (7)  NOT NULL,
+    [OrarioPMAM]     VARCHAR (1)  NULL,
+    [Periodicita]    VARCHAR (1)  NULL,
+    [OrarioVisite]   CHAR (5)     NULL,
+    [Giorno]         VARCHAR (1)  NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    [emailcontatto]  VARCHAR (50) NULL,
+    [idmsgcontatto]  INT          NULL,
+    [GiornoConsegna] SMALLINT     DEFAULT (0) NULL,
+    [DISATSELCLIDOC] SMALLINT     DEFAULT (0) NULL,
+    [TIPOCLIENTE]    VARCHAR (50) NULL,
+    CONSTRAINT [PK_TP_GIROVISITE_RIGHE] PRIMARY KEY CLUSTERED ([RIFProgressivo] ASC, [NRRiga] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [FK_TP_GIROVISITE_RIGHE_CODCONTO] FOREIGN KEY ([CODCONTO]) REFERENCES [dbo].[ANAGRAFICACF] ([CODCONTO]) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_GIROVISITE_RIGHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_GIROVISITE_RIGHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_GIROVISITE_RIGHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_GIROVISITE_RIGHE] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_GIROVISITE_RIGHE] TO [Metodo98]
+    AS [dbo];
+

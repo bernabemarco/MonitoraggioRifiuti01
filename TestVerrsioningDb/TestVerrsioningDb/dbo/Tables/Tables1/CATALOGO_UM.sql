@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[CATALOGO_UM] (
+    [IDUM]           INT          NOT NULL,
+    [UMMETODO]       VARCHAR (3)  NOT NULL,
+    [UTENTEMODIFICA] VARCHAR (25) NOT NULL,
+    [DATAMODIFICA]   DATETIME     NOT NULL,
+    PRIMARY KEY CLUSTERED ([IDUM] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CATALOGO_UM] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CATALOGO_UM] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CATALOGO_UM] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CATALOGO_UM] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CATALOGO_UM] TO [Metodo98]
+    AS [dbo];
+

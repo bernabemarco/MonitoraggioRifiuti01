@@ -1,0 +1,40 @@
+﻿CREATE TABLE [dbo].[CONTRATTIDOC_NCIMP] (
+    [RIFPROGRESSIVO] DECIMAL (10)    NOT NULL,
+    [NRRIGA]         INT             NOT NULL,
+    [TIPODOC]        VARCHAR (3)     NOT NULL,
+    [PERCENTUALE]    DECIMAL (16, 6) DEFAULT ((0)) NOT NULL,
+    [UtenteModifica] VARCHAR (25)    NOT NULL,
+    [DataModifica]   DATETIME        NOT NULL,
+    PRIMARY KEY CLUSTERED ([RIFPROGRESSIVO] ASC, [NRRIGA] ASC, [TIPODOC] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[CONTRATTIDOC_NCIMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[CONTRATTIDOC_NCIMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[CONTRATTIDOC_NCIMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[CONTRATTIDOC_NCIMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[CONTRATTIDOC_NCIMP] TO [Metodo98]
+    AS [dbo];
+

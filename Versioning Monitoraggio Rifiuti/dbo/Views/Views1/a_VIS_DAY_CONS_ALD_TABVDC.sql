@@ -1,0 +1,18 @@
+﻿CREATE VIEW [dbo].a_VIS_DAY_CONS_ALD_TABVDC AS
+	SELECT TOP 1000 [idVDC]
+	 ,[Descrizione]
+	,[UTENTEMODIFICA]
+	,[DATAMODIFICA]
+	 FROM [ConsMFM].[dbo].[CONS_ALD_TabVDC]
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[a_VIS_DAY_CONS_ALD_TABVDC] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[a_VIS_DAY_CONS_ALD_TABVDC] TO [Metodo98]
+    AS [dbo];
+

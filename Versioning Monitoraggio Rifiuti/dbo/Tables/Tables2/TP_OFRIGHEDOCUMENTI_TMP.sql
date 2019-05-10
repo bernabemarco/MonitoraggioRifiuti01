@@ -1,0 +1,57 @@
+﻿CREATE TABLE [dbo].[TP_OFRIGHEDOCUMENTI_TMP] (
+    [RIFPROGRESSIVO]           DECIMAL (10)    NOT NULL,
+    [IDTESTA]                  DECIMAL (10)    NOT NULL,
+    [IDRIGA]                   DECIMAL (10)    NOT NULL,
+    [CODDEPOSITO]              VARCHAR (10)    NOT NULL,
+    [CODART]                   VARCHAR (50)    NOT NULL,
+    [DATACONSEGNA]             DATETIME        NOT NULL,
+    [QTAGEST]                  DECIMAL (18, 6) NOT NULL,
+    [NUMLISTINO]               DECIMAL (5)     NOT NULL,
+    [UMGEST]                   VARCHAR (3)     NOT NULL,
+    [PREZZOUNITLORDO]          DECIMAL (18, 6) NOT NULL,
+    [PREZZOUNITLORDOEURO]      DECIMAL (18, 6) NOT NULL,
+    [SCONTIESTESI]             VARCHAR (250)   NOT NULL,
+    [TP_FORMULASCT]            VARCHAR (1000)  NOT NULL,
+    [TREDICESIME]              SMALLINT        NOT NULL,
+    [UTENTEMODIFICA]           VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]             DATETIME        NOT NULL,
+    [PREZZOUNITNETTO]          DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [PREZZOUNITNETTOEURO]      DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [TOTNETTORIGA]             DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [TOTNETTORIGAEURO]         DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [ANNOTAZIONI]              VARCHAR (100)   NULL,
+    [CODIVA]                   DECIMAL (5)     DEFAULT ((0)) NULL,
+    [ComposizioneEstemporaneo] VARCHAR (1000)  DEFAULT ('') NULL,
+    PRIMARY KEY CLUSTERED ([RIFPROGRESSIVO] ASC, [IDTESTA] ASC, [IDRIGA] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_OFRIGHEDOCUMENTI_TMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_OFRIGHEDOCUMENTI_TMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_OFRIGHEDOCUMENTI_TMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_OFRIGHEDOCUMENTI_TMP] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_OFRIGHEDOCUMENTI_TMP] TO [Metodo98]
+    AS [dbo];
+

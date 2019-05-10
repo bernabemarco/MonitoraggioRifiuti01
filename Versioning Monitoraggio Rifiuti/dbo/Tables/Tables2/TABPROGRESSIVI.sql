@@ -1,0 +1,66 @@
+﻿CREATE TABLE [dbo].[TABPROGRESSIVI] (
+    [NOMETABELLA] VARCHAR (80) NOT NULL,
+    [PROGR]       DECIMAL (10) DEFAULT (0) NULL,
+    CONSTRAINT [PK_TABPROGRESSIVI] PRIMARY KEY CLUSTERED ([NOMETABELLA] ASC) WITH (FILLFACTOR = 90)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [AnaBilancio]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [AnaBilancio]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [AnaBilancio]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [AnaBilancio]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TABPROGRESSIVI] TO [AnaBilancio]
+    AS [dbo];
+

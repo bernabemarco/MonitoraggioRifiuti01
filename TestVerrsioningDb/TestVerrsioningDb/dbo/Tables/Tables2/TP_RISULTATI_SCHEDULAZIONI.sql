@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[TP_RISULTATI_SCHEDULAZIONI] (
+    [IDAzioneSchedulata] DECIMAL (10) NOT NULL,
+    [IDRiga]             DECIMAL (10) NOT NULL,
+    [NomeRiga]           VARCHAR (50) NULL,
+    [Riga]               TEXT         NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TP_RISULTATI_SCHEDULAZIONI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TP_RISULTATI_SCHEDULAZIONI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[TP_RISULTATI_SCHEDULAZIONI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TP_RISULTATI_SCHEDULAZIONI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TP_RISULTATI_SCHEDULAZIONI] TO [Metodo98]
+    AS [dbo];
+

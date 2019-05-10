@@ -1,0 +1,35 @@
+﻿
+
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ GRI_VIEW_ORE_ADDEBITO
+CREATE VIEW GRI_VIEW_ORE_ADDEBITO AS 
+	SELECT * FROM GRI_T_TAB_ORE_ADDEBITO
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[GRI_VIEW_ORE_ADDEBITO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[GRI_VIEW_ORE_ADDEBITO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[GRI_VIEW_ORE_ADDEBITO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[GRI_VIEW_ORE_ADDEBITO] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[GRI_VIEW_ORE_ADDEBITO] TO [Metodo98]
+    AS [dbo];
+

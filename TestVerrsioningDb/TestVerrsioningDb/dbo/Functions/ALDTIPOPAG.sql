@@ -1,0 +1,33 @@
+﻿
+CREATE FUNCTION dbo.ALDTIPOPAG (@tipoeffetto numeric(5,0),@esito numeric (5,0))  
+RETURNS VARCHAR(2) AS  
+BEGIN 
+	DECLARE @PAGAMENTO VARCHAR(2)
+
+	SET @PAGAMENTO=''
+	IF @esito=3
+	BEGIN 
+		SET @PAGAMENTO = 'IN'
+	END
+	ELSE
+	BEGIN
+		SET @PAGAMENTO=(SELECT TIPOPAGAMENTO  FROM  ALDEBRA_TIPOPAGAMENTO WHERE aldebra_tipopagamento.CodiceEffetto = @TIPOEFFETTO)
+	END
+	RETURN @PAGAMENTO
+END
+
+
+
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[ALDTIPOPAG] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[ALDTIPOPAG] TO [Metodo98]
+    AS [dbo];
+

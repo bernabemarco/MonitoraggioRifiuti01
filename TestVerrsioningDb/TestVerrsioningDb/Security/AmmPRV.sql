@@ -1,0 +1,3 @@
+﻿CREATE USER [AmmPRV]
+    WITH DEFAULT_SCHEMA = [AmmPRV];
+

@@ -1,0 +1,48 @@
+﻿
+
+CREATE VIEW dbo.VISTATP_ELENCOCLI
+AS
+SELECT     TOP 100 PERCENT dbo.ANAGRAFICACF.CODCONTO, dbo.ANAGRAFICACF.DSCCONTO1, dbo.ANAGRAFICARISERVATICF.ESERCIZIO, 
+                      dbo.ANAGRAFICACF.LOCALITA, dbo.ANAGRAFICARISERVATICF.CODSETTORE, dbo.ANAGRAFICARISERVATICF.CODZONA, 
+                      dbo.ANAGRAFICARISERVATICF.CODGRUPPOPREZZIPART, CASE WHEN tp_expffido.fido_disponibile < 0 AND 
+                      fido_cliente > 0 THEN 'X' ELSE '' END AS 'FUORIFIDO', anagraficacf.note
+FROM         dbo.ANAGRAFICACF INNER JOIN
+                      dbo.ANAGRAFICARISERVATICF ON dbo.ANAGRAFICACF.CODCONTO = dbo.ANAGRAFICARISERVATICF.CODCONTO LEFT OUTER JOIN
+                      dbo.TP_ExpFFido ON dbo.ANAGRAFICARISERVATICF.ESERCIZIO = dbo.TP_ExpFFido.ESERCIZIO AND 
+                      dbo.ANAGRAFICARISERVATICF.CODCONTO = dbo.TP_ExpFFido.CLIENTE
+WHERE     tipoconto = 'C' AND dbo.ANAGRAFICACF.CODCONTO NOT IN
+                          (SELECT     CODCONTO
+                            FROM          TP_GIROVISITE_RIGHE
+                            WHERE      DISATSELCLIDOC = 1)
+ORDER BY anagraficacf.dscconto1
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[VISTATP_ELENCOCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[VISTATP_ELENCOCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[VISTATP_ELENCOCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTATP_ELENCOCLI] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[VISTATP_ELENCOCLI] TO [Metodo98]
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [tez06]
+    WITH DEFAULT_SCHEMA = [tez06];
+

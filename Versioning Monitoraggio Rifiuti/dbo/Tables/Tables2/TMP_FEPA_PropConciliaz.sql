@@ -1,0 +1,64 @@
+﻿CREATE TABLE [dbo].[TMP_FEPA_PropConciliaz] (
+    [ID]               DECIMAL (10)    DEFAULT ((0)) NOT NULL,
+    [TIPORIGA]         VARCHAR (1)     DEFAULT ('') NULL,
+    [CODART]           VARCHAR (50)    DEFAULT ('') NULL,
+    [DESCRIZIONEART]   VARCHAR (80)    DEFAULT ('') NULL,
+    [DATACONSEGNA]     DATETIME        NULL,
+    [UMGEST]           VARCHAR (3)     DEFAULT ('') NULL,
+    [QTAGEST]          DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [PREZZOUNITLORDO]  DECIMAL (19, 6) DEFAULT ((0)) NULL,
+    [SCONTIESTESI]     VARCHAR (100)   DEFAULT ('') NULL,
+    [CODIVA]           DECIMAL (5)     DEFAULT ((0)) NULL,
+    [CODIMBALLO]       VARCHAR (10)    DEFAULT ('') NULL,
+    [NRPEZZIIMBALLO]   DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [NRCOLLI]          DECIMAL (16, 6) DEFAULT ((0)) NULL,
+    [GENCONTROP]       VARCHAR (7)     DEFAULT ('') NULL,
+    [DATAINIZIOCOMP]   DATETIME        NULL,
+    [DATAFINECOMP]     DATETIME        NULL,
+    [CAUSALEMAG]       DECIMAL (5)     DEFAULT ((0)) NULL,
+    [CODDEPOSITO]      VARCHAR (10)    DEFAULT ('') NULL,
+    [NRRIFPARTITA]     VARCHAR (50)    DEFAULT ('') NULL,
+    [MATRICOLE]        VARCHAR (20)    DEFAULT ('') NULL,
+    [CAUSALEMAGCOLL]   DECIMAL (5)     DEFAULT ((0)) NULL,
+    [CODDEPOSITOCOLL]  VARCHAR (10)    DEFAULT ('') NULL,
+    [RIFCOMMCLI]       VARCHAR (30)    DEFAULT ('') NULL,
+    [NOMENCLCOMBINATA] VARCHAR (8)     DEFAULT ('') NULL,
+    [PROVENIENZAINTRA] VARCHAR (3)     DEFAULT ('') NULL,
+    [ORIGINEINTRA]     VARCHAR (2)     DEFAULT ('') NULL,
+    [ANNOTAZIONI]      VARCHAR (1000)  DEFAULT ('') NULL,
+    [FLGMATRICOLE]     SMALLINT        DEFAULT ((0)) NULL,
+    [UTENTEMODIFICA]   VARCHAR (25)    NOT NULL,
+    [DATAMODIFICA]     DATETIME        NOT NULL,
+    [CONTOCDC]         VARCHAR (10)    DEFAULT ('') NULL,
+    [ANNOINIZIOCOMP]   SMALLINT        DEFAULT ((0)) NULL,
+    [ANNOFINECOMP]     SMALLINT        DEFAULT ((0)) NULL,
+    [MESEINIZIOCOMP]   SMALLINT        DEFAULT ((0)) NULL,
+    [MESEFINECOMP]     SMALLINT        DEFAULT ((0)) NULL,
+    [IDCDC]            VARCHAR (80)    DEFAULT ('') NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[TMP_FEPA_PropConciliaz] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[TMP_FEPA_PropConciliaz] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[TMP_FEPA_PropConciliaz] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[TMP_FEPA_PropConciliaz] TO [Metodo98]
+    AS [dbo];
+

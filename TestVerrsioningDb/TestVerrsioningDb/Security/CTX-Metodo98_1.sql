@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [CTX-Metodo98]
+    AUTHORIZATION [CTX-Metodo98];
+

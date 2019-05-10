@@ -1,0 +1,37 @@
+﻿
+
+CREATE VIEW [dbo].[VISTA_MB_CODICI_TIPI]
+AS
+    SELECT
+        TIPO,
+        DESCRIZIONETIPO,
+        CASE TIPOCLIFOR WHEN 'X' THEN CODICE ELSE dbo.MB_FUSConvertCodeDiscount(CODICE,TIPOCLIFOR) END AS CODICE,
+        DESCRIZIONE
+    FROM
+    (
+        SELECT
+            R.CODRAGGRUPPAMENTO AS TIPO,
+            T.DESCRIZIONE AS DESCRIZIONETIPO,
+            R.CODSCONTO AS CODICE,
+            V.DESCRIZIONE AS DESCRIZIONE,
+            (
+            CASE T.TIPOCONTO
+                WHEN 0 THEN 'T'
+                WHEN 1 THEN 'C'
+                WHEN 2 THEN 'F'
+            END
+            ) AS TIPOCLIFOR
+        FROM
+            MB_RAGGRUPPAMENTO_CODICI_TESTE T,
+            MB_RAGGRUPPAMENTO_CODICI_RIGHE R,
+            VISTA_TRASPORTO_CODICI V
+        WHERE
+            R.CODRAGGRUPPAMENTO = T.CODICE AND
+            V.CODICE = R.CODSCONTO
+    ) A
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[VISTA_MB_CODICI_TIPI] TO [Metodo98]
+    AS [dbo];
+

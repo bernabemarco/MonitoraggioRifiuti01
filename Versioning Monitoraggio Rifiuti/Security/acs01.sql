@@ -1,0 +1,3 @@
+﻿CREATE USER [acs01]
+    WITH DEFAULT_SCHEMA = [acs01];
+

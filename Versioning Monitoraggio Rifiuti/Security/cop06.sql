@@ -1,0 +1,3 @@
+﻿CREATE USER [cop06]
+    WITH DEFAULT_SCHEMA = [cop06];
+

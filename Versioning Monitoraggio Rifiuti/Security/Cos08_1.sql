@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Cos08]
+    AUTHORIZATION [Cos08];
+

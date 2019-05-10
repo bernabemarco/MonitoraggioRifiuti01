@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[ADA_IMPORTAZIONI_MOVCON] (
+    [CODICE_IMPORTAZIONE] VARCHAR (36) NOT NULL,
+    [PROGRESSIVO]         DECIMAL (10) NOT NULL,
+    [utentemodifica]      VARCHAR (25) NULL,
+    [datamodifica]        DATETIME     NULL
+);
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[ADA_IMPORTAZIONI_MOVCON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[ADA_IMPORTAZIONI_MOVCON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT REFERENCES
+    ON OBJECT::[dbo].[ADA_IMPORTAZIONI_MOVCON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[ADA_IMPORTAZIONI_MOVCON] TO [Metodo98]
+    AS [dbo];
+
+
+GO
+GRANT UPDATE
+    ON OBJECT::[dbo].[ADA_IMPORTAZIONI_MOVCON] TO [Metodo98]
+    AS [dbo];
+
