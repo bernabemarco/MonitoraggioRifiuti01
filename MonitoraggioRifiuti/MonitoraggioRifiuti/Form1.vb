@@ -17,7 +17,7 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim FrmDett As New DettaglioDoc
-
+        'Tst inserimento di prova
         FrmDett.Show()
 
 
