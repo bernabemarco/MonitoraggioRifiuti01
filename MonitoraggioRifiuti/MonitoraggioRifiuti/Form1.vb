@@ -3,9 +3,9 @@
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
         Me.Codici_CERTableAdapter.Fill(Me.SicuraDataSet.Codici_CER)
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.EXTRATESTERIFIUTI'. È possibile spostarla o rimuoverla se necessario.
-        Me.EXTRATESTERIFIUTITableAdapter.Fill(Me.SicuraDataSet.EXTRATESTERIFIUTI)
+        Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Biri_MonitoraggioRifiuti'. È possibile spostarla o rimuoverla se necessario.
-        Me.Biri_MonitoraggioRifiutiTableAdapter.Fill(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
+        Me.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
 
     End Sub
 
