@@ -23,12 +23,7 @@ Partial Class DettaglioDoc
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
-        Me.RIGHEDOCUMENTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RIGHEDOCUMENTITableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.RIGHEDOCUMENTITableAdapter()
-        Me.TableAdapterManager = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager()
         Me.RIGHEDOCUMENTIDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -40,52 +35,26 @@ Partial Class DettaglioDoc
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RIGHEDOCUMENTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
+        Me.RIGHEDOCUMENTITableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.RIGHEDOCUMENTITableAdapter()
+        Me.TableAdapterManager = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager()
         CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'SicuraDataSet
-        '
-        Me.SicuraDataSet.DataSetName = "SicuraDataSet"
-        Me.SicuraDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'RIGHEDOCUMENTIBindingSource
-        '
-        Me.RIGHEDOCUMENTIBindingSource.DataMember = "RIGHEDOCUMENTI"
-        Me.RIGHEDOCUMENTIBindingSource.DataSource = Me.SicuraDataSet
-        '
-        'RIGHEDOCUMENTITableAdapter
-        '
-        Me.RIGHEDOCUMENTITableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Codici_CERTableAdapter = Nothing
-        Me.TableAdapterManager.EXTRATESTEDOCTableAdapter = Nothing
-        Me.TableAdapterManager.EXTRATESTERIFIUTITableAdapter = Nothing
-        Me.TableAdapterManager.RIGHEDOCUMENTITableAdapter = Me.RIGHEDOCUMENTITableAdapter
-        Me.TableAdapterManager.UpdateOrder = MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'RIGHEDOCUMENTIDataGridView
         '
         Me.RIGHEDOCUMENTIDataGridView.AutoGenerateColumns = False
         Me.RIGHEDOCUMENTIDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.RIGHEDOCUMENTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
+        Me.RIGHEDOCUMENTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
         Me.RIGHEDOCUMENTIDataGridView.DataSource = Me.RIGHEDOCUMENTIBindingSource
         Me.RIGHEDOCUMENTIDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RIGHEDOCUMENTIDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.RIGHEDOCUMENTIDataGridView.Name = "RIGHEDOCUMENTIDataGridView"
         Me.RIGHEDOCUMENTIDataGridView.Size = New System.Drawing.Size(800, 450)
         Me.RIGHEDOCUMENTIDataGridView.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "IDTESTA"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "IDTESTA"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Visible = False
         '
         'DataGridViewTextBoxColumn2
         '
@@ -155,6 +124,29 @@ Partial Class DettaglioDoc
         Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
         Me.DataGridViewTextBoxColumn12.Visible = False
         '
+        'RIGHEDOCUMENTIBindingSource
+        '
+        Me.RIGHEDOCUMENTIBindingSource.DataMember = "RIGHEDOCUMENTI"
+        Me.RIGHEDOCUMENTIBindingSource.DataSource = Me.SicuraDataSet
+        '
+        'SicuraDataSet
+        '
+        Me.SicuraDataSet.DataSetName = "SicuraDataSet"
+        Me.SicuraDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'RIGHEDOCUMENTITableAdapter
+        '
+        Me.RIGHEDOCUMENTITableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Codici_CERTableAdapter = Nothing
+        Me.TableAdapterManager.EXTRATESTEDOCTableAdapter = Nothing
+        Me.TableAdapterManager.EXTRATESTERIFIUTITableAdapter = Nothing
+        Me.TableAdapterManager.RIGHEDOCUMENTITableAdapter = Me.RIGHEDOCUMENTITableAdapter
+        Me.TableAdapterManager.UpdateOrder = MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
         'DettaglioDoc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -163,9 +155,9 @@ Partial Class DettaglioDoc
         Me.Controls.Add(Me.RIGHEDOCUMENTIDataGridView)
         Me.Name = "DettaglioDoc"
         Me.Text = "DettaglioDoc"
-        CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
