@@ -23,116 +23,33 @@ Partial Class DettaglioDoc
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
+        Me.RIGHEDOCUMENTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RIGHEDOCUMENTITableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.RIGHEDOCUMENTITableAdapter()
+        Me.TableAdapterManager = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager()
         Me.RIGHEDOCUMENTIDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RIGHEDOCUMENTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
-        Me.RIGHEDOCUMENTITableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.RIGHEDOCUMENTITableAdapter()
-        Me.TableAdapterManager = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager()
-        CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'RIGHEDOCUMENTIDataGridView
-        '
-        Me.RIGHEDOCUMENTIDataGridView.AutoGenerateColumns = False
-        Me.RIGHEDOCUMENTIDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.RIGHEDOCUMENTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
-        Me.RIGHEDOCUMENTIDataGridView.DataSource = Me.RIGHEDOCUMENTIBindingSource
-        Me.RIGHEDOCUMENTIDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RIGHEDOCUMENTIDataGridView.Location = New System.Drawing.Point(0, 0)
-        Me.RIGHEDOCUMENTIDataGridView.Name = "RIGHEDOCUMENTIDataGridView"
-        Me.RIGHEDOCUMENTIDataGridView.Size = New System.Drawing.Size(800, 450)
-        Me.RIGHEDOCUMENTIDataGridView.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "IDRIGA"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "IDRIGA"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ESERCIZIO"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ESERCIZIO"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TIPODOC"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "TIPODOC"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "NUMERODOC"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "NUMERODOC"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "POSIZIONE"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "POSIZIONE"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "TIPORIGA"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "TIPORIGA"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "CODART"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "CODART"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "CODARTBASE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "CODARTBASE"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "DESCRIZIONEART"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "DESCRIZIONEART"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "QTAGEST"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "QTAGEST"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "PREZZOUNITNETTOEURO"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "PREZZOUNITNETTOEURO"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Visible = False
-        '
-        'RIGHEDOCUMENTIBindingSource
-        '
-        Me.RIGHEDOCUMENTIBindingSource.DataMember = "RIGHEDOCUMENTI"
-        Me.RIGHEDOCUMENTIBindingSource.DataSource = Me.SicuraDataSet
         '
         'SicuraDataSet
         '
         Me.SicuraDataSet.DataSetName = "SicuraDataSet"
         Me.SicuraDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'RIGHEDOCUMENTIBindingSource
+        '
+        Me.RIGHEDOCUMENTIBindingSource.DataMember = "RIGHEDOCUMENTI"
+        Me.RIGHEDOCUMENTIBindingSource.DataSource = Me.SicuraDataSet
         '
         'RIGHEDOCUMENTITableAdapter
         '
@@ -147,6 +64,80 @@ Partial Class DettaglioDoc
         Me.TableAdapterManager.RIGHEDOCUMENTITableAdapter = Me.RIGHEDOCUMENTITableAdapter
         Me.TableAdapterManager.UpdateOrder = MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'RIGHEDOCUMENTIDataGridView
+        '
+        Me.RIGHEDOCUMENTIDataGridView.AutoGenerateColumns = False
+        Me.RIGHEDOCUMENTIDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.RIGHEDOCUMENTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn13})
+        Me.RIGHEDOCUMENTIDataGridView.DataSource = Me.RIGHEDOCUMENTIBindingSource
+        Me.RIGHEDOCUMENTIDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RIGHEDOCUMENTIDataGridView.Location = New System.Drawing.Point(0, 0)
+        Me.RIGHEDOCUMENTIDataGridView.Name = "RIGHEDOCUMENTIDataGridView"
+        Me.RIGHEDOCUMENTIDataGridView.Size = New System.Drawing.Size(800, 450)
+        Me.RIGHEDOCUMENTIDataGridView.TabIndex = 1
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "IDTESTA"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "IDTESTA"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "IDRIGA"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "IDRIGA"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ESERCIZIO"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "ESERCIZIO"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 89
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "TIPODOC"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "TIPODOC"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "NUMERODOC"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "NUMERODOC"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 103
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "CODART"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "CODART"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Width = 77
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "DESCRIZIONEART"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "DESCRIZIONEART"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Width = 127
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "QTAGEST"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "QTAGEST"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Width = 83
+        '
         'DettaglioDoc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -155,28 +146,28 @@ Partial Class DettaglioDoc
         Me.Controls.Add(Me.RIGHEDOCUMENTIDataGridView)
         Me.Name = "DettaglioDoc"
         Me.Text = "DettaglioDoc"
-        CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RIGHEDOCUMENTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RIGHEDOCUMENTIDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents SicuraDataSet As SicuraDataSet
     Friend WithEvents RIGHEDOCUMENTIBindingSource As BindingSource
     Friend WithEvents RIGHEDOCUMENTITableAdapter As SicuraDataSetTableAdapters.RIGHEDOCUMENTITableAdapter
     Friend WithEvents TableAdapterManager As SicuraDataSetTableAdapters.TableAdapterManager
     Friend WithEvents RIGHEDOCUMENTIDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
 End Class

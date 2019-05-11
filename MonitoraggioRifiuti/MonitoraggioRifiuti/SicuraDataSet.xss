@@ -7,37 +7,41 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="-10" ViewPortY="0" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:EXTRATESTEDOC" ZOrder="10" X="87" Y="53" Height="305" Width="244" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:EXTRATESTERIFIUTI" ZOrder="2" X="871" Y="336" Height="267" Width="260" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:RIGHEDOCUMENTI" ZOrder="9" X="75" Y="379" Height="305" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:Biri_MonitoraggioRifiuti" ZOrder="8" X="472" Y="269" Height="305" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:Codici_CER" ZOrder="4" X="807" Y="71" Height="134" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:EXTRATESTERIFIUTI" ZOrder="3" X="871" Y="336" Height="267" Width="265" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
+    <Shape ID="DesignTable:RIGHEDOCUMENTI" ZOrder="1" X="75" Y="379" Height="248" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:Biri_MonitoraggioRifiuti" ZOrder="9" X="472" Y="269" Height="305" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
+    <Shape ID="DesignTable:Codici_CER" ZOrder="5" X="807" Y="71" Height="134" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_EXTRATESTERIFIUTI" ZOrder="7" LineWidth="11">
+    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_EXTRATESTERIFIUTI" ZOrder="8" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>758</X>
-          <Y>455</Y>
+          <Y>344</Y>
         </Point>
         <Point>
           <X>871</X>
-          <Y>455</Y>
+          <Y>344</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_RIGHEDOCUMENTI" ZOrder="6" LineWidth="11">
+    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_RIGHEDOCUMENTI" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>472</X>
-          <Y>473</Y>
+          <X>489</X>
+          <Y>574</Y>
         </Point>
         <Point>
-          <X>331</X>
-          <Y>473</Y>
+          <X>489</X>
+          <Y>582</Y>
+        </Point>
+        <Point>
+          <X>375</X>
+          <Y>582</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_EXTRATESTEDOC" ZOrder="5" LineWidth="11">
+    <Connector ID="DesignRelation:Biri_MonitoraggioRifiuti_EXTRATESTEDOC" ZOrder="6" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>472</X>
@@ -49,7 +53,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_EXTRATESTERIFIUTI_Codici_CER" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:FK_EXTRATESTERIFIUTI_Codici_CER" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>943</X>
@@ -61,7 +65,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:RIGHEDOCUMENTI_EXTRATESTEDOC" ZOrder="1" LineWidth="11">
+    <Connector ID="DesignRelation:RIGHEDOCUMENTI_EXTRATESTEDOC" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>209</X>

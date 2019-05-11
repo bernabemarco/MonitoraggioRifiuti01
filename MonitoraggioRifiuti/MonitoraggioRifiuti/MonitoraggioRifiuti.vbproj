@@ -145,6 +145,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\FloppyDrive_16x_24.bmp" />
+    <None Include="Resources\BrowseData_16x.png" />
+    <None Include="Resources\icons8-ricerca-32 %281%29.png" />
+    <None Include="Resources\icons8-eliminare-32.png" />
     <Content Include="TabellaCodiciCer.txt" />
     <Content Include="Tabella ExtratesteRifiuti.txt" />
     <Content Include="VistaMonitoraggio.txt" />
