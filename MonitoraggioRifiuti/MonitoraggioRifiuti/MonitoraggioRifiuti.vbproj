@@ -147,6 +147,7 @@
   <ItemGroup>
     <Content Include="TabellaCodiciCer.txt" />
     <Content Include="Tabella ExtratesteRifiuti.txt" />
+    <Content Include="VistaMonitoraggio.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
