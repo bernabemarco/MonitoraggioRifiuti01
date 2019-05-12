@@ -1,0 +1,27 @@
+﻿USE [Sicura]
+GO
+
+/****** Oggetto: Table [dbo].[EXTRATESTERIFIUTI] Data script: 12/05/2019 11:29:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE [dbo].[EXTRATESTERIFIUTI];
+
+
+GO
+CREATE TABLE [dbo].[EXTRATESTERIFIUTI] (
+    [ID_Extratesterifiuti] INT           IDENTITY (1, 1) NOT NULL,
+    [IDTESTA]              DECIMAL (10)  NOT NULL,
+    [TIPORIFIUTO]          INT           NULL,
+    [GiustificativoCer]    VARCHAR (500) NULL,
+    [DataRitiro]           DATETIME      NULL,
+    [Arrivo4Copia]         BIT           NULL,
+    [DataArrivoFormulario] DATETIME      NULL,
+    [Note]                 VARCHAR (255) NULL,
+	[Allegati]                 VARCHAR (255) NULL,
+    [Datetime]             DATETIME      NULL,
+    [UTENTEMODIFICA]       VARCHAR (25)  NULL
+);

@@ -22,41 +22,53 @@ Partial Class Main
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.OpenDash = New System.Windows.Forms.Button()
         Me.Esci = New System.Windows.Forms.Button()
+        Me.OpenRiep = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'OpenDash
         '
-        Me.Button1.Location = New System.Drawing.Point(409, 56)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(89, 36)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Apri Form Cruscotto"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.OpenDash.Location = New System.Drawing.Point(55, 64)
+        Me.OpenDash.Name = "OpenDash"
+        Me.OpenDash.Size = New System.Drawing.Size(88, 37)
+        Me.OpenDash.TabIndex = 0
+        Me.OpenDash.Text = "Apri Form Cruscotto"
+        Me.OpenDash.UseVisualStyleBackColor = True
         '
         'Esci
         '
-        Me.Esci.Location = New System.Drawing.Point(611, 291)
+        Me.Esci.Location = New System.Drawing.Point(269, 245)
         Me.Esci.Name = "Esci"
-        Me.Esci.Size = New System.Drawing.Size(66, 75)
+        Me.Esci.Size = New System.Drawing.Size(88, 37)
         Me.Esci.TabIndex = 1
         Me.Esci.Text = "Esci"
         Me.Esci.UseVisualStyleBackColor = True
+        '
+        'OpenRiep
+        '
+        Me.OpenRiep.Location = New System.Drawing.Point(177, 64)
+        Me.OpenRiep.Name = "OpenRiep"
+        Me.OpenRiep.Size = New System.Drawing.Size(88, 37)
+        Me.OpenRiep.TabIndex = 2
+        Me.OpenRiep.Text = "Apri Riepilogo Attività"
+        Me.OpenRiep.UseVisualStyleBackColor = True
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(369, 311)
+        Me.Controls.Add(Me.OpenRiep)
         Me.Controls.Add(Me.Esci)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.OpenDash)
         Me.Name = "Main"
         Me.Text = "Main"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents OpenDash As Button
     Friend WithEvents Esci As Button
+    Friend WithEvents OpenRiep As Button
 End Class

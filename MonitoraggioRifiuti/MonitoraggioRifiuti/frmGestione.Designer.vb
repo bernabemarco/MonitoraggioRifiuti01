@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class frmGestione
     Inherits System.Windows.Forms.Form
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
@@ -23,12 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGestione))
         Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
         Me.Biri_MonitoraggioRifiutiBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Biri_MonitoraggioRifiutiTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Biri_MonitoraggioRifiutiTableAdapter()
         Me.TableAdapterManager = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager()
-        Me.Codici_CERTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Codici_CERTableAdapter()
         Me.EXTRATESTERIFIUTITableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter()
         Me.Biri_MonitoraggioRifiutiBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -42,20 +41,11 @@ Partial Class Form1
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.TextBoxFiltro = New System.Windows.Forms.ToolStripTextBox()
         Me.ApplicaFiltro = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.RimuoviFiltro = New System.Windows.Forms.ToolStripButton()
         Me.EXTRATESTERIFIUTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EXTRATESTERIFIUTIDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCer = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.CodiciCERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SicuraDataSet1 = New MonitoraggioRifiuti.SicuraDataSet()
         Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ExtratesterifiutiTableAdapter1 = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter()
@@ -87,6 +77,19 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.oDTP = New System.Windows.Forms.DateTimePicker()
+        Me.Codici_CERTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Codici_CERTableAdapter()
+        Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCer = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,10 +97,12 @@ Partial Class Form1
         CType(Me.EXTRATESTERIFIUTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EXTRATESTERIFIUTIDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CodiciCERBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SicuraDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
         CType(Me.Biri_MonitoraggioRifiutiDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SicuraDataSet
@@ -117,15 +122,11 @@ Partial Class Form1
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Codici_CERTableAdapter = Me.Codici_CERTableAdapter
+        Me.TableAdapterManager.Codici_CERTableAdapter = Nothing
         Me.TableAdapterManager.EXTRATESTEDOCTableAdapter = Nothing
         Me.TableAdapterManager.EXTRATESTERIFIUTITableAdapter = Me.EXTRATESTERIFIUTITableAdapter
         Me.TableAdapterManager.RIGHEDOCUMENTITableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = MonitoraggioRifiuti.SicuraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'Codici_CERTableAdapter
-        '
-        Me.Codici_CERTableAdapter.ClearBeforeFill = True
         '
         'EXTRATESTERIFIUTITableAdapter
         '
@@ -134,10 +135,11 @@ Partial Class Form1
         'Biri_MonitoraggioRifiutiBindingNavigator
         '
         Me.Biri_MonitoraggioRifiutiBindingNavigator.AddNewItem = Nothing
+        Me.Biri_MonitoraggioRifiutiBindingNavigator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Biri_MonitoraggioRifiutiBindingNavigator.BindingSource = Me.Biri_MonitoraggioRifiutiBindingSource
         Me.Biri_MonitoraggioRifiutiBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.Biri_MonitoraggioRifiutiBindingNavigator.DeleteItem = Nothing
-        Me.Biri_MonitoraggioRifiutiBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.TextBoxFiltro, Me.ApplicaFiltro, Me.ToolStripButton1})
+        Me.Biri_MonitoraggioRifiutiBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.TextBoxFiltro, Me.ApplicaFiltro, Me.RimuoviFiltro})
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.Biri_MonitoraggioRifiutiBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.Biri_MonitoraggioRifiutiBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -218,6 +220,8 @@ Partial Class Form1
         '
         'TextBoxFiltro
         '
+        Me.TextBoxFiltro.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.TextBoxFiltro.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBoxFiltro.Name = "TextBoxFiltro"
         Me.TextBoxFiltro.Size = New System.Drawing.Size(300, 25)
         Me.TextBoxFiltro.ToolTipText = "Inserisci qui i dati da Cercare"
@@ -231,14 +235,14 @@ Partial Class Form1
         Me.ApplicaFiltro.Size = New System.Drawing.Size(23, 22)
         Me.ApplicaFiltro.Text = "ApplicaFiltro"
         '
-        'ToolStripButton1
+        'RimuoviFiltro
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = Global.MonitoraggioRifiuti.My.Resources.Resources.icons8_eliminare_32
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.RimuoviFiltro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.RimuoviFiltro.Image = Global.MonitoraggioRifiuti.My.Resources.Resources.icons8_eliminare_32
+        Me.RimuoviFiltro.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.RimuoviFiltro.Name = "RimuoviFiltro"
+        Me.RimuoviFiltro.Size = New System.Drawing.Size(23, 22)
+        Me.RimuoviFiltro.Text = "RimuoviFiltro"
         '
         'EXTRATESTERIFIUTIBindingSource
         '
@@ -250,84 +254,21 @@ Partial Class Form1
         Me.EXTRATESTERIFIUTIDataGridView.AutoGenerateColumns = False
         Me.EXTRATESTERIFIUTIDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.EXTRATESTERIFIUTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn20, Me.TipoCer, Me.DataGridViewTextBoxColumn21, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25})
-        Me.EXTRATESTERIFIUTIDataGridView.DataSource = Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource
+        Me.EXTRATESTERIFIUTIDataGridView.DataSource = Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1
         Me.EXTRATESTERIFIUTIDataGridView.Location = New System.Drawing.Point(0, 338)
         Me.EXTRATESTERIFIUTIDataGridView.Name = "EXTRATESTERIFIUTIDataGridView"
         Me.EXTRATESTERIFIUTIDataGridView.Size = New System.Drawing.Size(829, 147)
         Me.EXTRATESTERIFIUTIDataGridView.TabIndex = 2
         '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ID_Extratesterifiuti"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "ID_Extratesterifiuti"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.ReadOnly = True
-        Me.DataGridViewTextBoxColumn17.Visible = False
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "IDTESTA"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "IDTESTA"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.Visible = False
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "GiustificativoCer"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "GiustificativoCer"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
-        'TipoCer
-        '
-        Me.TipoCer.DataPropertyName = "TIPORIFIUTO"
-        Me.TipoCer.DataSource = Me.CodiciCERBindingSource
-        Me.TipoCer.DisplayMember = "DESCRIZIONECER"
-        Me.TipoCer.HeaderText = "TipoCer"
-        Me.TipoCer.Name = "TipoCer"
-        Me.TipoCer.ValueMember = "ID"
-        '
         'CodiciCERBindingSource
         '
         Me.CodiciCERBindingSource.DataMember = "Codici_CER"
-        Me.CodiciCERBindingSource.DataSource = Me.SicuraDataSet
+        Me.CodiciCERBindingSource.DataSource = Me.SicuraDataSet1
         '
-        'DataGridViewTextBoxColumn21
+        'SicuraDataSet1
         '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "DataRitiro"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "DataRitiro"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Arrivo4Copia"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Arrivo4Copia"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "DataArrivoFormulario"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "DataArrivoFormulario"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        '
-        'DataGridViewTextBoxColumn23
-        '
-        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Note"
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Note"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Datetime"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Datetime"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.Visible = False
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "UTENTEMODIFICA"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "UTENTEMODIFICA"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.Visible = False
+        Me.SicuraDataSet1.DataSetName = "SicuraDataSet"
+        Me.SicuraDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource
         '
@@ -584,18 +525,103 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn13.HeaderText = "DataDocSucc"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
         '
-        'Form1
+        'oDTP
+        '
+        Me.oDTP.Location = New System.Drawing.Point(852, 465)
+        Me.oDTP.Name = "oDTP"
+        Me.oDTP.Size = New System.Drawing.Size(113, 20)
+        Me.oDTP.TabIndex = 7
+        '
+        'Codici_CERTableAdapter
+        '
+        Me.Codici_CERTableAdapter.ClearBeforeFill = True
+        '
+        'BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1
+        '
+        Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1.DataMember = "Biri_MonitoraggioRifiuti_EXTRATESTERIFIUTI"
+        Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1.DataSource = Me.Biri_MonitoraggioRifiutiBindingSource
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ID_Extratesterifiuti"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "ID_Extratesterifiuti"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Visible = False
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "IDTESTA"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "IDTESTA"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.Visible = False
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "GiustificativoCer"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "GiustificativoCer"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        '
+        'TipoCer
+        '
+        Me.TipoCer.DataPropertyName = "TIPORIFIUTO"
+        Me.TipoCer.DataSource = Me.CodiciCERBindingSource
+        Me.TipoCer.DisplayMember = "DESCRIZIONECER"
+        Me.TipoCer.HeaderText = "TipoCer"
+        Me.TipoCer.Name = "TipoCer"
+        Me.TipoCer.ValueMember = "ID"
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "DataRitiro"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "DataRitiro"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Arrivo4Copia"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Arrivo4Copia"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "DataArrivoFormulario"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "DataArrivoFormulario"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Note"
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Note"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Datetime"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Datetime"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.Visible = False
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "UTENTEMODIFICA"
+        Me.DataGridViewTextBoxColumn25.HeaderText = "UTENTEMODIFICA"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.Visible = False
+        '
+        'frmGestione
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1189, 505)
+        Me.Controls.Add(Me.oDTP)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiDataGridView)
         Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.EXTRATESTERIFIUTIDataGridView)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiBindingNavigator)
-        Me.Name = "Form1"
+        Me.Name = "frmGestione"
         Me.Text = "Form1"
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -605,11 +631,13 @@ Partial Class Form1
         CType(Me.EXTRATESTERIFIUTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EXTRATESTERIFIUTIDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CodiciCERBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SicuraDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator1.ResumeLayout(False)
         Me.BindingNavigator1.PerformLayout()
         CType(Me.Biri_MonitoraggioRifiutiDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -631,20 +659,8 @@ Partial Class Form1
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents EXTRATESTERIFIUTITableAdapter As SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter
     Friend WithEvents EXTRATESTERIFIUTIBindingSource As BindingSource
-    Friend WithEvents Codici_CERTableAdapter As SicuraDataSetTableAdapters.Codici_CERTableAdapter
     Friend WithEvents EXTRATESTERIFIUTIDataGridView As DataGridView
     Friend WithEvents BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource As BindingSource
-    Friend WithEvents CodiciCERBindingSource As BindingSource
-    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCer As DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents Button1 As Button
     Friend WithEvents ExtratesterifiutiTableAdapter1 As SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter
     Friend WithEvents Button2 As Button
@@ -664,7 +680,7 @@ Partial Class Form1
     Friend WithEvents SalvaRegistrazione As ToolStripButton
     Friend WithEvents TextBoxFiltro As ToolStripTextBox
     Friend WithEvents ApplicaFiltro As ToolStripButton
-    Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents RimuoviFiltro As ToolStripButton
     Friend WithEvents Biri_MonitoraggioRifiutiDataGridView As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
@@ -685,4 +701,19 @@ Partial Class Form1
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents oDTP As DateTimePicker
+    Friend WithEvents SicuraDataSet1 As SicuraDataSet
+    Friend WithEvents CodiciCERBindingSource As BindingSource
+    Friend WithEvents Codici_CERTableAdapter As SicuraDataSetTableAdapters.Codici_CERTableAdapter
+    Friend WithEvents BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1 As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents TipoCer As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
 End Class

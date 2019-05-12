@@ -30,7 +30,7 @@ Partial Class Login
         '
         'BtnLogin
         '
-        Me.BtnLogin.Location = New System.Drawing.Point(366, 235)
+        Me.BtnLogin.Location = New System.Drawing.Point(12, 145)
         Me.BtnLogin.Name = "BtnLogin"
         Me.BtnLogin.Size = New System.Drawing.Size(75, 23)
         Me.BtnLogin.TabIndex = 0
@@ -39,21 +39,21 @@ Partial Class Login
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(328, 113)
+        Me.txtUsername.Location = New System.Drawing.Point(77, 37)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(100, 20)
         Me.txtUsername.TabIndex = 1
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(324, 155)
+        Me.txtPassword.Location = New System.Drawing.Point(77, 85)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(100, 20)
         Me.txtPassword.TabIndex = 2
         '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(472, 223)
+        Me.btnClear.Location = New System.Drawing.Point(118, 145)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(75, 23)
         Me.btnClear.TabIndex = 3
@@ -64,7 +64,7 @@ Partial Class Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(264, 208)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUsername)

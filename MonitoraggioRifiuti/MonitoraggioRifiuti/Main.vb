@@ -1,11 +1,19 @@
 ﻿Public Class Main
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim GestioneRifiuti As New Form1
+
+
+    Private Sub Esci_Click(sender As Object, e As EventArgs) Handles Esci.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub OpenDash_Click(sender As Object, e As EventArgs) Handles OpenDash.Click
+        Dim GestioneRifiuti As New frmGestione
 
         GestioneRifiuti.Show()
     End Sub
 
-    Private Sub Esci_Click(sender As Object, e As EventArgs) Handles Esci.Click
-        Application.Exit()
+    Private Sub OpenRiep_Click(sender As Object, e As EventArgs) Handles OpenRiep.Click
+        Dim FrmRiep As New RiepilogoGenerale
+
+        FrmRiep.Show()
     End Sub
 End Class

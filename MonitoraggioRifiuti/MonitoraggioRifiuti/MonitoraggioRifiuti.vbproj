@@ -79,11 +79,11 @@
     <Compile Include="DettaglioDoc.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="frmGestione.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmGestione.Designer.vb">
+      <DependentUpon>frmGestione.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.vb">
@@ -98,6 +98,7 @@
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -113,6 +114,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RiepilogoGenerale.Designer.vb">
+      <DependentUpon>RiepilogoGenerale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RiepilogoGenerale.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SicuraDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,8 +130,8 @@
     <EmbeddedResource Include="DettaglioDoc.resx">
       <DependentUpon>DettaglioDoc.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="frmGestione.resx">
+      <DependentUpon>frmGestione.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
@@ -137,6 +144,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RiepilogoGenerale.resx">
+      <DependentUpon>RiepilogoGenerale.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +179,7 @@
     <None Include="Resources\icons8-eliminare-32.png" />
     <Content Include="TabellaCodiciCer.txt" />
     <Content Include="Tabella ExtratesteRifiuti.txt" />
+    <Content Include="RicreaExtratesteRifiuti.txt" />
     <Content Include="VistaMonitoraggio.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
