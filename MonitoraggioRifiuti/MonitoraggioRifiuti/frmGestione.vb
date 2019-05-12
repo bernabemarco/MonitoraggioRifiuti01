@@ -64,6 +64,11 @@
             sPath = sPath + Protocollo
             If (My.Computer.FileSystem.DirectoryExists(sPath) = False) Then
                 My.Computer.FileSystem.CreateDirectory(sPath)
+                EXTRATESTERIFIUTIDataGridView.CurrentRow.Cells(8).Value = sPath
+                '                Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(8).Value = sPath
+                Validate()
+                EXTRATESTERIFIUTIBindingSource.EndEdit()
+                EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet)
                 'TextBox1.Text = sPath
             Else
                 'For Each foundFile As String In My.Computer.FileSystem.GetFiles(sPath)
@@ -86,8 +91,51 @@
 
 
 
-    Private Sub EXTRATESTERIFIUTIDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellClick
 
+
+    Private Sub oDTP_ValueChanged(sender As Object, e As EventArgs) Handles oDTP.ValueChanged
+        EXTRATESTERIFIUTIDataGridView.CurrentCell.Value = oDTP.Value
+    End Sub
+
+    Private Sub EXTRATESTERIFIUTIDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellLeave
+        oDTP.Visible = False
+    End Sub
+
+    Private Sub EXTRATESTERIFIUTIDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles EXTRATESTERIFIUTIDataGridView.DataError
+        Dim Result As DialogResult
+
+        'Riporta l'errore all'utente, e lascia scegliere se 
+        'modificare i dati incompatibili oppure annullare
+        'le modifiche e cancellare la riga
+        Result = MessageBox.Show("Si ? verificato un errore di compatibilit? dei dati immessi. Messaggio:" &
+            Environment.NewLine & e.Exception.Message & Environment.NewLine &
+            "E' possibile che dei dati mancanti compromettano il database. Premere S? per modificare opportunamente " &
+            "tali valori, o No per cancellare la riga.", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+
+        If Result = Windows.Forms.DialogResult.Yes Then
+            'Annulla questo evento: non viene generata la
+            'finestra di errore
+            e.Cancel = True
+            'Pone il cursore sulla casella corrente e obbliga
+            'ad iniziare l'edit mode. Il valore booleano tra
+            'parentesi indica di selezionare l'intero contenuto
+            'della cella corrente
+            EXTRATESTERIFIUTIDataGridView.BeginEdit(True)
+        Else
+            'Annulla l'eccezione e l'evento, quindi cancella
+            'la riga corrente
+            e.ThrowException = False
+            e.Cancel = True
+            'Le righe "nuove", ossia quelle in cui non è
+            'stato salvato ancora nessun dato, non possono essere
+            'eliminate (così dice il datagridview...)
+            If Not EXTRATESTERIFIUTIDataGridView.CurrentRow.IsNewRow Then
+                EXTRATESTERIFIUTIDataGridView.Rows.Remove(EXTRATESTERIFIUTIDataGridView.CurrentRow)
+            End If
+        End If
+    End Sub
+
+    Private Sub EXTRATESTERIFIUTIDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellDoubleClick
         Select Case e.ColumnIndex
             Case 6
                 '//Adding DateTimePicker control into DataGridView   
@@ -152,48 +200,5 @@
                 'End If
         End Select
 
-
-    End Sub
-
-    Private Sub oDTP_ValueChanged(sender As Object, e As EventArgs) Handles oDTP.ValueChanged
-        EXTRATESTERIFIUTIDataGridView.CurrentCell.Value = oDTP.Value
-    End Sub
-
-    Private Sub EXTRATESTERIFIUTIDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellLeave
-        oDTP.Visible = False
-    End Sub
-
-    Private Sub EXTRATESTERIFIUTIDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles EXTRATESTERIFIUTIDataGridView.DataError
-        Dim Result As DialogResult
-
-        'Riporta l'errore all'utente, e lascia scegliere se 
-        'modificare i dati incompatibili oppure annullare
-        'le modifiche e cancellare la riga
-        Result = MessageBox.Show("Si ? verificato un errore di compatibilit? dei dati immessi. Messaggio:" &
-            Environment.NewLine & e.Exception.Message & Environment.NewLine &
-            "E' possibile che dei dati mancanti compromettano il database. Premere S? per modificare opportunamente " &
-            "tali valori, o No per cancellare la riga.", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
-
-        If Result = Windows.Forms.DialogResult.Yes Then
-            'Annulla questo evento: non viene generata la
-            'finestra di errore
-            e.Cancel = True
-            'Pone il cursore sulla casella corrente e obbliga
-            'ad iniziare l'edit mode. Il valore booleano tra
-            'parentesi indica di selezionare l'intero contenuto
-            'della cella corrente
-            EXTRATESTERIFIUTIDataGridView.BeginEdit(True)
-        Else
-            'Annulla l'eccezione e l'evento, quindi cancella
-            'la riga corrente
-            e.ThrowException = False
-            e.Cancel = True
-            'Le righe "nuove", ossia quelle in cui non è
-            'stato salvato ancora nessun dato, non possono essere
-            'eliminate (così dice il datagridview...)
-            If Not EXTRATESTERIFIUTIDataGridView.CurrentRow.IsNewRow Then
-                EXTRATESTERIFIUTIDataGridView.Rows.Remove(EXTRATESTERIFIUTIDataGridView.CurrentRow)
-            End If
-        End If
     End Sub
 End Class
