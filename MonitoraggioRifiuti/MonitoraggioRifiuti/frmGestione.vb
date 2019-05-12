@@ -3,6 +3,7 @@
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
         'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
+        Main.Timer1.Enabled = False
         Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
         'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet.Codici_CER)
