@@ -23,16 +23,19 @@ Public Class Login
 
         If Password = "Bo" And Username = "Biri" Then
 
-            MessageBox.Show("Logged in successfully as " & Username, "", MessageBoxButtons.OK, MessageBoxIcon.Information
-                                                )
+            MessageBox.Show("Logged in successfully as " & Username, "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
             Main.Show()
-            Me.Hide()
 
             'Clear all fields
             txtPassword.Text = ""
             txtUsername.Text = ""
 
         End If
+
+        Me.Close()
+
 
 
     End Sub

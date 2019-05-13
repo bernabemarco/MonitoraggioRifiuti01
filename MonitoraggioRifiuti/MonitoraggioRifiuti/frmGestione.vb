@@ -1,30 +1,64 @@
-﻿Public Class frmGestione
+﻿Imports System.Threading
+Public Class frmGestione
+
+    'Questa è la dichiarazione del Thread separato da quello principale
+    Private newThread As Thread
+    'Questa è la dichiarazione del Form SplashScreen
+    Private Splash As Splash
+    'Questa è una variabile booleana che mi permette di chiudere lo SplashScreen al termine di tutte le operazioni
+    Private Fine As Boolean
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        Main.Timer1.Enabled = False
+
+        'Creo una nuova istanza del Thread
+        newThread = New Thread(AddressOf InitializeForm)
+        'Faccio partire il Thread separato
+        newThread.Start()
+        'Scrivo nella label
+        'Label1.Text = "Questo l'ho inizializzato durante la visualizzazione dello splash screen"
+        'Attendo 3 secondi senza fare nulla giusdto per perder tempo
+        Thread.Sleep(10000)
+        'Scrivo nel TextBox
+        'TextBox1.Text = "e qui ho valorizzato la proprietà Text"
+        'Attendo 3 secondi senza fare nulla giusdto per perder tempo
+        'Thread.Sleep(3000)
+        'Imposto a True la variabile booleana per chiudere lo splashscreen
+        Fine = True
+
+
+        'Main.Timer1.Enabled = False
         Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet1.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        'Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
-        'Me.Codici_CERTableAdapter.Fill(Me.SicuraDataSet.Codici_CER)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.EXTRATESTERIFIUTI'. È possibile spostarla o rimuoverla se necessario.
         Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Biri_MonitoraggioRifiuti'. È possibile spostarla o rimuoverla se necessario.
         Me.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
+        'Splash.Close()
 
     End Sub
 
-    'Private Sub Biri_MonitoraggioRifiutiBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-    '    Me.Validate()
-    '    Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource.EndEdit()
-    '    Me.TableAdapterManager.UpdateAll(Me.SicuraDataSet)
-    'End Sub
+    Private Sub InitializeForm()
+        ' Qui ho giocato un pò con delle variabili integer per permettere una stupidissima animazione della Label
+        'senza bloccare l'esecuzione del Thread in modo da lasciare scorrere l'animazione della progress bar.
+        Dim a As Integer
+        Dim b As Integer
+        Splash = New Splash
+        Splash.Show()
+        Splash.Label1.Text = "Caricamento in corso"
+        Do
+            If a > 10000 Then
+                Splash.Label1.Text += "."
+                a = 0
+                b += 1
+            End If
+            a += 1
+            If b > 10 Then
+                Splash.Label1.Text = "Caricamento in corso"
+                b = 0
+            End If
+            'Questo permette l'aggiornamento della parte grafica dello splashscreen
+            Application.DoEvents()
+        Loop Until Fine
+        Splash.Close()
+    End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim FrmDett As New DettaglioDoc
@@ -201,5 +235,9 @@
                 'End If
         End Select
 
+    End Sub
+
+    Private Sub frmGestione_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        Splash.Show()
     End Sub
 End Class

@@ -26,7 +26,6 @@ Partial Class Main
         Me.OpenDash = New System.Windows.Forms.Button()
         Me.Esci = New System.Windows.Forms.Button()
         Me.OpenRiep = New System.Windows.Forms.Button()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
@@ -57,19 +56,11 @@ Partial Class Main
         Me.OpenRiep.Text = "Apri Riepilogo Attività"
         Me.OpenRiep.UseVisualStyleBackColor = True
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(116, 132)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(100, 23)
-        Me.ProgressBar1.TabIndex = 3
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(369, 311)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.OpenRiep)
         Me.Controls.Add(Me.Esci)
         Me.Controls.Add(Me.OpenDash)
@@ -82,6 +73,5 @@ Partial Class Main
     Friend WithEvents OpenDash As Button
     Friend WithEvents Esci As Button
     Friend WithEvents OpenRiep As Button
-    Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
 End Class
