@@ -4,7 +4,7 @@ Public Class frmGestione
     'Questa è la dichiarazione del Thread separato da quello principale
     Private newThread As Thread
     'Questa è la dichiarazione del Form SplashScreen
-    Private Splash As Splash
+    Private Splash As SplashScreen
     'Questa è una variabile booleana che mi permette di chiudere lo SplashScreen al termine di tutte le operazioni
     Private Fine As Boolean
 
@@ -17,20 +17,23 @@ Public Class frmGestione
         'Scrivo nella label
         'Label1.Text = "Questo l'ho inizializzato durante la visualizzazione dello splash screen"
         'Attendo 3 secondi senza fare nulla giusdto per perder tempo
-        Thread.Sleep(10000)
-        'Scrivo nel TextBox
-        'TextBox1.Text = "e qui ho valorizzato la proprietà Text"
-        'Attendo 3 secondi senza fare nulla giusdto per perder tempo
-        'Thread.Sleep(3000)
-        'Imposto a True la variabile booleana per chiudere lo splashscreen
-        Fine = True
-
 
         'Main.Timer1.Enabled = False
         Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
         Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
         Me.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
         'Splash.Close()
+
+
+        Thread.Sleep(10000)
+        'Scrivo nel TextBox
+        'TextBox1.Text = "e qui ho valorizzato la proprietà Text"
+        'Attendo 3 secondi senza fare nulla giusdto per perder tempo
+        Thread.Sleep(3000)
+        'Imposto a True la variabile booleana per chiudere lo splashscreen
+        Fine = True
+
+
 
     End Sub
 
@@ -39,7 +42,7 @@ Public Class frmGestione
         'senza bloccare l'esecuzione del Thread in modo da lasciare scorrere l'animazione della progress bar.
         Dim a As Integer
         Dim b As Integer
-        Splash = New Splash
+        Splash = New SplashScreen
         Splash.Show()
         Splash.Label1.Text = "Caricamento in corso"
         Do
@@ -100,7 +103,6 @@ Public Class frmGestione
             If (My.Computer.FileSystem.DirectoryExists(sPath) = False) Then
                 My.Computer.FileSystem.CreateDirectory(sPath)
                 EXTRATESTERIFIUTIDataGridView.CurrentRow.Cells(8).Value = sPath
-                '                Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(8).Value = sPath
                 Validate()
                 EXTRATESTERIFIUTIBindingSource.EndEdit()
                 EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet)
@@ -238,6 +240,7 @@ Public Class frmGestione
     End Sub
 
     Private Sub frmGestione_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        Splash.Show()
+        'Fine = True
+        Main.Close()
     End Sub
 End Class

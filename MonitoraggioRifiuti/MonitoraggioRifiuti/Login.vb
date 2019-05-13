@@ -12,7 +12,7 @@ Public Class Login
 
     'Login Button
     Private Sub btnlogin_Click(sender As System.Object, e As System.EventArgs) Handles BtnLogin.Click
-
+        Dim frmMain As New Main
 
         'Do something here
 
@@ -26,7 +26,7 @@ Public Class Login
             MessageBox.Show("Logged in successfully as " & Username, "", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
-            Main.Show()
+            frmMain.Show()
 
             'Clear all fields
             txtPassword.Text = ""
@@ -34,7 +34,7 @@ Public Class Login
 
         End If
 
-        Me.Close()
+        'Me.Close()
 
 
 
