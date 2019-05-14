@@ -58,7 +58,7 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Sicura;Integrated Security=True;MultipleAct"& _ 
-            "iveResultSets=False;Connect Timeout=30;Encrypt=False;TrustServerCertificate=Fals"& _ 
+            "iveResultSets=False;Connect Timeout=90;Encrypt=False;TrustServerCertificate=Fals"& _ 
             "e;Application Name=""Microsoft SQL Server Data Tools, Create Project""")>  _
         Public ReadOnly Property SicuraConnectionString() As String
             Get
