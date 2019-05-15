@@ -32,36 +32,34 @@ Partial Class SplashScreen
         Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(4)
         Me.ProgressBar1.MarqueeAnimationSpeed = 10
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(361, 42)
+        Me.ProgressBar1.Size = New System.Drawing.Size(473, 23)
+        Me.ProgressBar1.Step = 100
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         Me.ProgressBar1.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 59)
+        Me.Label1.Location = New System.Drawing.Point(99, 57)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 20)
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
         '
         'SplashScreen
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(387, 102)
+        Me.ClientSize = New System.Drawing.Size(504, 93)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
-        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "SplashScreen"
+        Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Quiettete!!!"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -47,8 +47,6 @@ Partial Public Class SicuraDataSet
     
     Private relationRIGHEDOCUMENTI_EXTRATESTEDOC As Global.System.Data.DataRelation
     
-    Private relationBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT As Global.System.Data.DataRelation
-    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -331,7 +329,6 @@ Partial Public Class SicuraDataSet
         Me.relationBiri_MonitoraggioRifiuti_EXTRATESTEDOC = Me.Relations("Biri_MonitoraggioRifiuti_EXTRATESTEDOC")
         Me.relationFK_EXTRATESTERIFIUTI_Codici_CER = Me.Relations("FK_EXTRATESTERIFIUTI_Codici_CER")
         Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC = Me.Relations("RIGHEDOCUMENTI_EXTRATESTEDOC")
-        Me.relationBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT = Me.Relations("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -364,8 +361,6 @@ Partial Public Class SicuraDataSet
         Me.Relations.Add(Me.relationFK_EXTRATESTERIFIUTI_Codici_CER)
         Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC = New Global.System.Data.DataRelation("RIGHEDOCUMENTI_EXTRATESTEDOC", New Global.System.Data.DataColumn() {Me.tableRIGHEDOCUMENTI.IDTESTAColumn}, New Global.System.Data.DataColumn() {Me.tableEXTRATESTEDOC.IDTESTAColumn}, false)
         Me.Relations.Add(Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC)
-        Me.relationBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT = New Global.System.Data.DataRelation("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT", New Global.System.Data.DataColumn() {Me.tableBiri_MonitoraggioRifiuti.PROGRESSIVOColumn}, New Global.System.Data.DataColumn() {Me.tableRiepilogoGeneraleDT.PROGRESSIVOColumn}, false)
-        Me.Relations.Add(Me.relationBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2682,7 +2677,7 @@ Partial Public Class SicuraDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overloads Function AddRiepilogoGeneraleDTRow( _
-                    ByVal parentBiri_MonitoraggioRifiutiRowByBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT As Biri_MonitoraggioRifiutiRow,  _
+                    ByVal PROGRESSIVO As Decimal,  _
                     ByVal ESERCIZIO As Decimal,  _
                     ByVal TIPODOC As String,  _
                     ByVal NUMERODOC As Decimal,  _
@@ -2700,10 +2695,7 @@ Partial Public Class SicuraDataSet
                     ByVal Note As String,  _
                     ByVal Allegati As String) As RiepilogoGeneraleDTRow
             Dim rowRiepilogoGeneraleDTRow As RiepilogoGeneraleDTRow = CType(Me.NewRow,RiepilogoGeneraleDTRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ESERCIZIO, TIPODOC, NUMERODOC, DataDoc, StatoDoc, CODCONTO, CLIENTE, LOCALITA, InGestione, TIPORIFIUTO, GiustificativoCer, RitiroEseguito, Arrivo4Copia, DataArrivoFormulario, Note, Allegati}
-            If (Not (parentBiri_MonitoraggioRifiutiRowByBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT) Is Nothing) Then
-                columnValuesArray(0) = parentBiri_MonitoraggioRifiutiRowByBiri_MonitoraggioRifiuti_RiepilogoGeneraleDT(0)
-            End If
+            Dim columnValuesArray() As Object = New Object() {PROGRESSIVO, ESERCIZIO, TIPODOC, NUMERODOC, DataDoc, StatoDoc, CODCONTO, CLIENTE, LOCALITA, InGestione, TIPORIFIUTO, GiustificativoCer, RitiroEseguito, Arrivo4Copia, DataArrivoFormulario, Note, Allegati}
             rowRiepilogoGeneraleDTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRiepilogoGeneraleDTRow)
             Return rowRiepilogoGeneraleDTRow
@@ -4134,16 +4126,6 @@ Partial Public Class SicuraDataSet
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Biri_MonitoraggioRifiuti_EXTRATESTEDOC")),EXTRATESTEDOCRow())
             End If
         End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function GetRiepilogoGeneraleDTRows() As RiepilogoGeneraleDTRow()
-            If (Me.Table.ChildRelations("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT") Is Nothing) Then
-                Return New RiepilogoGeneraleDTRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT")),RiepilogoGeneraleDTRow())
-            End If
-        End Function
     End Class
     
     '''<summary>
@@ -4514,17 +4496,6 @@ Partial Public Class SicuraDataSet
             End Get
             Set
                 Me(Me.tableRiepilogoGeneraleDT.AllegatiColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Biri_MonitoraggioRifiutiRow() As Biri_MonitoraggioRifiutiRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT")),Biri_MonitoraggioRifiutiRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("Biri_MonitoraggioRifiuti_RiepilogoGeneraleDT"))
             End Set
         End Property
         
@@ -5755,11 +5726,11 @@ Namespace SicuraDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EXTRATESTERIFIUTI] ([IDTESTA], [TIPORIFIUTO], [GiustificativoCer], ["& _ 
-                "DataRitiro], [Arrivo4Copia], [DataArrivoFormulario], [Note], [Allegati], [Dateti"& _ 
-                "me], [UTENTEMODIFICA]) VALUES (@IDTESTA, @TIPORIFIUTO, @GiustificativoCer, @Data"& _ 
-                "Ritiro, @Arrivo4Copia, @DataArrivoFormulario, @Note, @Allegati, @Datetime, @UTEN"& _ 
-                "TEMODIFICA)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[EXTRATESTERIFIUTI] ([IDTESTA], [TIPORIFIUTO], [GiustificativoC"& _ 
+                "er], [DataRitiro], [Arrivo4Copia], [DataArrivoFormulario], [Note], [Allegati], ["& _ 
+                "Datetime], [UTENTEMODIFICA]) VALUES (@IDTESTA, @TIPORIFIUTO, @GiustificativoCer,"& _ 
+                " @DataRitiro, @Arrivo4Copia, @DataArrivoFormulario, @Note, @Allegati, @Datetime,"& _ 
+                " @UTENTEMODIFICA)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDTESTA", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 0, "IDTESTA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TIPORIFIUTO", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIPORIFIUTO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5786,14 +5757,7 @@ Namespace SicuraDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        EXTRATESTERIFIUTI.ID_Extratesterifiuti, EXTRATESTERIFIUTI.IDTESTA, "& _ 
-                "EXTRATESTERIFIUTI.TIPORIFIUTO, EXTRATESTERIFIUTI.GiustificativoCer, EXTRATESTERI"& _ 
-                "FIUTI.DataRitiro, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         EXTRATESTERIFIUTI.Arrivo4Copia, EXT"& _ 
-                "RATESTERIFIUTI.DataArrivoFormulario, EXTRATESTERIFIUTI.Note, EXTRATESTERIFIUTI.A"& _ 
-                "llegati, EXTRATESTERIFIUTI.Datetime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         EXTRATESTERIFIUT"& _ 
-                "I.UTENTEMODIFICA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            EXTRATESTERIFIUTI INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         Biri_MonitoraggioRifiuti ON EXTRATESTERIFIUTI.IDTESTA = Biri_Monitoragg"& _ 
-                "ioRifiuti.PROGRESSIVO"
+            Me._commandCollection(0).CommandText = "SELECT * FROM dbo.EXTRATESTERIFIUTI"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

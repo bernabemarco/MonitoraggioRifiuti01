@@ -24,6 +24,8 @@ Partial Class RiepilogoGenerale
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RiepilogoGenerale))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
         Me.RiepilogoGeneraleDTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RiepilogoGeneraleDTTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.RiepilogoGeneraleDTTableAdapter()
@@ -41,6 +43,12 @@ Partial Class RiepilogoGenerale
         Me.TextBoxFiltro = New System.Windows.Forms.ToolStripTextBox()
         Me.ApplicaFiltro = New System.Windows.Forms.ToolStripButton()
         Me.RimuoviFiltro = New System.Windows.Forms.ToolStripButton()
+        Me.DettDoc = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BtnAllegati = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BtnTornaMain = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.RiepilogoGeneraleDTDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FeedGestione = New System.Windows.Forms.DataGridViewImageColumn()
@@ -98,7 +106,7 @@ Partial Class RiepilogoGenerale
         Me.RiepilogoGeneraleDTBindingNavigator.BindingSource = Me.RiepilogoGeneraleDTBindingSource
         Me.RiepilogoGeneraleDTBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.RiepilogoGeneraleDTBindingNavigator.DeleteItem = Nothing
-        Me.RiepilogoGeneraleDTBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.TextBoxFiltro, Me.ApplicaFiltro, Me.RimuoviFiltro})
+        Me.RiepilogoGeneraleDTBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.TextBoxFiltro, Me.ApplicaFiltro, Me.RimuoviFiltro, Me.DettDoc, Me.ToolStripSeparator1, Me.BtnAllegati, Me.ToolStripSeparator2, Me.BtnTornaMain, Me.ToolStripButton1})
         Me.RiepilogoGeneraleDTBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.RiepilogoGeneraleDTBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.RiepilogoGeneraleDTBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -200,14 +208,78 @@ Partial Class RiepilogoGenerale
         Me.RimuoviFiltro.Size = New System.Drawing.Size(23, 22)
         Me.RimuoviFiltro.Text = "RimuoviFiltro"
         '
+        'DettDoc
+        '
+        Me.DettDoc.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DettDoc.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DettDoc.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DettDoc.Name = "DettDoc"
+        Me.DettDoc.Size = New System.Drawing.Size(65, 22)
+        Me.DettDoc.Text = "Dettaglio"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'BtnAllegati
+        '
+        Me.BtnAllegati.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.BtnAllegati.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAllegati.Image = Global.MonitoraggioRifiuti.My.Resources.Resources.icons8_attach_96
+        Me.BtnAllegati.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnAllegati.Name = "BtnAllegati"
+        Me.BtnAllegati.Size = New System.Drawing.Size(71, 22)
+        Me.BtnAllegati.Text = "Allegati"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'BtnTornaMain
+        '
+        Me.BtnTornaMain.AutoSize = False
+        Me.BtnTornaMain.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.BtnTornaMain.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.BtnTornaMain.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnTornaMain.Name = "BtnTornaMain"
+        Me.BtnTornaMain.Size = New System.Drawing.Size(65, 22)
+        Me.BtnTornaMain.Text = "Torna"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
+        '
         'RiepilogoGeneraleDTDataGridView
         '
         Me.RiepilogoGeneraleDTDataGridView.AllowUserToAddRows = False
         Me.RiepilogoGeneraleDTDataGridView.AllowUserToDeleteRows = False
         Me.RiepilogoGeneraleDTDataGridView.AutoGenerateColumns = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RiepilogoGeneraleDTDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.RiepilogoGeneraleDTDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.RiepilogoGeneraleDTDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.FeedGestione, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.Allegati})
         Me.RiepilogoGeneraleDTDataGridView.DataSource = Me.RiepilogoGeneraleDTBindingSource
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.RiepilogoGeneraleDTDataGridView.DefaultCellStyle = DataGridViewCellStyle2
         Me.RiepilogoGeneraleDTDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RiepilogoGeneraleDTDataGridView.Location = New System.Drawing.Point(0, 25)
         Me.RiepilogoGeneraleDTDataGridView.Name = "RiepilogoGeneraleDTDataGridView"
@@ -379,14 +451,18 @@ Partial Class RiepilogoGenerale
         Me.StatoImageList.Images.SetKeyName(0, "iconfinder_caution_1055096.png")
         Me.StatoImageList.Images.SetKeyName(1, "iconfinder_Gnome-Emblem-Default-64_55596.png")
         Me.StatoImageList.Images.SetKeyName(2, "iconfinder_Education-Filled_15_3672887.png")
+        Me.StatoImageList.Images.SetKeyName(3, "iconfinder_Gnome-Emblem-Default-64_55596.png")
         '
         'RiepilogoGenerale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 450)
+        Me.ControlBox = False
         Me.Controls.Add(Me.RiepilogoGeneraleDTDataGridView)
         Me.Controls.Add(Me.RiepilogoGeneraleDTBindingNavigator)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "RiepilogoGenerale"
         Me.Text = "RiepilogoGenerale"
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -418,6 +494,12 @@ Partial Class RiepilogoGenerale
     Friend WithEvents TextBoxFiltro As ToolStripTextBox
     Friend WithEvents ApplicaFiltro As ToolStripButton
     Friend WithEvents RimuoviFiltro As ToolStripButton
+    Friend WithEvents StatoImageList As ImageList
+    Friend WithEvents DettDoc As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents BtnTornaMain As ToolStripButton
+    Friend WithEvents BtnAllegati As ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents FeedGestione As DataGridViewImageColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -436,5 +518,5 @@ Partial Class RiepilogoGenerale
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents Allegati As DataGridViewTextBoxColumn
-    Friend WithEvents StatoImageList As ImageList
+    Friend WithEvents ToolStripButton1 As ToolStripButton
 End Class
