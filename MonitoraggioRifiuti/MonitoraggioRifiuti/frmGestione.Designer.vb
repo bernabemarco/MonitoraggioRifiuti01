@@ -25,7 +25,9 @@ Partial Class frmGestione
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGestione))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
         Me.Biri_MonitoraggioRifiutiBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Biri_MonitoraggioRifiutiTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Biri_MonitoraggioRifiutiTableAdapter()
@@ -52,8 +54,19 @@ Partial Class frmGestione
         Me.BtnTornaMain = New System.Windows.Forms.ToolStripButton()
         Me.EXTRATESTERIFIUTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EXTRATESTERIFIUTIDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCer = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.CodiciCERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SicuraDataSet1 = New MonitoraggioRifiuti.SicuraDataSet()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Allegati = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ExtratesterifiutiTableAdapter1 = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter()
@@ -73,33 +86,22 @@ Partial Class frmGestione
         Me.SalvaRegistrazione = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.BtnAllegati = New System.Windows.Forms.ToolStripButton()
-        Me.Biri_MonitoraggioRifiutiDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.INDIRIZZO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LOCALITA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.oDTP = New System.Windows.Forms.DateTimePicker()
         Me.Codici_CERTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Codici_CERTableAdapter()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCer = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Allegati = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Biri_MonitoraggioRifiutiDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ScadenzaImgList = New System.Windows.Forms.ImageList(Me.components)
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AlertConsegna = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,7 +159,7 @@ Partial Class frmGestione
         Me.Biri_MonitoraggioRifiutiBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Name = "Biri_MonitoraggioRifiutiBindingNavigator"
         Me.Biri_MonitoraggioRifiutiBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1189, 26)
+        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1197, 26)
         Me.Biri_MonitoraggioRifiutiBindingNavigator.TabIndex = 0
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Text = "BindingNavigator1"
         '
@@ -318,19 +320,58 @@ Partial Class frmGestione
         Me.EXTRATESTERIFIUTIDataGridView.ColumnHeadersHeight = 30
         Me.EXTRATESTERIFIUTIDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn20, Me.TipoCer, Me.DataGridViewTextBoxColumn21, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.Allegati, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25})
         Me.EXTRATESTERIFIUTIDataGridView.DataSource = Me.BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.EXTRATESTERIFIUTIDataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.EXTRATESTERIFIUTIDataGridView.DefaultCellStyle = DataGridViewCellStyle3
         Me.EXTRATESTERIFIUTIDataGridView.Location = New System.Drawing.Point(0, 338)
         Me.EXTRATESTERIFIUTIDataGridView.Name = "EXTRATESTERIFIUTIDataGridView"
         Me.EXTRATESTERIFIUTIDataGridView.RowTemplate.Height = 24
         Me.EXTRATESTERIFIUTIDataGridView.Size = New System.Drawing.Size(1177, 147)
         Me.EXTRATESTERIFIUTIDataGridView.TabIndex = 2
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ID_Extratesterifiuti"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "ID_Extratesterifiuti"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Visible = False
+        Me.DataGridViewTextBoxColumn17.Width = 131
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "IDTESTA"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "IDTESTA"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.Visible = False
+        Me.DataGridViewTextBoxColumn18.Width = 81
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "GiustificativoCer"
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn20.HeaderText = "GiustificativoCer"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.Width = 119
+        '
+        'TipoCer
+        '
+        Me.TipoCer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.TipoCer.DataPropertyName = "TIPORIFIUTO"
+        Me.TipoCer.DataSource = Me.CodiciCERBindingSource
+        Me.TipoCer.DisplayMember = "DescrizioneCerEstesa"
+        Me.TipoCer.HeaderText = "TipoCer"
+        Me.TipoCer.Name = "TipoCer"
+        Me.TipoCer.ValueMember = "ID"
+        Me.TipoCer.Width = 56
         '
         'CodiciCERBindingSource
         '
@@ -341,6 +382,63 @@ Partial Class frmGestione
         '
         Me.SicuraDataSet1.DataSetName = "SicuraDataSet"
         Me.SicuraDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "DataRitiro"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "DataRitiro"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.Width = 87
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Arrivo4Copia"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Arrivo4Copia"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Width = 82
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "DataArrivoFormulario"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "DataArrivoFormulario"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.Width = 148
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Note"
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Note"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        Me.DataGridViewTextBoxColumn23.Width = 58
+        '
+        'Allegati
+        '
+        Me.Allegati.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Allegati.DataPropertyName = "Allegati"
+        Me.Allegati.HeaderText = "Allegati"
+        Me.Allegati.Name = "Allegati"
+        Me.Allegati.Width = 72
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Datetime"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Datetime"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.Visible = False
+        Me.DataGridViewTextBoxColumn24.Width = 82
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "UTENTEMODIFICA"
+        Me.DataGridViewTextBoxColumn25.HeaderText = "UTENTEMODIFICA"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.Visible = False
+        Me.DataGridViewTextBoxColumn25.Width = 137
         '
         'BiriMonitoraggioRifiutiEXTRATESTERIFIUTIBindingSource1
         '
@@ -491,121 +589,6 @@ Partial Class frmGestione
         Me.BtnAllegati.Size = New System.Drawing.Size(71, 22)
         Me.BtnAllegati.Text = "Allegati"
         '
-        'Biri_MonitoraggioRifiutiDataGridView
-        '
-        Me.Biri_MonitoraggioRifiutiDataGridView.AutoGenerateColumns = False
-        Me.Biri_MonitoraggioRifiutiDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.CLIENTE, Me.INDIRIZZO, Me.LOCALITA, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
-        Me.Biri_MonitoraggioRifiutiDataGridView.DataSource = Me.Biri_MonitoraggioRifiutiBindingSource
-        Me.Biri_MonitoraggioRifiutiDataGridView.Location = New System.Drawing.Point(0, 28)
-        Me.Biri_MonitoraggioRifiutiDataGridView.Name = "Biri_MonitoraggioRifiutiDataGridView"
-        Me.Biri_MonitoraggioRifiutiDataGridView.Size = New System.Drawing.Size(1177, 264)
-        Me.Biri_MonitoraggioRifiutiDataGridView.TabIndex = 6
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "PROGRESSIVO"
-        Me.DataGridViewTextBoxColumn1.Frozen = True
-        Me.DataGridViewTextBoxColumn1.HeaderText = "PROGRESSIVO"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TIPODOC"
-        Me.DataGridViewTextBoxColumn4.Frozen = True
-        Me.DataGridViewTextBoxColumn4.HeaderText = "TIPODOC"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 80
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "NUMERODOC"
-        Me.DataGridViewTextBoxColumn5.Frozen = True
-        Me.DataGridViewTextBoxColumn5.HeaderText = "NUMERODOC"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 103
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ESERCIZIO"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ESERCIZIO"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 89
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "DataDoc"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "DataDoc"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 75
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "StatoDoc"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "StatoDoc"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 77
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "CODCONTO"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "CODCONTO"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 93
-        '
-        'CLIENTE
-        '
-        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CLIENTE.DataPropertyName = "CLIENTE"
-        Me.CLIENTE.HeaderText = "CLIENTE"
-        Me.CLIENTE.Name = "CLIENTE"
-        Me.CLIENTE.Width = 77
-        '
-        'INDIRIZZO
-        '
-        Me.INDIRIZZO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.INDIRIZZO.DataPropertyName = "INDIRIZZO"
-        Me.INDIRIZZO.HeaderText = "INDIRIZZO"
-        Me.INDIRIZZO.Name = "INDIRIZZO"
-        Me.INDIRIZZO.Width = 87
-        '
-        'LOCALITA
-        '
-        Me.LOCALITA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.LOCALITA.DataPropertyName = "LOCALITA"
-        Me.LOCALITA.HeaderText = "LOCALITA"
-        Me.LOCALITA.Name = "LOCALITA"
-        Me.LOCALITA.Width = 83
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "TipodocSucc"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "TipodocSucc"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Width = 96
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "NumerodocSucc"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "NumerodocSucc"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Width = 112
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "DataDocSucc"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "DataDocSucc"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
         'oDTP
         '
         Me.oDTP.Location = New System.Drawing.Point(1024, 483)
@@ -617,107 +600,116 @@ Partial Class frmGestione
         '
         Me.Codici_CERTableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn17
+        'Biri_MonitoraggioRifiutiDataGridView
         '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ID_Extratesterifiuti"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "ID_Extratesterifiuti"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.ReadOnly = True
-        Me.DataGridViewTextBoxColumn17.Visible = False
-        Me.DataGridViewTextBoxColumn17.Width = 131
+        Me.Biri_MonitoraggioRifiutiDataGridView.AutoGenerateColumns = False
+        Me.Biri_MonitoraggioRifiutiDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Biri_MonitoraggioRifiutiDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.AlertConsegna, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28})
+        Me.Biri_MonitoraggioRifiutiDataGridView.DataSource = Me.Biri_MonitoraggioRifiutiBindingSource
+        Me.Biri_MonitoraggioRifiutiDataGridView.Location = New System.Drawing.Point(0, 29)
+        Me.Biri_MonitoraggioRifiutiDataGridView.Name = "Biri_MonitoraggioRifiutiDataGridView"
+        Me.Biri_MonitoraggioRifiutiDataGridView.Size = New System.Drawing.Size(1197, 271)
+        Me.Biri_MonitoraggioRifiutiDataGridView.TabIndex = 7
         '
-        'DataGridViewTextBoxColumn18
+        'ScadenzaImgList
         '
-        Me.DataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "IDTESTA"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "IDTESTA"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.Visible = False
-        Me.DataGridViewTextBoxColumn18.Width = 81
+        Me.ScadenzaImgList.ImageStream = CType(resources.GetObject("ScadenzaImgList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ScadenzaImgList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ScadenzaImgList.Images.SetKeyName(0, "iconfinder_f-check_256_282474.png")
+        Me.ScadenzaImgList.Images.SetKeyName(1, "iconfinder_bell-notifications-notice-notify-alert_3993856.png")
+        Me.ScadenzaImgList.Images.SetKeyName(2, "iconfinder_caution_1055096.png")
         '
-        'DataGridViewTextBoxColumn20
+        'DataGridViewTextBoxColumn1
         '
-        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "GiustificativoCer"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "GiustificativoCer"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.Width = 119
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "PROGRESSIVO"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "PROGRESSIVO"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Visible = False
         '
-        'TipoCer
+        'DataGridViewTextBoxColumn3
         '
-        Me.TipoCer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.TipoCer.DataPropertyName = "TIPORIFIUTO"
-        Me.TipoCer.DataSource = Me.CodiciCERBindingSource
-        Me.TipoCer.DisplayMember = "DescrizioneCerEstesa"
-        Me.TipoCer.HeaderText = "TipoCer"
-        Me.TipoCer.Name = "TipoCer"
-        Me.TipoCer.ValueMember = "ID"
-        Me.TipoCer.Width = 56
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ESERCIZIO"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ANNO"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 45
         '
-        'DataGridViewTextBoxColumn21
+        'DataGridViewTextBoxColumn4
         '
-        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "DataRitiro"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "DataRitiro"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        Me.DataGridViewTextBoxColumn21.Width = 87
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TIPODOC"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "TIPODOC"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 65
         '
-        'DataGridViewCheckBoxColumn1
+        'DataGridViewTextBoxColumn5
         '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Arrivo4Copia"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Arrivo4Copia"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Width = 82
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "NUMERODOC"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "NUMDOC"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 65
         '
-        'DataGridViewTextBoxColumn22
+        'DataGridViewTextBoxColumn6
         '
-        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "DataArrivoFormulario"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "DataArrivoFormulario"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.Width = 148
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "DataDoc"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "DataDoc"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 80
         '
-        'DataGridViewTextBoxColumn23
+        'DataGridViewTextBoxColumn7
         '
-        Me.DataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Note"
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Note"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        Me.DataGridViewTextBoxColumn23.Width = 58
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "StatoDoc"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn7.HeaderText = "StatoDoc"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 60
         '
-        'Allegati
+        'AlertConsegna
         '
-        Me.Allegati.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.Allegati.DataPropertyName = "Allegati"
-        Me.Allegati.HeaderText = "Allegati"
-        Me.Allegati.Name = "Allegati"
-        Me.Allegati.Width = 72
+        Me.AlertConsegna.HeaderText = "AlertScadenza"
+        Me.AlertConsegna.Name = "AlertConsegna"
         '
-        'DataGridViewTextBoxColumn24
+        'DataGridViewTextBoxColumn29
         '
-        Me.DataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Datetime"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Datetime"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.Visible = False
-        Me.DataGridViewTextBoxColumn24.Width = 82
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "DATACONSEGNA"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "Consegna"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.Width = 80
         '
-        'DataGridViewTextBoxColumn25
+        'DataGridViewTextBoxColumn8
         '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "UTENTEMODIFICA"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "UTENTEMODIFICA"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.Visible = False
-        Me.DataGridViewTextBoxColumn25.Width = 137
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "CODCONTO"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "CodConto"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 75
+        '
+        'DataGridViewTextBoxColumn26
+        '
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "CLIENTE"
+        Me.DataGridViewTextBoxColumn26.HeaderText = "Cliente"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.Width = 300
+        '
+        'DataGridViewTextBoxColumn27
+        '
+        Me.DataGridViewTextBoxColumn27.DataPropertyName = "INDIRIZZO"
+        Me.DataGridViewTextBoxColumn27.HeaderText = "Indirizzo"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        Me.DataGridViewTextBoxColumn27.Width = 150
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "LOCALITA"
+        Me.DataGridViewTextBoxColumn28.HeaderText = "Localita"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        Me.DataGridViewTextBoxColumn28.Width = 150
         '
         'frmGestione
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1189, 505)
-        Me.Controls.Add(Me.oDTP)
+        Me.ClientSize = New System.Drawing.Size(1197, 523)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiDataGridView)
+        Me.Controls.Add(Me.oDTP)
         Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.EXTRATESTERIFIUTIDataGridView)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiBindingNavigator)
@@ -779,23 +771,12 @@ Partial Class frmGestione
     Friend WithEvents TextBoxFiltro As ToolStripTextBox
     Friend WithEvents ApplicaFiltro As ToolStripButton
     Friend WithEvents RimuoviFiltro As ToolStripButton
-    Friend WithEvents Biri_MonitoraggioRifiutiDataGridView As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents CLIENTE As DataGridViewTextBoxColumn
-    Friend WithEvents INDIRIZZO As DataGridViewTextBoxColumn
-    Friend WithEvents LOCALITA As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
@@ -824,4 +805,18 @@ Partial Class frmGestione
     Friend WithEvents Allegati As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
+    Friend WithEvents Biri_MonitoraggioRifiutiDataGridView As DataGridView
+    Friend WithEvents ScadenzaImgList As ImageList
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents AlertConsegna As DataGridViewImageColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
 End Class

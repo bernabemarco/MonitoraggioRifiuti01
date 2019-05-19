@@ -8,6 +8,10 @@ Public Class frmGestione
         Me.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
 
 
+
+
+
+
     End Sub
 
 
@@ -32,7 +36,7 @@ Public Class frmGestione
             If result = DialogResult.Yes Then
                 Me.Validate()
                 Me.EXTRATESTERIFIUTIBindingSource.EndEdit()
-                'Me.EXTRATESTERIFIUTITableAdapter.Update(Me.SicuraDataSet.EXTRATESTERIFIUTI)
+                Me.EXTRATESTERIFIUTITableAdapter.Update(Me.SicuraDataSet.EXTRATESTERIFIUTI)
 
                 MessageBox.Show("Salvataggio eseguito con Successo!", "Salvataggio Dati", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
@@ -47,10 +51,6 @@ Public Class frmGestione
                             MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End Try
 
-        'Validate()
-        'EXTRATESTERIFIUTIBindingSource.EndEdit()
-        'EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet)
-        'End If
 
     End Sub
 
@@ -227,6 +227,73 @@ Public Class frmGestione
     Private Sub BtnTornaMain_Click(sender As Object, e As EventArgs) Handles BtnTornaMain.Click
         Main.Show()
         Me.Visible = False
+    End Sub
+
+
+
+
+
+
+
+
+    Private Sub frmGestione_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        For Each Row As DataGridViewRow In Biri_MonitoraggioRifiutiDataGridView.Rows
+            'Testo la data di scadenza
+
+            Dim secondDate As Date
+            Dim Giorniscaduti As Integer
+            Dim SelezionaImmagine As Integer
+            Dim firstDate = Row.Cells(7).Value
+            Try
+                secondDate = CDate(firstDate)
+                Giorniscaduti = CInt(DateDiff(DateInterval.Day, secondDate, Now))
+
+                If Giorniscaduti > 10 Then
+                    SelezionaImmagine = 1
+                    Row.Cells(6).Value = ScadenzaImgList.Images(SelezionaImmagine)
+                Else
+                    SelezionaImmagine = 0
+                    Row.Cells(6).Value = ScadenzaImgList.Images(SelezionaImmagine)
+                End If
+
+            Catch
+                Row.Cells(6).Value = ScadenzaImgList.Images(2)
+                Return
+            End Try
+
+
+            'Row.Cells(6).Value = AlertConsegna.Image(CInt(Row.Cells(10).Value))
+        Next
+    End Sub
+
+    Private Sub Biri_MonitoraggioRifiutiDataGridView_Sorted(sender As Object, e As EventArgs) Handles Biri_MonitoraggioRifiutiDataGridView.Sorted
+        For Each Row As DataGridViewRow In Biri_MonitoraggioRifiutiDataGridView.Rows
+            'Testo la data di scadenza
+
+            Dim secondDate As Date
+            Dim Giorniscaduti As Integer
+            Dim SelezionaImmagine As Integer
+            Dim firstDate = Row.Cells(7).Value
+            Try
+                secondDate = CDate(firstDate)
+                Giorniscaduti = CInt(DateDiff(DateInterval.Day, secondDate, Now))
+
+                If Giorniscaduti > 10 Then
+                    SelezionaImmagine = 1
+                    Row.Cells(6).Value = ScadenzaImgList.Images(SelezionaImmagine)
+                Else
+                    SelezionaImmagine = 0
+                    Row.Cells(6).Value = ScadenzaImgList.Images(SelezionaImmagine)
+                End If
+
+            Catch
+                Row.Cells(6).Value = ScadenzaImgList.Images(2)
+                Return
+            End Try
+
+
+            'Row.Cells(6).Value = AlertConsegna.Image(CInt(Row.Cells(10).Value))
+        Next
     End Sub
 
 

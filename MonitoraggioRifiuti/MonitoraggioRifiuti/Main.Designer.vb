@@ -85,7 +85,7 @@ Partial Class Main
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(138, 94)
+        Me.Button1.Location = New System.Drawing.Point(35, 94)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(88, 37)
         Me.Button1.TabIndex = 3

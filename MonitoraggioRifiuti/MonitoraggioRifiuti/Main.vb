@@ -28,8 +28,7 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim frm As New AAAAA
+        Gestione.Show()
 
-        frm.Show()
     End Sub
 End Class

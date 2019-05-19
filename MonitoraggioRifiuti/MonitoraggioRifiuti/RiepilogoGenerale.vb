@@ -64,4 +64,6 @@ Public Class RiepilogoGenerale
             Row.Cells(1).Value = StatoImageList.Images(CInt(Row.Cells(10).Value))
         Next
     End Sub
+
+
 End Class
