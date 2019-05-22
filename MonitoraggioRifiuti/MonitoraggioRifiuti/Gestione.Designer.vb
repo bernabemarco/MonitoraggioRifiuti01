@@ -23,7 +23,6 @@ Partial Class Gestione
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TIPORIFIUTOLabel As System.Windows.Forms.Label
         Dim GiustificativoCerLabel As System.Windows.Forms.Label
         Dim DataRitiroLabel As System.Windows.Forms.Label
         Dim Arrivo4CopiaLabel As System.Windows.Forms.Label
@@ -31,6 +30,7 @@ Partial Class Gestione
         Dim NoteLabel As System.Windows.Forms.Label
         Dim AllegatiLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Gestione))
+        Dim TIPORIFIUTOLabel As System.Windows.Forms.Label
         Me.SicuraDataSet = New MonitoraggioRifiuti.SicuraDataSet()
         Me.Biri_MonitoraggioRifiutiBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Biri_MonitoraggioRifiutiTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Biri_MonitoraggioRifiutiTableAdapter()
@@ -61,7 +61,6 @@ Partial Class Gestione
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EXTRATESTERIFIUTIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TIPORIFIUTOComboBox = New System.Windows.Forms.ComboBox()
         Me.GiustificativoCerTextBox = New System.Windows.Forms.TextBox()
         Me.Arrivo4CopiaCheckBox = New System.Windows.Forms.CheckBox()
         Me.NoteTextBox = New System.Windows.Forms.TextBox()
@@ -83,13 +82,17 @@ Partial Class Gestione
         Me.DataRitiroTb = New System.Windows.Forms.TextBox()
         Me.oDTPRitiro = New System.Windows.Forms.DateTimePicker()
         Me.oDTPFormulario = New System.Windows.Forms.DateTimePicker()
-        TIPORIFIUTOLabel = New System.Windows.Forms.Label()
+        Me.TIPORIFIUTOComboBox = New System.Windows.Forms.ComboBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CodiciCERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Codici_CERTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Codici_CERTableAdapter()
         GiustificativoCerLabel = New System.Windows.Forms.Label()
         DataRitiroLabel = New System.Windows.Forms.Label()
         Arrivo4CopiaLabel = New System.Windows.Forms.Label()
         DataArrivoFormularioLabel = New System.Windows.Forms.Label()
         NoteLabel = New System.Windows.Forms.Label()
         AllegatiLabel = New System.Windows.Forms.Label()
+        TIPORIFIUTOLabel = New System.Windows.Forms.Label()
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Biri_MonitoraggioRifiutiBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,16 +101,8 @@ Partial Class Gestione
         CType(Me.EXTRATESTERIFIUTIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
+        CType(Me.CodiciCERBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'TIPORIFIUTOLabel
-        '
-        TIPORIFIUTOLabel.AutoSize = True
-        TIPORIFIUTOLabel.Location = New System.Drawing.Point(50, 346)
-        TIPORIFIUTOLabel.Name = "TIPORIFIUTOLabel"
-        TIPORIFIUTOLabel.Size = New System.Drawing.Size(78, 13)
-        TIPORIFIUTOLabel.TabIndex = 6
-        TIPORIFIUTOLabel.Text = "TIPORIFIUTO:"
         '
         'GiustificativoCerLabel
         '
@@ -204,7 +199,7 @@ Partial Class Gestione
         Me.Biri_MonitoraggioRifiutiBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Name = "Biri_MonitoraggioRifiutiBindingNavigator"
         Me.Biri_MonitoraggioRifiutiBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1060, 25)
+        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1068, 25)
         Me.Biri_MonitoraggioRifiutiBindingNavigator.TabIndex = 0
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Text = "BindingNavigator1"
         '
@@ -378,15 +373,6 @@ Partial Class Gestione
         Me.EXTRATESTERIFIUTIBindingSource.DataMember = "Biri_MonitoraggioRifiuti_EXTRATESTERIFIUTI"
         Me.EXTRATESTERIFIUTIBindingSource.DataSource = Me.Biri_MonitoraggioRifiutiBindingSource
         '
-        'TIPORIFIUTOComboBox
-        '
-        Me.TIPORIFIUTOComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "TIPORIFIUTO", True))
-        Me.TIPORIFIUTOComboBox.FormattingEnabled = True
-        Me.TIPORIFIUTOComboBox.Location = New System.Drawing.Point(170, 343)
-        Me.TIPORIFIUTOComboBox.Name = "TIPORIFIUTOComboBox"
-        Me.TIPORIFIUTOComboBox.Size = New System.Drawing.Size(200, 21)
-        Me.TIPORIFIUTOComboBox.TabIndex = 7
-        '
         'GiustificativoCerTextBox
         '
         Me.GiustificativoCerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "GiustificativoCer", True))
@@ -446,14 +432,13 @@ Partial Class Gestione
         Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem1
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem1
-        Me.BindingNavigator1.Size = New System.Drawing.Size(285, 25)
+        Me.BindingNavigator1.Size = New System.Drawing.Size(254, 25)
         Me.BindingNavigator1.TabIndex = 25
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem1
         '
         Me.BindingNavigatorAddNewItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem1.Enabled = False
         Me.BindingNavigatorAddNewItem1.Image = CType(resources.GetObject("BindingNavigatorAddNewItem1.Image"), System.Drawing.Image)
         Me.BindingNavigatorAddNewItem1.Name = "BindingNavigatorAddNewItem1"
         Me.BindingNavigatorAddNewItem1.RightToLeftAutoMirrorImage = True
@@ -568,19 +553,59 @@ Partial Class Gestione
         Me.oDTPFormulario.TabIndex = 29
         Me.oDTPFormulario.Visible = False
         '
+        'TIPORIFIUTOLabel
+        '
+        TIPORIFIUTOLabel.AutoSize = True
+        TIPORIFIUTOLabel.Location = New System.Drawing.Point(86, 346)
+        TIPORIFIUTOLabel.Name = "TIPORIFIUTOLabel"
+        TIPORIFIUTOLabel.Size = New System.Drawing.Size(78, 13)
+        TIPORIFIUTOLabel.TabIndex = 29
+        TIPORIFIUTOLabel.Text = "TIPORIFIUTO:"
+        '
+        'TIPORIFIUTOComboBox
+        '
+        Me.TIPORIFIUTOComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "TIPORIFIUTO", True))
+        Me.TIPORIFIUTOComboBox.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.EXTRATESTERIFIUTIBindingSource, "TIPORIFIUTO", True))
+        Me.TIPORIFIUTOComboBox.FormattingEnabled = True
+        Me.TIPORIFIUTOComboBox.Location = New System.Drawing.Point(170, 343)
+        Me.TIPORIFIUTOComboBox.Name = "TIPORIFIUTOComboBox"
+        Me.TIPORIFIUTOComboBox.Size = New System.Drawing.Size(200, 21)
+        Me.TIPORIFIUTOComboBox.TabIndex = 30
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataSource = Me.CodiciCERBindingSource
+        Me.ComboBox1.DisplayMember = "DescrizioneCerEstesa"
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(398, 343)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(200, 21)
+        Me.ComboBox1.TabIndex = 31
+        Me.ComboBox1.ValueMember = "ID"
+        '
+        'CodiciCERBindingSource
+        '
+        Me.CodiciCERBindingSource.DataMember = "Codici_CER"
+        Me.CodiciCERBindingSource.DataSource = Me.SicuraDataSet
+        '
+        'Codici_CERTableAdapter
+        '
+        Me.Codici_CERTableAdapter.ClearBeforeFill = True
+        '
         'Gestione
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1060, 596)
+        Me.ClientSize = New System.Drawing.Size(1068, 596)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(TIPORIFIUTOLabel)
+        Me.Controls.Add(Me.TIPORIFIUTOComboBox)
         Me.Controls.Add(Me.oDTPFormulario)
         Me.Controls.Add(Me.oDTPRitiro)
         Me.Controls.Add(Me.DataRitiroTb)
         Me.Controls.Add(Me.DataFormularioTB)
         Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(TIPORIFIUTOLabel)
-        Me.Controls.Add(Me.TIPORIFIUTOComboBox)
         Me.Controls.Add(GiustificativoCerLabel)
         Me.Controls.Add(Me.GiustificativoCerTextBox)
         Me.Controls.Add(DataRitiroLabel)
@@ -593,6 +618,8 @@ Partial Class Gestione
         Me.Controls.Add(Me.AllegatiTextBox)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiDataGridView)
         Me.Controls.Add(Me.Biri_MonitoraggioRifiutiBindingNavigator)
+        Me.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "TIPORIFIUTO", True))
+        Me.DataBindings.Add(New System.Windows.Forms.Binding("Tag", Me.CodiciCERBindingSource, "DescrizioneCerEstesa", True))
         Me.Name = "Gestione"
         Me.Text = "Gestione"
         CType(Me.SicuraDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -605,6 +632,7 @@ Partial Class Gestione
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator1.ResumeLayout(False)
         Me.BindingNavigator1.PerformLayout()
+        CType(Me.CodiciCERBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -643,7 +671,6 @@ Partial Class Gestione
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents EXTRATESTERIFIUTITableAdapter As SicuraDataSetTableAdapters.EXTRATESTERIFIUTITableAdapter
     Friend WithEvents EXTRATESTERIFIUTIBindingSource As BindingSource
-    Friend WithEvents TIPORIFIUTOComboBox As ComboBox
     Friend WithEvents GiustificativoCerTextBox As TextBox
     Friend WithEvents Arrivo4CopiaCheckBox As CheckBox
     Friend WithEvents NoteTextBox As TextBox
@@ -665,4 +692,8 @@ Partial Class Gestione
     Friend WithEvents DataRitiroTb As TextBox
     Friend WithEvents oDTPRitiro As DateTimePicker
     Friend WithEvents oDTPFormulario As DateTimePicker
+    Friend WithEvents TIPORIFIUTOComboBox As ComboBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CodiciCERBindingSource As BindingSource
+    Friend WithEvents Codici_CERTableAdapter As SicuraDataSetTableAdapters.Codici_CERTableAdapter
 End Class
