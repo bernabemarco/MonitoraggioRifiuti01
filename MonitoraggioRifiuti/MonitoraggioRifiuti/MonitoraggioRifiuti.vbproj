@@ -143,6 +143,7 @@
     <Compile Include="RiepilogoGenerale.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ServiziGenerali.vb" />
     <Compile Include="SicuraDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,4 +1,7 @@
 ﻿Imports System.Threading
+'Imports System.Data
+Imports System.Data.SqlClient
+
 
 Public Class Login
 
@@ -9,52 +12,70 @@ Public Class Login
     'Questa è una variabile booleana che mi permette di chiudere lo SplashScreen al termine di tutte le operazioni
     Private Fine As Boolean
 
-    'Public Class Form1
 
-    ' Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
-    'End Sub
-
-    'Login Button
     Private Sub btnlogin_Click(sender As System.Object, e As System.EventArgs) Handles BtnLogin.Click
 
-        'Creo una nuova istanza del Thread
-        newThread = New Thread(AddressOf InitializeForm)
-        'Faccio partire il Thread separato
-        newThread.Start()
 
 
-        txtUsername.Focus()
-        Dim Username As String = txtUsername.Text()
-
-        Dim Password As String = txtPassword.Text()
-
-        If (Password = "1" And Username = "1") Or (Password = "2" And Username = "2") Or (Password = "3" And Username = "3") Then
-
-
-            frmGestione.Show()
-            frmGestione.Visible = False
-            RiepilogoGenerale.Show()
-            RiepilogoGenerale.Visible = False
-
-            Fine = True
-            'MessageBox.Show("Login eseguito: " & Username, "", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-            Main.Show()
-
-            'Clear all fields
-            txtPassword.Text = ""
-            txtUsername.Text = ""
-        Else
-            MessageBox.Show("Login Fallito " & Username, "", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            txtPassword.Text = ""
-            txtUsername.Text = ""
+        If txtUsername.Text.Length <= 0 Then
+            MessageBox.Show("Please enter Username!")
+        ElseIf txtPassword.Text.Length <= 0 Then
+            MessageBox.Show("Please enter Password!")
         End If
-
-        'Me.Close()
-
+        Dim str As String = "Data Source=localhost;Initial Catalog=Sicura;User ID='" & txtUsername.Text & "';Password='" & txtPassword.Text & "'"
 
 
+
+        Dim sql As String = "Select userid from tabutenti where userid='" & txtUsername.Text & "'"
+
+        Try
+
+            Using Conn As New SqlConnection(str)
+                Using cmd As New SqlCommand(sql, Conn)
+                    Conn.Open()
+
+                    Dim value As SqlDataReader = cmd.ExecuteReader()
+                    If value.HasRows Then
+                        MessageBox.Show("Login eseguito!")
+
+                        'Creo una nuova istanza del Thread
+                        newThread = New Thread(AddressOf InitializeForm)
+                        'Faccio partire il Thread separato
+                        newThread.Start()
+
+                        txtUsername.Focus()
+                        UtenteCorrente = txtUsername.Text()
+
+
+                        frmGestione.Codici_CERTableAdapter.FillCodiciCer(frmGestione.SicuraDataSet.Codici_CER)
+                        frmGestione.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(frmGestione.SicuraDataSet.EXTRATESTERIFIUTI)
+                        frmGestione.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(frmGestione.SicuraDataSet.Biri_MonitoraggioRifiuti)
+                        RiepilogoGenerale.RiepilogoGeneraleDTTableAdapter.FillRiepGenerale(RiepilogoGenerale.SicuraDataSet.RiepilogoGeneraleDT)
+
+                        Main.Show()
+                        Fine = True
+                    Else
+
+                        txtUsername.Text = ""
+                        txtPassword.Text = ""
+                        txtUsername.Focus()
+                        MessageBox.Show("Login Fallito! o utente non trovato")
+
+                    End If
+
+
+                End Using
+
+            End Using
+
+        Catch ex As Exception
+
+            txtUsername.Text = ""
+            txtPassword.Text = ""
+            txtUsername.Focus()
+            MessageBox.Show("Login Fallito!")
+
+        End Try
 
 
     End Sub
@@ -81,9 +102,9 @@ Public Class Login
             'Questo permette l'aggiornamento della parte grafica dello splashscreen
             Application.DoEvents()
         Loop Until Fine
-        'Main.Hide()
+
         Splash.Close()
-        'Main.Hide()
+
     End Sub
 
 
@@ -98,6 +119,13 @@ Public Class Login
         txtUsername.Focus()
     End Sub
 
+    Private Sub txtUsername_Click(sender As Object, e As EventArgs) Handles txtUsername.Click
+        HelpBoxlbl.Text = "Inserisci qui il nome utente"
+    End Sub
+
+    Private Sub txtPassword_Click(sender As Object, e As EventArgs) Handles txtPassword.Click
+        HelpBoxlbl.Text = "Inserisci qui la passsword"
+    End Sub
 End Class
 
 

@@ -5641,6 +5641,12 @@ Namespace SicuraDataSetTableAdapters
             tableMapping.ColumnMappings.Add("UTENTEMODIFICA", "UTENTEMODIFICA")
             tableMapping.ColumnMappings.Add("Allegati", "Allegati")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM EXTRATESTERIFIUTI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Extratesterifiuti = @ID_Extratest"& _ 
+                "erifiuti)"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Extratesterifiuti", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Extratesterifiuti", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO EXTRATESTERIFIUTI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (IDTESTA, TIPORIFIUTO, Gi"& _ 
@@ -5663,16 +5669,18 @@ Namespace SicuraDataSetTableAdapters
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE       EXTRATESTERIFIUTI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                TIPORIFIUTO = @TIPORIFIUTO, Gi"& _ 
                 "ustificativoCer = @GiustificativoCer, DataRitiro = @DataRitiro, Arrivo4Copia = @"& _ 
-                "Arrivo4Copia, DataArrivoFormulario = @DataArrivoFormulario, Note = @Note"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
-                "       (IDTESTA = @IDTESTA)"
+                "Arrivo4Copia, DataArrivoFormulario = @DataArrivoFormulario, Note = @Note, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     Datetime = GETDATE(), UTENTEMODIFICA = @UtenteCorrente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (ID_Extratesterifiuti = @ID_Extratesterifiuti)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TIPORIFIUTO", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "TIPORIFIUTO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GiustificativoCer", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "GiustificativoCer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GiustificativoCer", Global.System.Data.SqlDbType.VarChar, 900, Global.System.Data.ParameterDirection.Input, 0, 0, "GiustificativoCer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataRitiro", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DataRitiro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Arrivo4Copia", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Arrivo4Copia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataArrivoFormulario", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DataArrivoFormulario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.VarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDTESTA", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 0, "IDTESTA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NText, 1073741823, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UtenteCorrente", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "UTENTEMODIFICA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Extratesterifiuti", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Extratesterifiuti", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5747,6 +5755,27 @@ Namespace SicuraDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal ID_Extratesterifiuti As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(ID_Extratesterifiuti,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert(ByVal IDTESTA As Decimal, ByVal TIPORIFIUTO As Global.System.Nullable(Of Integer), ByVal GiustificativoCer As String, ByVal DataRitiro As Global.System.Nullable(Of Date), ByVal Arrivo4Copia As Global.System.Nullable(Of Boolean), ByVal DataArrivoFormulario As Global.System.Nullable(Of Date), ByVal Note As String, ByVal Allegati As String, ByVal Datetime As Global.System.Nullable(Of Date), ByVal UTENTEMODIFICA As String) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(IDTESTA,Decimal)
@@ -5814,7 +5843,7 @@ Namespace SicuraDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal TIPORIFIUTO As Global.System.Nullable(Of Integer), ByVal GiustificativoCer As String, ByVal DataRitiro As Global.System.Nullable(Of Date), ByVal Arrivo4Copia As Global.System.Nullable(Of Boolean), ByVal DataArrivoFormulario As Global.System.Nullable(Of Date), ByVal Note As String, ByVal IDTESTA As Decimal) As Integer
+        Public Overloads Overridable Function Update(ByVal TIPORIFIUTO As Global.System.Nullable(Of Integer), ByVal GiustificativoCer As String, ByVal DataRitiro As Global.System.Nullable(Of Date), ByVal Arrivo4Copia As Global.System.Nullable(Of Boolean), ByVal DataArrivoFormulario As Global.System.Nullable(Of Date), ByVal Note As String, ByVal UtenteCorrente As String, ByVal ID_Extratesterifiuti As Integer) As Integer
             If (TIPORIFIUTO.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(TIPORIFIUTO.Value,Integer)
             Else
@@ -5845,7 +5874,12 @@ Namespace SicuraDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Note,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(IDTESTA,Decimal)
+            If (UtenteCorrente Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(UtenteCorrente,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(ID_Extratesterifiuti,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

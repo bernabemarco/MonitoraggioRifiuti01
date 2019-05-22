@@ -10,9 +10,6 @@ Public Class RiepilogoGenerale
 
 
 
-        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.RiepilogoGeneraleDT'. È possibile spostarla o rimuoverla se necessario.
-        Me.RiepilogoGeneraleDTTableAdapter.FillRiepGenerale(Me.SicuraDataSet.RiepilogoGeneraleDT)
-
         For Each Row As DataGridViewRow In RiepilogoGeneraleDTDataGridView.Rows
             Row.Cells(1).Value = StatoImageList.Images(CInt(Row.Cells(10).Value))
         Next
@@ -44,8 +41,8 @@ Public Class RiepilogoGenerale
     End Sub
 
     Private Sub BtnTornaMain_Click(sender As Object, e As EventArgs) Handles BtnTornaMain.Click
-        Main.Visible = True
-        Me.Visible = False
+        Main.Show()
+        Me.Hide()
 
     End Sub
 

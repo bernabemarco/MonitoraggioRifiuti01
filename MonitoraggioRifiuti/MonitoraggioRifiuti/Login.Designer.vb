@@ -29,6 +29,7 @@ Partial Class Login
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.HelpBoxlbl = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BtnLogin
@@ -53,6 +54,7 @@ Partial Class Login
         '
         Me.txtPassword.Location = New System.Drawing.Point(104, 85)
         Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(100, 20)
         Me.txtPassword.TabIndex = 2
         '
@@ -85,11 +87,21 @@ Partial Class Login
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Password"
         '
+        'HelpBoxlbl
+        '
+        Me.HelpBoxlbl.AutoSize = True
+        Me.HelpBoxlbl.Location = New System.Drawing.Point(12, 123)
+        Me.HelpBoxlbl.Name = "HelpBoxlbl"
+        Me.HelpBoxlbl.Size = New System.Drawing.Size(39, 13)
+        Me.HelpBoxlbl.TabIndex = 7
+        Me.HelpBoxlbl.Text = "Label3"
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(264, 208)
+        Me.Controls.Add(Me.HelpBoxlbl)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnClear)
@@ -111,4 +123,5 @@ Partial Class Login
     Friend WithEvents btnClear As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents HelpBoxlbl As Label
 End Class

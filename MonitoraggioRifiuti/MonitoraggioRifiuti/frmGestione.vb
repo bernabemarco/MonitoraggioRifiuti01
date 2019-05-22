@@ -1,18 +1,7 @@
 ﻿
 Public Class frmGestione
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet1.Codici_CER)
-        Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
-        Me.Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(Me.SicuraDataSet.Biri_MonitoraggioRifiuti)
-
-
-
-
-
-
-    End Sub
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -226,7 +215,7 @@ Public Class frmGestione
 
     Private Sub BtnTornaMain_Click(sender As Object, e As EventArgs) Handles BtnTornaMain.Click
         Main.Show()
-        Me.Visible = False
+        Me.Hide()
     End Sub
 
 

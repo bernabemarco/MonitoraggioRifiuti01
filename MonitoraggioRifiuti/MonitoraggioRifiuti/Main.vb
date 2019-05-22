@@ -9,18 +9,17 @@ Public Class Main
     Private Sub OpenDash_Click(sender As Object, e As EventArgs) Handles OpenDash.Click
         'Dim GestioneRifiuti As New frmGestione
         'Cursor = Cursors.AppStarting
-        Me.Visible = False
+        Me.Hide()
         'Hide()
         frmGestione.Visible = True
     End Sub
 
     Private Sub OpenRiep_Click(sender As Object, e As EventArgs) Handles OpenRiep.Click
         'Dim FrmRiep As New RiepilogoGenerale
-        Me.Visible = False
+        Me.Hide()
         'Hide()
         RiepilogoGenerale.Show()
     End Sub
-
 
 
     Private Sub Main_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -31,4 +30,6 @@ Public Class Main
         Gestione.Show()
 
     End Sub
+
+
 End Class

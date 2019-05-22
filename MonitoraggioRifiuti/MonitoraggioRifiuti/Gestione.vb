@@ -45,9 +45,39 @@ Public Class Gestione
     Private Sub BindingNavigatorAddNewItem1_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem1.Click
 
 
-        Me.EXTRATESTERIFIUTITableAdapter.Insert(CDec(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value),
-                                                Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Now, Nothing)
-        Me.EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
+
+        Try
+            Dim result As New DialogResult
+            result = MessageBox.Show("Vuoi Inserire una nuova riga?", "Inserimento Dati",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+
+                'Dim RigaCorrente As Integer = CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value)
+
+
+                'If (IsDBNull(RigaCorrente)) Then
+
+                'Else
+                Me.EXTRATESTERIFIUTITableAdapter.Insert(CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value),
+                                                            Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Now, UtenteCorrente)
+                Me.Validate()
+                Me.EXTRATESTERIFIUTIBindingSource.EndEdit()
+                Me.EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
+                Me.BindingNavigator1.Update()
+
+                'End If
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Azione Annullata!!!", "Inserimento Dati" & vbNewLine & "--> " & ex.Message.ToString,
+                            MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+
+
+
+
     End Sub
 
 
@@ -130,7 +160,30 @@ Public Class Gestione
         End If
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        'TIPORIFIUTOComboBox.Text = ComboBox1.V
+    Private Sub BindingNavigatorDeleteItem1_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem1.Click
+        Try
+            Dim result As New DialogResult
+            result = MessageBox.Show("Vuoi Inserire una nuova riga?", "Inserimento Dati",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+
+                Dim id As Integer = DirectCast(DirectCast(EXTRATESTERIFIUTIBindingSource.Current, DataRowView).Item("id_extratesterifiuti"), Integer)
+                'Me.BindingNavigator1.BindingSource.RemoveCurrent()
+                'Me.EXTRATESTERIFIUTIBindingSource.RemoveCurrent()
+                Me.EXTRATESTERIFIUTITableAdapter.Delete(id)
+                Me.Validate()
+                Me.EXTRATESTERIFIUTIBindingSource.EndEdit()
+                Me.EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
+
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Azione Annullata!!!", "Inserimento Dati" & vbNewLine & "--> " & ex.Message.ToString,
+                            MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+
+
     End Sub
 End Class
