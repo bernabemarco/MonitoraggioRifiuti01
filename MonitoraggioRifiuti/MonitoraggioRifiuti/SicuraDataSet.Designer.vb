@@ -43,9 +43,9 @@ Partial Public Class SicuraDataSet
     
     Private relationBiri_MonitoraggioRifiuti_EXTRATESTEDOC As Global.System.Data.DataRelation
     
-    Private relationFK_EXTRATESTERIFIUTI_Codici_CER As Global.System.Data.DataRelation
-    
     Private relationRIGHEDOCUMENTI_EXTRATESTEDOC As Global.System.Data.DataRelation
+    
+    Private relationFK_EXTRATESTERIFIUTI_Codici_CER As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -327,8 +327,8 @@ Partial Public Class SicuraDataSet
         Me.relationBiri_MonitoraggioRifiuti_EXTRATESTERIFIUTI = Me.Relations("Biri_MonitoraggioRifiuti_EXTRATESTERIFIUTI")
         Me.relationBiri_MonitoraggioRifiuti_RIGHEDOCUMENTI = Me.Relations("Biri_MonitoraggioRifiuti_RIGHEDOCUMENTI")
         Me.relationBiri_MonitoraggioRifiuti_EXTRATESTEDOC = Me.Relations("Biri_MonitoraggioRifiuti_EXTRATESTEDOC")
-        Me.relationFK_EXTRATESTERIFIUTI_Codici_CER = Me.Relations("FK_EXTRATESTERIFIUTI_Codici_CER")
         Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC = Me.Relations("RIGHEDOCUMENTI_EXTRATESTEDOC")
+        Me.relationFK_EXTRATESTERIFIUTI_Codici_CER = Me.Relations("FK_EXTRATESTERIFIUTI_Codici_CER")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -357,10 +357,10 @@ Partial Public Class SicuraDataSet
         Me.Relations.Add(Me.relationBiri_MonitoraggioRifiuti_RIGHEDOCUMENTI)
         Me.relationBiri_MonitoraggioRifiuti_EXTRATESTEDOC = New Global.System.Data.DataRelation("Biri_MonitoraggioRifiuti_EXTRATESTEDOC", New Global.System.Data.DataColumn() {Me.tableBiri_MonitoraggioRifiuti.PROGRESSIVOColumn}, New Global.System.Data.DataColumn() {Me.tableEXTRATESTEDOC.IDTESTAColumn}, false)
         Me.Relations.Add(Me.relationBiri_MonitoraggioRifiuti_EXTRATESTEDOC)
-        Me.relationFK_EXTRATESTERIFIUTI_Codici_CER = New Global.System.Data.DataRelation("FK_EXTRATESTERIFIUTI_Codici_CER", New Global.System.Data.DataColumn() {Me.tableCodici_CER.IDColumn}, New Global.System.Data.DataColumn() {Me.tableEXTRATESTERIFIUTI.TIPORIFIUTOColumn}, false)
-        Me.Relations.Add(Me.relationFK_EXTRATESTERIFIUTI_Codici_CER)
         Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC = New Global.System.Data.DataRelation("RIGHEDOCUMENTI_EXTRATESTEDOC", New Global.System.Data.DataColumn() {Me.tableRIGHEDOCUMENTI.IDTESTAColumn}, New Global.System.Data.DataColumn() {Me.tableEXTRATESTEDOC.IDTESTAColumn}, false)
         Me.Relations.Add(Me.relationRIGHEDOCUMENTI_EXTRATESTEDOC)
+        Me.relationFK_EXTRATESTERIFIUTI_Codici_CER = New Global.System.Data.DataRelation("FK_EXTRATESTERIFIUTI_Codici_CER", New Global.System.Data.DataColumn() {Me.tableCodici_CER.IDColumn}, New Global.System.Data.DataColumn() {Me.tableEXTRATESTERIFIUTI.TIPORIFIUTOColumn}, false)
+        Me.Relations.Add(Me.relationFK_EXTRATESTERIFIUTI_Codici_CER)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5657,11 +5657,11 @@ Namespace SicuraDataSetTableAdapters
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDTESTA", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 0, "IDTESTA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TIPORIFIUTO", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "TIPORIFIUTO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GiustificativoCer", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "GiustificativoCer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GiustificativoCer", Global.System.Data.SqlDbType.VarChar, 900, Global.System.Data.ParameterDirection.Input, 0, 0, "GiustificativoCer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataRitiro", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DataRitiro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Arrivo4Copia", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Arrivo4Copia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataArrivoFormulario", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DataArrivoFormulario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.VarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NText, 1073741823, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Allegati", Global.System.Data.SqlDbType.VarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Allegati", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Datetime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Datetime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UTENTEMODIFICA", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "UTENTEMODIFICA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

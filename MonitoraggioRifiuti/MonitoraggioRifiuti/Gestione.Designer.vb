@@ -29,6 +29,8 @@ Partial Class Gestione
         Dim DataArrivoFormularioLabel As System.Windows.Forms.Label
         Dim NoteLabel As System.Windows.Forms.Label
         Dim AllegatiLabel As System.Windows.Forms.Label
+        Dim DataRitiroLabel1 As System.Windows.Forms.Label
+        Dim DataArrivoFormularioLabel1 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Gestione))
         Me.Biri_MonitoraggioRifiutiBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
@@ -63,7 +65,6 @@ Partial Class Gestione
         Me.AllegatiTextBox = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem1 = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem1 = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem1 = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem1 = New System.Windows.Forms.ToolStripButton()
@@ -74,6 +75,7 @@ Partial Class Gestione
         Me.BindingNavigatorMoveNextItem1 = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem1 = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.DataFormularioTB = New System.Windows.Forms.TextBox()
         Me.DataRitiroTb = New System.Windows.Forms.TextBox()
         Me.oDTPRitiro = New System.Windows.Forms.DateTimePicker()
@@ -85,12 +87,16 @@ Partial Class Gestione
         Me.Codici_CERTableAdapter = New MonitoraggioRifiuti.SicuraDataSetTableAdapters.Codici_CERTableAdapter()
         Me.FKEXTRATESTERIFIUTICodiciCERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tiporifiuto = New System.Windows.Forms.ComboBox()
+        Me.DataRitiroDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.DataArrivoFormularioDateTimePicker = New System.Windows.Forms.DateTimePicker()
         GiustificativoCerLabel = New System.Windows.Forms.Label()
         DataRitiroLabel = New System.Windows.Forms.Label()
         Arrivo4CopiaLabel = New System.Windows.Forms.Label()
         DataArrivoFormularioLabel = New System.Windows.Forms.Label()
         NoteLabel = New System.Windows.Forms.Label()
         AllegatiLabel = New System.Windows.Forms.Label()
+        DataRitiroLabel1 = New System.Windows.Forms.Label()
+        DataArrivoFormularioLabel1 = New System.Windows.Forms.Label()
         CType(Me.Biri_MonitoraggioRifiutiBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Biri_MonitoraggioRifiutiBindingNavigator.SuspendLayout()
         CType(Me.Biri_MonitoraggioRifiutiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,6 +163,24 @@ Partial Class Gestione
         AllegatiLabel.TabIndex = 22
         AllegatiLabel.Text = "Allegati:"
         '
+        'DataRitiroLabel1
+        '
+        DataRitiroLabel1.AutoSize = True
+        DataRitiroLabel1.Location = New System.Drawing.Point(624, 401)
+        DataRitiroLabel1.Name = "DataRitiroLabel1"
+        DataRitiroLabel1.Size = New System.Drawing.Size(60, 13)
+        DataRitiroLabel1.TabIndex = 30
+        DataRitiroLabel1.Text = "Data Ritiro:"
+        '
+        'DataArrivoFormularioLabel1
+        '
+        DataArrivoFormularioLabel1.AutoSize = True
+        DataArrivoFormularioLabel1.Location = New System.Drawing.Point(616, 460)
+        DataArrivoFormularioLabel1.Name = "DataArrivoFormularioLabel1"
+        DataArrivoFormularioLabel1.Size = New System.Drawing.Size(114, 13)
+        DataArrivoFormularioLabel1.TabIndex = 31
+        DataArrivoFormularioLabel1.Text = "Data Arrivo Formulario:"
+        '
         'Biri_MonitoraggioRifiutiBindingNavigator
         '
         Me.Biri_MonitoraggioRifiutiBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -171,7 +195,7 @@ Partial Class Gestione
         Me.Biri_MonitoraggioRifiutiBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Name = "Biri_MonitoraggioRifiutiBindingNavigator"
         Me.Biri_MonitoraggioRifiutiBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1068, 25)
+        Me.Biri_MonitoraggioRifiutiBindingNavigator.Size = New System.Drawing.Size(1088, 25)
         Me.Biri_MonitoraggioRifiutiBindingNavigator.TabIndex = 0
         Me.Biri_MonitoraggioRifiutiBindingNavigator.Text = "BindingNavigator1"
         '
@@ -285,9 +309,9 @@ Partial Class Gestione
         Me.Biri_MonitoraggioRifiutiDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Biri_MonitoraggioRifiutiDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
         Me.Biri_MonitoraggioRifiutiDataGridView.DataSource = Me.Biri_MonitoraggioRifiutiBindingSource
-        Me.Biri_MonitoraggioRifiutiDataGridView.Location = New System.Drawing.Point(12, 31)
+        Me.Biri_MonitoraggioRifiutiDataGridView.Location = New System.Drawing.Point(0, 28)
         Me.Biri_MonitoraggioRifiutiDataGridView.Name = "Biri_MonitoraggioRifiutiDataGridView"
-        Me.Biri_MonitoraggioRifiutiDataGridView.Size = New System.Drawing.Size(1036, 220)
+        Me.Biri_MonitoraggioRifiutiDataGridView.Size = New System.Drawing.Size(1068, 220)
         Me.Biri_MonitoraggioRifiutiDataGridView.TabIndex = 1
         '
         'DataGridViewTextBoxColumn1
@@ -392,40 +416,32 @@ Partial Class Gestione
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(624, 294)
+        Me.Button1.Location = New System.Drawing.Point(452, 319)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 24
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Salva dati"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'BindingNavigator1
         '
-        Me.BindingNavigator1.AddNewItem = Me.BindingNavigatorAddNewItem1
+        Me.BindingNavigator1.AddNewItem = Nothing
         Me.BindingNavigator1.BindingSource = Me.EXTRATESTERIFIUTIBindingSource
         Me.BindingNavigator1.CountItem = Me.BindingNavigatorCountItem1
         Me.BindingNavigator1.DeleteItem = Me.BindingNavigatorDeleteItem1
         Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.None
-        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem1, Me.BindingNavigatorMovePreviousItem1, Me.BindingNavigatorSeparator3, Me.BindingNavigatorPositionItem1, Me.BindingNavigatorCountItem1, Me.BindingNavigatorSeparator4, Me.BindingNavigatorMoveNextItem1, Me.BindingNavigatorMoveLastItem1, Me.BindingNavigatorSeparator5, Me.BindingNavigatorAddNewItem1, Me.BindingNavigatorDeleteItem1})
-        Me.BindingNavigator1.Location = New System.Drawing.Point(445, 266)
-        Me.BindingNavigator1.MoveFirstItem = Me.BindingNavigatorMoveFirstItem1
-        Me.BindingNavigator1.MoveLastItem = Me.BindingNavigatorMoveLastItem1
-        Me.BindingNavigator1.MoveNextItem = Me.BindingNavigatorMoveNextItem1
-        Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem1
+        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem1, Me.BindingNavigatorMovePreviousItem1, Me.BindingNavigatorSeparator3, Me.BindingNavigatorPositionItem1, Me.BindingNavigatorCountItem1, Me.BindingNavigatorSeparator4, Me.BindingNavigatorMoveNextItem1, Me.BindingNavigatorMoveLastItem1, Me.BindingNavigatorSeparator5, Me.BindingNavigatorDeleteItem1, Me.ToolStripButton1})
+        Me.BindingNavigator1.Location = New System.Drawing.Point(9, 251)
+        Me.BindingNavigator1.MoveFirstItem = Nothing
+        Me.BindingNavigator1.MoveLastItem = Nothing
+        Me.BindingNavigator1.MoveNextItem = Nothing
+        Me.BindingNavigator1.MovePreviousItem = Nothing
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem1
-        Me.BindingNavigator1.Size = New System.Drawing.Size(285, 25)
+        Me.BindingNavigator1.ShowItemToolTips = False
+        Me.BindingNavigator1.Size = New System.Drawing.Size(380, 25)
         Me.BindingNavigator1.TabIndex = 25
         Me.BindingNavigator1.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem1
-        '
-        Me.BindingNavigatorAddNewItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem1.Image = CType(resources.GetObject("BindingNavigatorAddNewItem1.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem1.Name = "BindingNavigatorAddNewItem1"
-        Me.BindingNavigatorAddNewItem1.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem1.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem1.Text = "Aggiungi nuovo"
         '
         'BindingNavigatorCountItem1
         '
@@ -503,6 +519,14 @@ Partial Class Gestione
         Me.BindingNavigatorSeparator5.Name = "BindingNavigatorSeparator5"
         Me.BindingNavigatorSeparator5.Size = New System.Drawing.Size(6, 25)
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.Image = Global.MonitoraggioRifiuti.My.Resources.Resources.Iconsmind_Outline_Add
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(149, 22)
+        Me.ToolStripButton1.Text = "Aggiungi Registrazione"
+        '
         'DataFormularioTB
         '
         Me.DataFormularioTB.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "DataArrivoFormulario", True))
@@ -521,6 +545,7 @@ Partial Class Gestione
         '
         'oDTPRitiro
         '
+        Me.oDTPRitiro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.oDTPRitiro.Location = New System.Drawing.Point(398, 397)
         Me.oDTPRitiro.Name = "oDTPRitiro"
         Me.oDTPRitiro.Size = New System.Drawing.Size(200, 20)
@@ -578,11 +603,35 @@ Partial Class Gestione
         Me.tiporifiuto.TabIndex = 30
         Me.tiporifiuto.ValueMember = "ID"
         '
+        'DataRitiroDateTimePicker
+        '
+        Me.DataRitiroDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.EXTRATESTERIFIUTIBindingSource, "DataRitiro", True))
+        Me.DataRitiroDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "DataRitiro", True))
+        Me.DataRitiroDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DataRitiroDateTimePicker.Location = New System.Drawing.Point(690, 397)
+        Me.DataRitiroDateTimePicker.Name = "DataRitiroDateTimePicker"
+        Me.DataRitiroDateTimePicker.Size = New System.Drawing.Size(200, 20)
+        Me.DataRitiroDateTimePicker.TabIndex = 31
+        '
+        'DataArrivoFormularioDateTimePicker
+        '
+        Me.DataArrivoFormularioDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.EXTRATESTERIFIUTIBindingSource, "DataArrivoFormulario", True))
+        Me.DataArrivoFormularioDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EXTRATESTERIFIUTIBindingSource, "DataArrivoFormulario", True))
+        Me.DataArrivoFormularioDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DataArrivoFormularioDateTimePicker.Location = New System.Drawing.Point(736, 456)
+        Me.DataArrivoFormularioDateTimePicker.Name = "DataArrivoFormularioDateTimePicker"
+        Me.DataArrivoFormularioDateTimePicker.Size = New System.Drawing.Size(200, 20)
+        Me.DataArrivoFormularioDateTimePicker.TabIndex = 32
+        '
         'Gestione
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1068, 596)
+        Me.ClientSize = New System.Drawing.Size(1088, 596)
+        Me.Controls.Add(DataArrivoFormularioLabel1)
+        Me.Controls.Add(Me.DataArrivoFormularioDateTimePicker)
+        Me.Controls.Add(DataRitiroLabel1)
+        Me.Controls.Add(Me.DataRitiroDateTimePicker)
         Me.Controls.Add(Me.tiporifiuto)
         Me.Controls.Add(Me.oDTPFormulario)
         Me.Controls.Add(Me.oDTPRitiro)
@@ -662,7 +711,6 @@ Partial Class Gestione
     Friend WithEvents AllegatiTextBox As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents BindingNavigator1 As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem1 As ToolStripButton
     Friend WithEvents BindingNavigatorCountItem1 As ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem1 As ToolStripButton
     Friend WithEvents BindingNavigatorMoveFirstItem1 As ToolStripButton
@@ -681,4 +729,7 @@ Partial Class Gestione
     Friend WithEvents Codici_CERTableAdapter As SicuraDataSetTableAdapters.Codici_CERTableAdapter
     Friend WithEvents FKEXTRATESTERIFIUTICodiciCERBindingSource As BindingSource
     Friend WithEvents tiporifiuto As ComboBox
+    Friend WithEvents DataRitiroDateTimePicker As DateTimePicker
+    Friend WithEvents DataArrivoFormularioDateTimePicker As DateTimePicker
+    Friend WithEvents ToolStripButton1 As ToolStripButton
 End Class

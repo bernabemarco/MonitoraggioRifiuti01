@@ -1,6 +1,7 @@
 ﻿Option Infer On
 Option Strict On
 
+
 Public Class Gestione
     Private Sub Gestione_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
@@ -14,36 +15,40 @@ Public Class Gestione
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+        Dim PosizoneCorrente = CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Index)
 
-        'Dim IsDirty As Boolean = DirectCast(DirectCast(sender, CurrencyManager).Current, DataRowView).Row.RowState = DataRowState.Modified
-
-        'If IsDirty Then
         Try
+            Dim Rcurr = Biri_MonitoraggioRifiutiBindingNavigator.PositionItem
+            Dim id As Integer = DirectCast(DirectCast(EXTRATESTERIFIUTIBindingSource.Current, DataRowView).Item("ID_Extratesterifiuti"), Integer)
             Dim result As New DialogResult
             result = MessageBox.Show("Vuoi Salvare le informazioni per la riga selezionata?", "Salvataggio Dati",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result = DialogResult.Yes Then
-                Me.Validate()
-                Me.EXTRATESTERIFIUTIBindingSource.EndEdit()
-                Me.EXTRATESTERIFIUTITableAdapter.Update(Me.SicuraDataSet.EXTRATESTERIFIUTI)
 
-                MessageBox.Show("Salvataggio eseguito con Successo!", "Salvataggio Dati", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(Me.SicuraDataSet.EXTRATESTERIFIUTI)
 
-                '        Else
-                '       Return
+                Validate()
+                EXTRATESTERIFIUTIBindingSource.EndEdit()
+                EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
+
+                MessageBox.Show("Salvataggio Dati", "Salvataggio eseguito con Successo!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(SicuraDataSet.Biri_MonitoraggioRifiuti)
+                EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(SicuraDataSet.EXTRATESTERIFIUTI)
+                ActiveForm.Refresh()
+
+                Biri_MonitoraggioRifiutiDataGridView.CurrentCell = Biri_MonitoraggioRifiutiDataGridView.Item(0, PosizoneCorrente)
             End If
 
 
         Catch ex As Exception
-            MessageBox.Show("Salvataggio Dati Fallito!!!", "Salvataggio Dati" & vbNewLine & "--> " & ex.Message.ToString,
+            MessageBox.Show("Salvataggio Dati" & vbNewLine & "--> " & ex.Message.ToString, "Salvataggio Dati Fallito!!!",
                             MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End Try
 
     End Sub
 
-    Private Sub BindingNavigatorAddNewItem1_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem1.Click
+    Private Sub BindingNavigatorAddNewItem1_Click(sender As Object, e As EventArgs)
 
+        Dim PosizoneCorrente = CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Index)
 
 
         Try
@@ -51,27 +56,27 @@ Public Class Gestione
             result = MessageBox.Show("Vuoi Inserire una nuova riga?", "Inserimento Dati",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result = DialogResult.Yes Then
+                EXTRATESTERIFIUTITableAdapter.Insert(CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value),
+                                                         Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Now, UtenteCorrente)
+                Validate()
+                EXTRATESTERIFIUTIBindingSource.EndEdit()
+                EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
 
-                'Dim RigaCorrente As Integer = CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value)
+                Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(SicuraDataSet.Biri_MonitoraggioRifiuti)
+                EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(SicuraDataSet.EXTRATESTERIFIUTI)
+                Codici_CERTableAdapter.FillCodiciCer(SicuraDataSet.Codici_CER)
+
+                Biri_MonitoraggioRifiutiDataGridView.CurrentCell = Biri_MonitoraggioRifiutiDataGridView.Item(0, PosizoneCorrente)
+                EXTRATESTERIFIUTIBindingSource.Position = 0
+                'BindingNavigator1.PositionItem = EXTRATESTERIFIUTIBindingSource.Item(0, 1)
 
 
-                'If (IsDBNull(RigaCorrente)) Then
-
-                'Else
-                Me.EXTRATESTERIFIUTITableAdapter.Insert(CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value),
-                                                            Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Now, UtenteCorrente)
-                Me.Validate()
-                Me.EXTRATESTERIFIUTIBindingSource.EndEdit()
-                Me.EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
-                Me.BindingNavigator1.Update()
-
-                'End If
 
             End If
 
 
         Catch ex As Exception
-            MessageBox.Show("Azione Annullata!!!", "Inserimento Dati" & vbNewLine & "--> " & ex.Message.ToString,
+            MessageBox.Show("Inserimento Dati" & vbNewLine & "--> " & ex.Message.ToString, "Azione Annullata!!!",
                             MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End Try
 

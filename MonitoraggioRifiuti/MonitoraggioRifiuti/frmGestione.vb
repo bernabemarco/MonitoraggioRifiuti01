@@ -61,11 +61,11 @@ Public Class frmGestione
         EXTRATESTERIFIUTIDataGridView.CurrentCell.Value = oDTP.Value
     End Sub
 
-    Private Sub EXTRATESTERIFIUTIDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellLeave
+    Private Sub EXTRATESTERIFIUTIDataGridView_CellLeave(sender As Object, e As DataGridViewCellEventArgs)
         oDTP.Visible = False
     End Sub
 
-    Private Sub EXTRATESTERIFIUTIDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles EXTRATESTERIFIUTIDataGridView.DataError
+    Private Sub EXTRATESTERIFIUTIDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs)
         Dim Result As DialogResult
 
 
@@ -101,7 +101,7 @@ Public Class frmGestione
         End If
     End Sub
 
-    Private Sub EXTRATESTERIFIUTIDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles EXTRATESTERIFIUTIDataGridView.CellDoubleClick
+    Private Sub EXTRATESTERIFIUTIDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
         Select Case e.ColumnIndex
             Case 6
                 '//Adding DateTimePicker control into DataGridView   
@@ -286,4 +286,46 @@ Public Class frmGestione
     End Sub
 
 
+
+
+    Private Sub frmGestione_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: questa riga di codice carica i dati nella tabella 'SicuraDataSet.Codici_CER'. È possibile spostarla o rimuoverla se necessario.
+        Me.Codici_CERTableAdapter.FillCodiciCer(Me.SicuraDataSet.Codici_CER)
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click_3(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        Dim PosizoneCorrente = CInt(Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Index)
+        Try
+            Dim result As New DialogResult
+            result = MessageBox.Show("Vuoi Inserire una nuova riga?", "Inserimento Dati",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+
+
+                Dim Progr As Decimal = (Biri_MonitoraggioRifiutiDataGridView.CurrentRow.Cells(0).Value)
+                EXTRATESTERIFIUTITableAdapter.Insert(Progr,
+                                                         Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Now, UtenteCorrente)
+                Validate()
+                'EXTRATESTERIFIUTIBindingSource.EndEdit()
+                EXTRATESTERIFIUTITableAdapter.Update(SicuraDataSet.EXTRATESTERIFIUTI)
+
+                Biri_MonitoraggioRifiutiTableAdapter.FillMonitoraggio(SicuraDataSet.Biri_MonitoraggioRifiuti)
+                EXTRATESTERIFIUTITableAdapter.FillExtraTesteRifiuti(SicuraDataSet.EXTRATESTERIFIUTI)
+                Codici_CERTableAdapter.FillCodiciCer(SicuraDataSet.Codici_CER)
+
+                Biri_MonitoraggioRifiutiDataGridView.CurrentCell = Biri_MonitoraggioRifiutiDataGridView.Item(1, PosizoneCorrente)
+                'EXTRATESTERIFIUTIBindingSource.Position = 0
+                'BindingNavigator1.PositionItem = EXTRATESTERIFIUTIBindingSource.Item(0, 1)
+
+
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Inserimento Dati" & vbNewLine & "--> " & ex.Message.ToString, "Azione Annullata!!!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+    End Sub
 End Class
